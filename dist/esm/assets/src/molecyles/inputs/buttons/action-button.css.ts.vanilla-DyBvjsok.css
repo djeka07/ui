@@ -1,0 +1,35 @@
+.action-button_actionButton__10v2xlt0 {
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+.action-button_actionButton__10v2xlt0.action-button_actionButton__10v2xlt0.action-button_actionButton__10v2xlt0 {
+  font-weight: normal;
+  border: 2px dashed var(--main-text-color);
+  min-height: 90px;
+}
+.action-button_actionButton__10v2xlt0.action-button_actionButton__10v2xlt0.action-button_actionButton__10v2xlt0:hover {
+  opacity: 0.8;
+  background-color: transparent;
+  transform: scale(0.99);
+}
+.action-button_actionButton_color_transparent__10v2xlt1 {
+  background-color: transparent;
+}
+.action-button_actionButton_color_light__10v2xlt2 {
+  background-color: var(--light-bqckground-color);
+}
+.action-button_actionButton_color_main__10v2xlt3 {
+  background-color: var(--main-bqckground-color);
+}
+.action-button_actionButton_color_dark__10v2xlt4 {
+  background-color: var(--dark-bqckground-color);
+}
+.action-button_typography__10v2xlt5 {
+  display: block;
+}
+.action-button_root__10v2xlt6 {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}

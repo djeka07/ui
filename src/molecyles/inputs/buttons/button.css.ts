@@ -497,6 +497,7 @@ export const childrenRecipe = recipe({
     color: {
       light: {},
       main: {},
+      dark: {},
       'error-light': {},
       error: {},
       'error-dark': {},
@@ -512,7 +513,7 @@ export const childrenRecipe = recipe({
       'warning-dark': {},
     },
     size: {
-      xsmall: { padding: 0, fontSize: 'var(--xsmall-font-size)' },
+      xsmall: { padding: '2px 4px', fontSize: 'var(--xsmall-font-size)' },
       small: { padding: '6.4px 16px', fontSize: 'var(--small-font-size)' },
       normal: { padding: '9.4px 16px' },
       large: { padding: '13.4px 24px' },

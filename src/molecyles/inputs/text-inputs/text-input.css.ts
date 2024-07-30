@@ -2,6 +2,8 @@ import { style } from '@vanilla-extract/css';
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import media from '../../../styles/media.css';
 
+type CSSProperties = { [key: string]: string; }
+
 export const root = recipe({
   base: {
     position: 'relative',
@@ -278,8 +280,7 @@ export const input = recipe({
     fontSize: 16,
     appearance: 'none',
     outline: 'none',
-
-    '-webkit-text-fill-color': 'var(--main-focus-color) !important',
+    ['-webkit-text-fill-color' as string]: 'var(--main-focus-color) !important',
     [media.base]: {
       [media.small.up]: {
         fontSize: 14,
@@ -289,7 +290,7 @@ export const input = recipe({
       '&:-webkit-autofill': {
         transition: 'background-color 5000000s ease-in-out 0s',
         color: 'var(--main-input-color)!important',
-        '-webkit-text-fill-color': 'var(--main-input-color) !important',
+        ['-webkit-text-fill-color' as string]: 'var(--main-input-color) !important',
       },
       '&::placeholder': {
         color: 'var(--main-input-color)',
@@ -306,7 +307,7 @@ export const input = recipe({
         color: 'var(--main-focus-color)',
         selectors: {
           '&:-webkit-autofill': {
-            '-webkit-text-fill-color': 'var(--main-focus-color) !important',
+            ['-webkit-text-fill-color' as string]: 'var(--main-focus-color) !important',
           },
         },
       },

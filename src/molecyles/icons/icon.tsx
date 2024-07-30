@@ -1,5 +1,4 @@
-import { MouseEventHandler } from 'react';
-import { css } from '../../models/helpers/class';
+import { css } from '@djeka07/utils';
 import { svg, SvgStyleVariants, wrapper, WrapperStyleVariants } from './icon.css';
 import * as Svgs from './svgs';
 
@@ -15,7 +14,6 @@ const IconSvg = ({ title, name, onClick, color, size, className }: IconProps) =>
   const Svg = Svgs[name];
   return (
     <Svg
-      title={title}
       onClick={onClick}
       className={css(svg({ size, color, cursor: !!onClick ? 'pointer' : undefined }), className)}
     />

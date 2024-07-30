@@ -142,7 +142,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             value={inputValue || ''}
             name={name}
             type={type}
-            className={css(input({ focus: `${focus}`, errorFocus: `${focus && !!error}` }), className)}
+            className={css(input({ focus, errorFocus: focus && !!error }), className)}
           />
           {!!readOnly ||
             (!!disabled && (

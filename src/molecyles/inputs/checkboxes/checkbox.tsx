@@ -1,9 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChangeEvent, FormEvent, KeyboardEvent, forwardRef, useEffect, useState } from 'react';
-import { css } from '~/app/models/helpers/class';
-import { isSpace } from '~/app/models/helpers/keyboard';
 import { Icon } from '../../icons';
 import { InputVariants, childrenClass, errorClass, errorSvg, input, labelClass, root, wrapper } from './checkbox.css';
+import { css, isSpace } from '@djeka07/utils';
 
 export type CheckboxProps = InputVariants & {
   value?: string;

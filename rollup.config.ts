@@ -6,13 +6,14 @@ import { dts } from "rollup-plugin-dts";
 import terser from "@rollup/plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import { vanillaExtractPlugin } from '@vanilla-extract/rollup-plugin';
+import svgr from '@svgr/rollup';
 
 const packageJson = require("./package.json");
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default [
   {
-    input: "src/index.ts",
+    input: "src/molecyles/index.ts",
     output: [
       {
         file: packageJson.main,
@@ -26,6 +27,7 @@ export default [
       },
     ],
     plugins: [
+      svgr({ native: true, titleProp: true }),
       vanillaExtractPlugin(),
       peerDepsExternal(),
       resolve(),
@@ -36,8 +38,9 @@ export default [
     external: ["react", "react-dom"],
   },
   {
-    input: "src/index.ts",
+    input: "src/molecyles/index.ts",
     output: [{ file: "dist/index.d.ts", format: "es" }],
-    plugins: [dts()],
+    plugins: [svgr({ native: true, titleProp: true }),dts()],
   },
 ];
+
