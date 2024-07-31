@@ -3,6 +3,7 @@ import React from 'react';
 import createVariables from '../src/styles/variables';
 
 const preview: Preview = {
+  tags: ['autodocs'],
   decorators: [
     (Story, context) => {
       const theme = context.parameters.theme || context.globals.theme;

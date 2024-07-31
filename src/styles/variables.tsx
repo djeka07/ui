@@ -29,10 +29,6 @@ export default (mode: 'dark' | 'light') => {
     --800-grey-color: ${theme.palette.grey[800]};
     --900-grey-color: ${theme.palette.grey[900]};
 
-    --light-success-color: ${theme.palette.success.light};
-    --main-success-color: ${theme.palette.success.main};
-    --dark-success-color: ${theme.palette.success.dark};
-
     --light-input-color: ${theme.palette.input.light};
     --main-input-color: ${theme.palette.input.main};
     --dark-input-color: ${theme.palette.input.dark};
@@ -48,6 +44,16 @@ export default (mode: 'dark' | 'light') => {
     --light-text-color: ${theme.palette.text.light};
     --main-text-color: ${theme.palette.text.main};
     --dark-text-color: ${theme.palette.text.dark};
+
+
+    --light-success-color: ${theme.palette.success.light};
+    --main-success-color: ${theme.palette.success.main};
+    --dark-success-color: ${theme.palette.success.dark};
+
+
+    --light-info-color: ${theme.palette.info.light};
+    --main-info-color: ${theme.palette.info.main};
+    --dark-info-color: ${theme.palette.info.dark};
 
     --light-warning-color: ${theme.palette.warning.light};
     --main-warning-color: ${theme.palette.warning.main};

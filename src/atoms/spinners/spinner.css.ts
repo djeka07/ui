@@ -91,6 +91,9 @@ export const rotate = recipe({
       },
     },
     color: {
+      white: {
+        borderColor: 'var(--white-common-color) transparent transparent transparent',
+      },
       light: {
         borderColor: 'var(--light-text-color) transparent transparent transparent',
       },
