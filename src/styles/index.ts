@@ -2,6 +2,7 @@ import createBorder, { Border } from './border';
 import createBreakPoints, { BreakPointProps } from './breakpoint';
 import createTypography, { Typography } from './typography';
 import createPalette, { Palette } from './palette';
+import createStyleSheet from './stylesheet';
 
 export type Theme = {
   typography: Typography;
@@ -13,7 +14,9 @@ export type Theme = {
 export default (theme: 'dark' | 'light') =>
   ({
     typography: createTypography,
-    breakpoint: createBreakPoints(),
+    breakpoint: createBreakPoints(), 
     palette: createPalette(theme),
     border: createBorder,
   }) satisfies Theme;
+
+  export { createStyleSheet };

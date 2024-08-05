@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react';
 import React from 'react';
-import createVariables from '../src/styles/variables';
+import createVariables from '../src/styles/stylesheet';
+import { createDefaultTheme } from '../src/styles/theme';
 
 const preview: Preview = {
   tags: ['autodocs'],
@@ -9,8 +10,7 @@ const preview: Preview = {
       const theme = context.parameters.theme || context.globals.theme;
       return (
         <>
-          {createVariables(theme)()}
-          {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+          {createVariables(createDefaultTheme(theme))}
           <Story />
         </>
       );

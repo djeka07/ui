@@ -45,19 +45,19 @@ const base = {
     black: '#000000',
   },
   success: {
-    light: '#d4edda',
-    main: '#28a745',
-    dark: '#155724',
+    light: '#d1e7dd',
+    main: '#198754',
+    dark: '#0f5132',
   },
   warning: {
-    light: lighten(0.1, '#f0ad4e'),
-    main: '#f0ad4e',
-    dark: darken(0.4, '#f0ad4e'),
+    light: '#fff3cd',
+    main: '#ffc107',
+    dark: '#664d03',
   },
   info: {
-    light: '#d1ecf1',
-    main: '#72DBCF',
-    dark: '#0c5460',
+    light: '#cff4fc',
+    main: '#3fc6e1',
+    dark: '#055160',
   },
   grey: {
     100: '#f5f5f5',
@@ -78,9 +78,9 @@ const toneDarken = compose(darken(0.1), saturate(0.1));
 const createDarkPalette = (): Palette => ({
   ...base,
   primary: {
-    light: lighten(0.2, '#3D71DC'),
+    light: '#7aa2f4',
     main: '#3D71DC',
-    dark: darken(0.1, '#3D71DC'),
+    dark: '#11254e',
   },
   secondary: {
     light: lighten(0.1, '#491b6e'),
@@ -114,8 +114,8 @@ const createDarkPalette = (): Palette => ({
   },
   error: {
     light: '#f8d7da',
-    main: '#ff717e',
-    dark: '#721c24',
+    main: '#dc3545',
+    dark: '#842029',
   },
   background: {
     light: lighten(0.1, '#354052'),
@@ -131,7 +131,7 @@ const createDarkPalette = (): Palette => ({
 const createLightPalette = (): Palette => ({
   ...base,
   primary: {
-    light: '#901ded',
+    light: '#a98bc1',
     main: '#491b6e',
     dark: '#3b105e',
   },
@@ -177,7 +177,7 @@ const createLightPalette = (): Palette => ({
   error: {
     light: '#f8d7da',
     main: '#dc3545',
-    dark: '#721c24',
+    dark: '#842029',
   },
 });
 

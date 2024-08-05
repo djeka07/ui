@@ -13,7 +13,7 @@ const packageJson = require("./package.json");
 // eslint-disable-next-line import/no-anonymous-default-export
 export default [
   {
-    input: "src/molecyles/index.ts",
+    input: "src/index.ts",
     output: [
       {
         file: packageJson.main,
@@ -38,7 +38,7 @@ export default [
     external: ["react", "react-dom"],
   },
   {
-    input: "src/molecyles/index.ts",
+    input: "src/index.ts",
     output: [{ file: "dist/index.d.ts", format: "es" }],
     plugins: [svgr({ native: true, titleProp: true }),dts()],
   },

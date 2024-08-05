@@ -3,7 +3,7 @@ import breakpoint, { BreakPointProps } from './breakpoint';
 import palette, { Palette } from './palette';
 import typography, { Typography } from './typography';
 
-type Theme = {
+export type Theme = {
   border: Border;
   palette: Palette;
   breakpoint: BreakPointProps;
