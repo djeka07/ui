@@ -1,5 +1,5 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
-import { SizeKeys } from '~/styles/typography';
+import { SizeKeys } from '../../../styles/typography';
 
 export const wrapper = recipe({
   variants: {

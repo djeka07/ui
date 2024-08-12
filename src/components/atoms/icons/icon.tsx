@@ -1,15 +1,7 @@
-import React from 'react';
 import { css } from '@djeka07/utils';
-import { svg, SvgStyleVariants, wrapper, WrapperStyleVariants } from './icon.css';
+import { svg, wrapper, WrapperStyleVariants } from './icon.css';
 import * as Svgs from './svgs';
-
-export type IconProps = SvgStyleVariants & {
-  title?: string;
-  name: Svgs.IconNames;
-  wrapperClass?: string;
-  className?: string;
-  onClick?: () => void;
-};
+import { IconProps } from './icon.type';
 
 const IconSvg = ({ title, name, onClick, color, size, className }: IconProps) => {
   const Svg = Svgs[name];

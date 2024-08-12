@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { IconProps } from '../icons/icon';
 import { IconNames } from '../icons/svgs';
 import { MessageVariants } from './message.css';
+import { IconProps } from '../icons/icon.type';
 
 type MessageOmittedVariants = Omit<MessageVariants, 'primary' | 'success' | 'error'|'warning' |'info'>
 

@@ -1,12 +1,6 @@
-import React from 'react';
-import { root, RootVariants, rotate, SpinnerVariants } from './spinner.css';
 import { css } from '@djeka07/utils';
-
-type SpinnerProps = SpinnerVariants &
-  RootVariants & {
-    className?: string;
-    wrapperClass?: string;
-  };
+import { root, rotate } from './spinner.css';
+import { SpinnerProps } from './spinner.type';
 
 const Spinner = (props: SpinnerProps) => {
   const className = css(rotate({ size: props.size, color: props.color }), props.className);

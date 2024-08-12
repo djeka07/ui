@@ -1,6 +1,15 @@
-import React, { HTMLInputTypeAttribute } from 'react';
+import { css } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { FocusEvent, FormEvent, forwardRef, KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  FocusEvent,
+  FormEvent,
+  forwardRef,
+  HTMLInputTypeAttribute,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import mergeRefs from '../../../../helpers/refs';
 import { Icon } from '../../icons';
 import {
@@ -15,57 +24,7 @@ import {
   root,
   wrapper,
 } from './text-input.css';
-import { css } from '@djeka07/utils';
-import { RadiusKeys } from '~/styles/border';
-
-export type TextFocusEvent = FocusEvent & {
-  currentTarget: HTMLInputElement;
-  target: Element;
-};
-
-type InputTypes =
-  | 'button'
-  | 'checkbox'
-  | 'color'
-  | 'date'
-  | 'datetime-local'
-  | 'email'
-  | 'file'
-  | 'image'
-  | 'month'
-  | 'number'
-  | 'password'
-  | 'radio'
-  | 'range'
-  | 'reset'
-  | 'search'
-  | 'submit'
-  | 'tel'
-  | 'text'
-  | 'time'
-  | 'url'
-  | 'week';
-
-export type TextInputProps = {
-  name: string;
-  value?: string;
-  defaultValue?: string;
-  full?: boolean;
-  id?: string;
-  autoComplete?: string;
-  radius?: RadiusKeys;
-  disabled?: boolean;
-  readOnly?: boolean;
-  backgroundColor?: 'light' | 'main' | 'dark';
-  onClick?: (event: FormEvent<HTMLInputElement>) => void;
-  onChange?: (event: FormEvent<HTMLInputElement>) => void;
-  onBlur?: (event: FormEvent<HTMLInputElement>) => void;
-  onFocus?: (event: FormEvent<HTMLInputElement>) => void;
-  onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-  className?: string;
-  error?: string | undefined;
-} & ({ type: 'hidden'; label?: never } | { type: InputTypes; label: string });
+import { TextInputProps } from './text-input.type';
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (
@@ -112,7 +71,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       }
     };
 
-    const internalOnBlur = (e: TextFocusEvent) => {
+    const internalOnBlur = (e: FormEvent<HTMLInputElement>) => {
       setFocus(false);
       if (onBlur) {
         onBlur(e);

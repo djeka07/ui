@@ -1,9 +1,8 @@
-import React from 'react';
 import { css } from '@djeka07/utils';
 import { MouseEvent } from 'react';
 import { Spinner } from '../../spinners';
 import { button, childrenRecipe, spinner } from './button.css';
-import { ButtonProps } from './button.types';
+import { ButtonProps } from './button.type';
 
 const Button = ({
   children,

@@ -1,16 +1,9 @@
-import React from 'react';
 import { css } from '@djeka07/utils';
-import Icon, { IconProps } from '../../icons/icon';
+import Icon from '../../icons/icon';
 import { Typography } from '../../typographies';
-import { actionButton, ActionButtonStyleVariant, root, typography } from './action-button.css';
+import { actionButton, root, typography } from './action-button.css';
 import Button from './button';
-import { ButtonProps } from './button.types';
-
-type ActionButtonProps = Pick<ButtonProps, 'children' | 'className' | 'disabled' | 'isLoading' | 'onClick'> &
-  ActionButtonStyleVariant & {
-    description?: string;
-    iconName?: IconProps['name'];
-  };
+import { ActionButtonProps } from './action-button.type';
 
 const ActionButton = ({
   children,

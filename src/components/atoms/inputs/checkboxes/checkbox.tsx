@@ -1,24 +1,9 @@
-import React from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ChangeEvent, FormEvent, KeyboardEvent, forwardRef, useEffect, useState } from 'react';
-import { Icon } from '../../icons';
-import { InputVariants, childrenClass, errorClass, errorSvg, input, labelClass, root, wrapper } from './checkbox.css';
 import { css, isSpace } from '@djeka07/utils';
-
-export type CheckboxProps = InputVariants & {
-  value?: string;
-  name?: string;
-  label?: string;
-  defaultChecked?: boolean;
-  radius?: number;
-  disabled?: boolean;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (e: FormEvent) => void;
-  children?: JSX.Element;
-  className?: string;
-  error?: string;
-  noErrorLabel?: boolean;
-};
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChangeEvent, KeyboardEvent, forwardRef, useEffect, useState } from 'react';
+import { Icon } from '../../icons';
+import { childrenClass, errorClass, errorSvg, input, labelClass, root, wrapper } from './checkbox.css';
+import { CheckboxProps } from './checkbox.type';
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (

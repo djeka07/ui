@@ -5,7 +5,7 @@ import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 const vitePlugins = [
-  svgr(),
+  svgr({ include: '**/*.svg' }),
   vanillaExtractPlugin(),
   tsconfigPaths(),
 ]
