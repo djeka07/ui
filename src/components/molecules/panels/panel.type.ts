@@ -64,8 +64,3 @@ export enum PanelDelayDuration {
   Longest = 5000,
 }
 
-export type ExtendedPanelProps = PanelProps & {
-  removePanelFromContext: () => void;
-  lastInStack?: boolean;
-  zIndex: number;
-};

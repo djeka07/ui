@@ -2,7 +2,7 @@ import { css } from '@djeka07/utils';
 import { MouseEvent } from 'react';
 import { Spinner } from '../../spinners';
 import { button, childrenRecipe, spinner } from './button.css';
-import { ButtonProps } from './button.type';
+import { ButtonProps } from './button.props';
 
 const Button = ({
   children,

@@ -1,17 +1,11 @@
-import {
-  ExtendedPanelProps,
-  OverlayElementProps,
-  PanelAnimationDuration,
-  PanelPosition,
-  PanelProps,
-  PanelSize,
-} from './panel.type';
+import { OverlayElementProps, PanelAnimationDuration, PanelPosition, PanelProps, PanelSize } from './panel.type';
 import { overlay, panelElement, clickOutside as clickOutsideClass, closeButton } from './panel.css';
 import { getPanelHiddenVariants, getPanelVisibleVariants } from './get-panel-variants';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { isEscape } from '@djeka07/utils';
 import { Icon } from '../../atoms';
+import { ExtendedPanelProps } from './panel.props';
 
 const PANEL_ANIMATION_DURATION: { [key: string]: PanelAnimationDuration } = {
   DEFAULT: { overlay: { in: 0.1, out: 0.1 }, panel: { in: 0.2, out: 0.15 } },

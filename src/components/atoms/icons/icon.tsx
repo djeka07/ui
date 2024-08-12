@@ -1,7 +1,7 @@
 import { css } from '@djeka07/utils';
 import { svg, wrapper, WrapperStyleVariants } from './icon.css';
 import * as Svgs from './svgs';
-import { IconProps } from './icon.type';
+import { IconProps } from './icon.props';
 
 const IconSvg = ({ title, name, onClick, color, size, className }: IconProps) => {
   const Svg = Svgs[name];

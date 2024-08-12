@@ -1,6 +1,6 @@
 import { For } from '../../atoms';
 import Panel from '../panels/panel';
-import { PanelRendererProps } from './panel-renderer.type';
+import { PanelRendererProps } from './panel-renderer.props';
 
 const PanelRenderer = ({ hasPanels, panels, removePanelByPosition }: PanelRendererProps) => (
   <div id="panel-renderer">

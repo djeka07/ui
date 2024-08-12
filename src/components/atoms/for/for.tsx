@@ -1,5 +1,5 @@
 import { Fragment, memo } from 'react';
-import { ForProps } from './for.type';
+import { ForProps } from './for.props';
 
 const For = <T extends object>({ each, fallback = null, className, ...rest }: ForProps<T>) => {
   if (!each || each?.length === 0) {

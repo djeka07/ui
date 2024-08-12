@@ -1,7 +1,7 @@
 import { css } from '@djeka07/utils';
 import { createElement } from 'react';
 import { typography } from './typography.css';
-import { elementMap, TypographyProps } from './typography.type';
+import { elementMap, TypographyProps } from './typography.props';
 
 const Typography = ({
   children,

@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { createRef, memo } from 'react';
 import Icon from '../icons/icon';
 import { innerMessage, message, icon as iconCss } from './message.css';
-import { MessageProps } from './message.type';
+import { MessageProps } from './message.props';
 
 const InnerMessage = memo(
   ({

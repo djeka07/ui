@@ -1,7 +1,7 @@
 import { css } from '@djeka07/utils';
 import { Typography } from '../../atoms/typographies';
 import { content, root, titleWrapper } from './panel-content.css';
-import { PanelContentProps } from './panel-content.type';
+import { PanelContentProps } from './panel-content.props';
 
 const PanelContent = ({
   children,

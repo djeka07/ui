@@ -1,5 +1,5 @@
 import { Children, memo } from 'react';
-import { MatchProps, SwitchProps } from './switch.type';
+import { MatchProps, SwitchProps } from './switch.props';
 
 const Switch = <T,>({ children, expression, fallback = null }: SwitchProps<T>) => {
   const childToShow = Children.toArray(children).filter(
