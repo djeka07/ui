@@ -1,5 +1,5 @@
 import { css } from '@djeka07/utils';
-import { createElement } from 'react';
+import React, { createElement } from 'react';
 import { typography } from './typography.css';
 import { elementMap, TypographyProps } from './typography.props';
 

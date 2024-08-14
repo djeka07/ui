@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { PanelProps } from './panel.type';
 import { usePanels } from './use-panels';
 

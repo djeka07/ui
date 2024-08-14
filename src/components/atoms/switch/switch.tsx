@@ -1,4 +1,4 @@
-import { Children, memo } from 'react';
+import React, { Children, memo } from 'react';
 import { MatchProps, SwitchProps } from './switch.props';
 
 const Switch = <T,>({ children, expression, fallback = null }: SwitchProps<T>) => {

@@ -13,12 +13,8 @@ module.exports = {
     commonjs: true,
     es6: true,
   },
-  ignorePatterns: ['!**/.server', '!**/.client'],
-
-  // Base config
   extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   overrides: [
-    // React
     {
       files: ['**/*.{js,jsx,ts,tsx}'],
       plugins: ['react', 'jsx-a11y'],
@@ -32,17 +28,8 @@ module.exports = {
         react: {
           version: 'detect',
         },
-        formComponents: ['Form'],
-        linkComponents: [
-          { name: 'Link', linkAttribute: 'to' },
-          { name: 'NavLink', linkAttribute: 'to' },
-        ],
-        'import/resolver': {
-          typescript: {},
-        },
       },
     },
-
     {
       files: ['**/*.{ts,tsx}'],
       plugins: ['@typescript-eslint', 'prettier', 'import'],
@@ -59,14 +46,6 @@ module.exports = {
         },
       },
       extends: ['plugin:@typescript-eslint/recommended', 'plugin:import/recommended', 'plugin:import/typescript'],
-    },
-
-    // Node
-    {
-      files: ['.eslintrc.cjs'],
-      env: {
-        node: true,
-      },
     },
   ],
 };

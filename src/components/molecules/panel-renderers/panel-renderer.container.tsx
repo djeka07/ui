@@ -1,7 +1,7 @@
+import React, { JSX, useEffect } from 'react';
 import { PanelProps } from '../panels/panel.type';
 import { usePanels } from '../panels/use-panels';
 import PanelRenderer from './panel-renderer';
-import { useEffect } from 'react';
 
 const PanelsRendererContainer = (): JSX.Element => {
   const [{ hasPanels, panels }, { clearAllPanels, removePanelByPosition }] = usePanels();

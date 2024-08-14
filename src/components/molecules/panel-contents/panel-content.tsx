@@ -1,3 +1,4 @@
+import React from 'react';
 import { css } from '@djeka07/utils';
 import { Typography } from '../../atoms/typographies';
 import { content, root, titleWrapper } from './panel-content.css';

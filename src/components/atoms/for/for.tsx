@@ -1,4 +1,4 @@
-import { Fragment, memo } from 'react';
+import React, { Fragment, memo } from 'react';
 import { ForProps } from './for.props';
 
 const For = <T extends object>({ each, fallback = null, className, ...rest }: ForProps<T>) => {

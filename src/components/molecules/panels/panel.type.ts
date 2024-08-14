@@ -1,4 +1,4 @@
-import { Ref } from 'react';
+import { Ref, JSX } from 'react';
 
 export type PanelElementProps = {
   maxWidth?: PanelSize;

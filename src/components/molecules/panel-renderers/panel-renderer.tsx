@@ -1,3 +1,4 @@
+import React from 'react';
 import { For } from '../../atoms';
 import Panel from '../panels/panel';
 import { PanelRendererProps } from './panel-renderer.props';

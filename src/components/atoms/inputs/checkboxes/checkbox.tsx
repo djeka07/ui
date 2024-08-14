@@ -1,6 +1,6 @@
 import { css, isSpace } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChangeEvent, KeyboardEvent, forwardRef, useEffect, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, forwardRef, useEffect, useState } from 'react';
 import { Icon } from '../../icons';
 import { childrenClass, errorClass, errorSvg, input, labelClass, root, wrapper } from './checkbox.css';
 import { CheckboxProps } from './checkbox.type';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { css } from '@djeka07/utils';
 import { svg, wrapper, WrapperStyleVariants } from './icon.css';
 import * as Svgs from './svgs';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { css } from '@djeka07/utils';
 import { root, rotate } from './spinner.css';
 import { SpinnerProps } from './spinner.props';

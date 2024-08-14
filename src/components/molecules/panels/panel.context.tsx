@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState } from 'react';
+import React, { createContext, useCallback, useState, JSX } from 'react';
 import { PanelProps } from './panel.type';
 
 enum PanelsActionTypes {
@@ -49,7 +49,7 @@ const initialPanelsContext: PanelContext = [
   },
 ];
 
-type PanelProviderProps = { children: JSX.Element };
+type PanelProviderProps = { children: JSX.Element | JSX.Element[] };
 
 export const PanelsContext = createContext<PanelContext>(initialPanelsContext);
 

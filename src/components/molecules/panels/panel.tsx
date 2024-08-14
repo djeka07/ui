@@ -1,11 +1,11 @@
-import { OverlayElementProps, PanelAnimationDuration, PanelPosition, PanelProps, PanelSize } from './panel.type';
-import { overlay, panelElement, clickOutside as clickOutsideClass, closeButton } from './panel.css';
-import { getPanelHiddenVariants, getPanelVisibleVariants } from './get-panel-variants';
-import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { isEscape } from '@djeka07/utils';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useEffect, useState, JSX } from 'react';
 import { Icon } from '../../atoms';
+import { getPanelHiddenVariants, getPanelVisibleVariants } from './get-panel-variants';
+import { clickOutside as clickOutsideClass, closeButton, overlay, panelElement } from './panel.css';
 import { ExtendedPanelProps } from './panel.props';
+import { OverlayElementProps, PanelAnimationDuration, PanelPosition, PanelSize } from './panel.type';
 
 const PANEL_ANIMATION_DURATION: { [key: string]: PanelAnimationDuration } = {
   DEFAULT: { overlay: { in: 0.1, out: 0.1 }, panel: { in: 0.2, out: 0.15 } },
@@ -85,6 +85,20 @@ const Panel = ({
     }
   };
 
+  const getMaxWidth = (): PanelSize | undefined => {
+    return panelElementProps?.panelPosition === PanelPosition.Bottom ||
+      panelElementProps?.panelPosition === PanelPosition.Top
+      ? undefined
+      : panelElementProps.maxWidth;
+  };
+
+  const getMaxHeight = (): PanelSize | undefined => {
+    return panelElementProps?.panelPosition === PanelPosition.Bottom ||
+      panelElementProps?.panelPosition === PanelPosition.Top
+      ? panelElementProps.maxWidth
+      : undefined;
+  };
+
   return (
     <AnimatePresence onExitComplete={onExit}>
       {isActive && (
@@ -96,11 +110,12 @@ const Panel = ({
           transition={{ duration: animationDuration.overlay.in }}
           className={overlay({ panelPosition: panelElementProps?.panelPosition })}
         >
+          <div></div>
           <motion.div
             role="dialog"
             aria-labelledby="panel"
             aria-modal="true"
-            style={{ maxWidth: panelElementProps?.maxWidth || undefined }}
+            style={{ maxWidth: getMaxWidth(), maxHeight: getMaxHeight() }}
             className={panelElement({
               width: panelElementProps?.panelPosition,
               height: panelElementProps?.panelPosition,
