@@ -1,6 +1,7 @@
+'use client';
 import { css } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, {
+import {
   FocusEvent,
   FormEvent,
   forwardRef,
@@ -54,7 +55,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ) => {
     const [focus, setFocus] = useState(false);
     const [inputValue, setValue] = useState(defaultValue || value);
-    const localRef = useRef<HTMLInputElement>(undefined);
+    const localRef = useRef<HTMLInputElement>(null);
     const [autoFocus, setAutoFocus] = useState(false);
 
     const internalOnFocus = (e: FocusEvent<HTMLInputElement, Element>) => {

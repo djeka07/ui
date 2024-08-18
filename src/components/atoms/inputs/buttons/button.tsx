@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from '@djeka07/utils';
 import { MouseEvent } from 'react';
 import { Spinner } from '../../spinners';

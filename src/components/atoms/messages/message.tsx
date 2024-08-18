@@ -1,8 +1,9 @@
+'use client';
 import { css } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { createRef, memo } from 'react';
+import { createRef, memo } from 'react';
 import Icon from '../icons/icon';
-import { innerMessage, message, icon as iconCss } from './message.css';
+import { icon as iconCss, innerMessage, message } from './message.css';
 import { MessageProps } from './message.props';
 
 const InnerMessage = memo(

@@ -1,4 +1,5 @@
-import React, { createContext, useCallback, useState, JSX } from 'react';
+'use client';
+import { createContext, JSX, useCallback, useState } from 'react';
 import { PanelProps } from './panel.type';
 
 enum PanelsActionTypes {

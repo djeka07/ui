@@ -1,4 +1,5 @@
-import React, { JSX, useEffect } from 'react';
+'use client';
+import { JSX, useEffect } from 'react';
 import { PanelProps } from '../panels/panel.type';
 import { usePanels } from '../panels/use-panels';
 import PanelRenderer from './panel-renderer';

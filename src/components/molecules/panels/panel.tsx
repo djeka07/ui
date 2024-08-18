@@ -1,6 +1,7 @@
+'use client';
 import { isEscape } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useEffect, useState, JSX } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import { Icon } from '../../atoms';
 import { getPanelHiddenVariants, getPanelVisibleVariants } from './get-panel-variants';
 import { clickOutside as clickOutsideClass, closeButton, overlay, panelElement } from './panel.css';

@@ -1,10 +1,9 @@
-import React from 'react';
 import { css } from '@djeka07/utils';
 import Icon from '../../icons/icon';
 import { Typography } from '../../typographies';
 import { actionButton, root, typography } from './action-button.css';
-import Button from './button';
 import { ActionButtonProps } from './action-button.props';
+import Button from './button';
 
 const ActionButton = ({
   children,

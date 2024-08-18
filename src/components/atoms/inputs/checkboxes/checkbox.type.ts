@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, JSX } from 'react';
 import { InputVariants } from './checkbox.css';
 
 export type CheckboxProps = InputVariants & {

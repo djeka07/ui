@@ -262,6 +262,7 @@ export const error = recipe({
 export const errorSvg = style({
   fill: 'var(--dark-error-color)',
   marginRight: 5,
+  flexShrink: 0
 });
 
 export const inputBackgroundColor = 'rgb(255, 255, 255)';
