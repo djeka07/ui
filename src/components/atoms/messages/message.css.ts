@@ -42,7 +42,13 @@ export const message = recipe({
         border: '1px solid var(--main-info-color)'
       }
     },
+    border: {
+      false: {
+        border: 'none'
+      }
+    },
   },
+  
 });
 
 export const icon = recipe({
@@ -90,6 +96,14 @@ export const innerMessage = recipe({
         gap: 8,
       },
     },
+    direction: {
+      column: {
+        flexDirection: 'column'
+      },
+      row: {
+        flexDirection: 'row'
+      }
+    }
   },
 });
 

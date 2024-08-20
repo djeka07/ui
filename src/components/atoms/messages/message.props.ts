@@ -16,6 +16,7 @@ export type MessageProps = MessageOmittedVariants & {
   icon?: IconNames;
   iconSize?: IconProps['size'];
   children: ReactNode | ReactNode[];
+  direction?: 'column' | 'row';
   show?: boolean;
   wrapperClass?: string;
   margin?: { bottom?: number; top?: number; left?: number; right?: number };

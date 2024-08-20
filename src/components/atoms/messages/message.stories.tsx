@@ -58,3 +58,14 @@ export const Error: Story = {
     icon: 'AlertTriangle',
   },
 };
+
+export const Column: Story = {
+  args: {
+    error: true,
+    iconSize: 'xxxlarge',
+    children: 'loreem ipsuum loreem ipsuum loreem ipsuum loreem',
+    icon: 'AlertTriangle',
+    border: false,
+    direction: 'column',
+  },
+};

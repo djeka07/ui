@@ -9,10 +9,12 @@ import { MessageProps } from './message.props';
 const InnerMessage = memo(
   ({
     wrapperClass,
+    border,
     primary,
     error,
     info,
     margin,
+    direction,
     success,
     warning,
     children,
@@ -23,8 +25,8 @@ const InnerMessage = memo(
     const ref = createRef<HTMLDivElement>();
 
     return (
-      <div className={css(wrapperClass, message({ error, info, success, warning, primary }))}>
-        <div className={css(className, innerMessage({ icon: !!icon }))} ref={ref}>
+      <div className={css(wrapperClass, message({ error, info, success, warning, primary, border }))}>
+        <div className={css(className, innerMessage({ icon: !!icon, direction }))} ref={ref}>
           {icon && <Icon name={icon} className={iconCss({ primary, error, success, warning, info })} size={iconSize} />}
           {children}
         </div>
@@ -39,6 +41,8 @@ const Message = ({
   wrapperClass,
   icon,
   className,
+  border = true,
+  direction = 'row',
   iconSize = 'medium',
   children,
   ...rest
@@ -76,7 +80,15 @@ const Message = ({
             overflow: 'hidden',
           }}
         >
-          <InnerMessage iconSize={iconSize} icon={icon} wrapperClass={wrapperClass} className={className} {...rest}>
+          <InnerMessage
+            border={border}
+            iconSize={iconSize}
+            direction={direction}
+            icon={icon}
+            wrapperClass={wrapperClass}
+            className={className}
+            {...rest}
+          >
             {children}
           </InnerMessage>
         </motion.div>
