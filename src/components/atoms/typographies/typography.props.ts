@@ -20,7 +20,7 @@ export const elementMap: { [key: string]: Element } = {
   span: 'span',
 };
 
-export type TypographyProps = TypographyVariants & {
+export type TypographyProps = Omit<TypographyVariants, 'cursor'> & {
   as?: Element;
   variant?: Variant;
   className?: string;

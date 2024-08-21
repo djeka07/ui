@@ -188,6 +188,18 @@ export const typography = recipe({
     wordBreak: {
       breakAll: { wordBreak: 'break-all' },
       breakWord: { wordBreak: 'break-word' },
+      normal: { wordBreak: 'normal' },
+    },
+    whiteSpace: {
+      breakSpaces: { whiteSpace: 'break-spaces' },
+      wrap: { whiteSpace: 'wrap' }, 
+      noWrap: { whiteSpace: 'nowrap' },
+      preWrap: { whiteSpace: 'pre-wrap' }
+    },
+    overflow: {
+      clip: { textOverflow: 'clip', overflow: 'hidden' },
+      ellipsis: { textOverflow: 'ellipsis', overflow: 'hidden' },
+      initial: { textOverflow: 'initial', overflow: 'hidden' }
     },
     cursor: {
       pointer: { cursor: 'pointer' },
