@@ -11,7 +11,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import mergeRefs from '../../../../helpers/refs';
+import { mergeRefs } from '../../../../helpers/refs';
 import { Icon } from '../../icons';
 import {
   label as classLabel,
@@ -84,8 +84,8 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         if (localRef?.current?.matches(':autofill')) {
           setAutoFocus(true);
         }
-      } catch (error) {
-        console.log(error);
+      } catch {
+        setAutoFocus(false);
       }
     }, [localRef]);
 
@@ -164,4 +164,5 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   },
 );
 
+TextInput.displayName = 'TextInput';
 export default TextInput;

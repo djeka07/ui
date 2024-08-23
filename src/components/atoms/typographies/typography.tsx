@@ -1,5 +1,6 @@
+/* eslint-disable react/no-children-prop */
 import { css } from '@djeka07/utils';
-import React, { createElement } from 'react';
+import { createElement } from 'react';
 import { typography } from './typography.css';
 import { elementMap, TypographyProps } from './typography.props';
 
@@ -31,7 +32,7 @@ const Typography = ({
         align,
         color,
         element: !color ? element : undefined,
-        cursor: !!onClick ? 'pointer' : undefined,
+        cursor: onClick ? 'pointer' : undefined,
         fontStyle,
         marginBottom,
         marginLeft,

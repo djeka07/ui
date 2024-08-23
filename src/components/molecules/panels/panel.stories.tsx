@@ -1,4 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react/*';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { Meta, StoryObj } from '@storybook/react';
 import PanelContainer from './panel.container';
 import { Button } from '../../atoms';
 import { useState } from 'react';

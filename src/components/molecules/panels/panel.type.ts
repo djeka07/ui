@@ -63,4 +63,3 @@ export enum PanelDelayDuration {
   Longer = 3000,
   Longest = 5000,
 }
-

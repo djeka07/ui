@@ -8,13 +8,13 @@ export type Theme = {
   palette: Palette;
   breakpoint: BreakPointProps;
   typography: Typography;
-}
+};
 
 export const createDefaultTheme = (theme: 'light' | 'dark' = 'dark'): Theme => ({
   border: defaultBorder,
   breakpoint: breakpoint(),
   palette: palette(theme),
-  typography
-})
+  typography,
+});
 
 export default Theme;

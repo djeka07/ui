@@ -14,9 +14,9 @@ export type Theme = {
 export default (theme: 'dark' | 'light') =>
   ({
     typography: createTypography,
-    breakpoint: createBreakPoints(), 
+    breakpoint: createBreakPoints(),
     palette: createPalette(theme),
     border: createBorder,
   }) satisfies Theme;
 
-  export { createStyleSheet };
+export { createStyleSheet };

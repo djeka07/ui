@@ -1,4 +1,5 @@
-import React, { Children, memo } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Children, memo } from 'react';
 import { MatchProps, SwitchProps } from './switch.props';
 
 const Switch = <T,>({ children, expression, fallback = null }: SwitchProps<T>) => {
@@ -6,7 +7,7 @@ const Switch = <T,>({ children, expression, fallback = null }: SwitchProps<T>) =
     (c: any) => c?.type.displayName === 'Match' && c.props.when === expression,
   );
 
-  if (!!childToShow) {
+  if (childToShow) {
     return childToShow;
   }
 

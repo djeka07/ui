@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export type SwitchProps<T> = {
-  children: JSX.Element | JSX.Element[];
+  children: ReactNode | ReactNode[];
   expression: T;
   fallback?: ReactNode;
 };

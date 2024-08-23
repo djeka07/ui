@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from 'react';
+import { Fragment, memo } from 'react';
 import { ForProps } from './for.props';
 
 const For = <T extends object>({ each, fallback = null, className, ...rest }: ForProps<T>) => {
@@ -6,7 +6,7 @@ const For = <T extends object>({ each, fallback = null, className, ...rest }: Fo
     return fallback;
   }
 
-  return !!className ? (
+  return className ? (
     <div className={className}>
       <ForRender {...rest} each={each} />
     </div>

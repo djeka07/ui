@@ -192,14 +192,14 @@ export const typography = recipe({
     },
     whiteSpace: {
       breakSpaces: { whiteSpace: 'break-spaces' },
-      wrap: { whiteSpace: 'wrap' }, 
+      wrap: { whiteSpace: 'wrap' },
       noWrap: { whiteSpace: 'nowrap' },
-      preWrap: { whiteSpace: 'pre-wrap' }
+      preWrap: { whiteSpace: 'pre-wrap' },
     },
     overflow: {
       clip: { textOverflow: 'clip', overflow: 'hidden' },
       ellipsis: { textOverflow: 'ellipsis', overflow: 'hidden' },
-      initial: { textOverflow: 'initial', overflow: 'hidden' }
+      initial: { textOverflow: 'initial', overflow: 'hidden' },
     },
     cursor: {
       pointer: { cursor: 'pointer' },

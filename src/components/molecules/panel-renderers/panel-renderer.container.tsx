@@ -11,7 +11,7 @@ const PanelsRendererContainer = (): JSX.Element => {
     if (hasPanels && panels.some((panel: PanelProps) => panel !== null) === false) {
       clearAllPanels();
     }
-  }, [panels.length]);
+  }, [panels.length, hasPanels]);
   return <PanelRenderer hasPanels={hasPanels} removePanelByPosition={removePanelByPosition} panels={panels} />;
 };
 

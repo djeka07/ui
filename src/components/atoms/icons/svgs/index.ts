@@ -1,4 +1,3 @@
-import React from 'react'
 import AlertCircle from './alert-circle.svg';
 import AlertCircleOctagon from './alert-octagon.svg';
 import AlertTriangle from './alert-triangle.svg';

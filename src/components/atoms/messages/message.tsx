@@ -13,7 +13,6 @@ const InnerMessage = memo(
     primary,
     error,
     info,
-    margin,
     direction,
     success,
     warning,
@@ -34,6 +33,8 @@ const InnerMessage = memo(
     );
   },
 );
+
+InnerMessage.displayName = 'InnerMessage';
 
 const Message = ({
   show = true,
@@ -97,4 +98,5 @@ const Message = ({
   );
 };
 
+Message.displayName = 'Message';
 export default Message;

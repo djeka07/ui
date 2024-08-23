@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/display-name */
 import Theme from './theme';
 
 export default (theme: Theme) => {

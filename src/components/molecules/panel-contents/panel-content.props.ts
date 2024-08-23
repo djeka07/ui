@@ -1,9 +1,10 @@
+import { ReactNode } from 'react';
 import { ContentVariants, RootVariants, TitleWrapperVariants } from './panel-content.css';
 
 export type PanelContentProps = RootVariants &
   TitleWrapperVariants &
   ContentVariants & {
-    children: JSX.Element;
+    children: ReactNode;
     title?: string;
     className?: string;
   };

@@ -17,6 +17,7 @@ const Panel = ({
   children,
   removePanelFromContext,
   zIndex,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   initialFocusOnElement,
   lastInStack,
   overlayElementProps = { shouldCloseOnClick: true },
@@ -31,7 +32,6 @@ const Panel = ({
   const [isActive, setIsActive] = useState<boolean>(true);
   const [contentRef, setContentRef] = useState<HTMLElement | null>(null);
 
-  // eslint-disable-next-line solid/reactivity
   const { shouldCloseOnClick } = overlayElementProps as OverlayElementProps;
   let controller: AbortController;
 

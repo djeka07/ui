@@ -2,9 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import media from '../../../../styles/media.css';
 
-type CSSProperties = { [key: string]: string; }
-
-export const root = recipe({
+export const  root = recipe({
   base: {
     position: 'relative',
   },
