@@ -68,6 +68,58 @@ export const SmallFromLeft: Story = {
   },
 };
 
+const Next = () => {
+  const [showSecond, setShowSecond] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setShowSecond(true)}>Next</Button>
+      {showSecond && (
+        <PanelContainer
+          afterPanelClosed={() => {
+            setTimeout(() => {
+              setShowSecond(false);
+            }, 300);
+          }}
+          panelElementProps={{ maxWidth: PanelSize.Small, panelPosition: PanelPosition.Right }}
+        >
+          <PanelContent>Second</PanelContent>
+        </PanelContainer>
+      )}
+    </>
+  );
+};
+
+export const FromRightMultiple: Story = {
+  render: () => {
+    const [show, setShow] = useState(false);
+
+    return (
+      <PanelsProvider>
+        <div>
+          <Button onClick={() => setShow(true)}>Open</Button>
+          {show && (
+            <PanelContainer
+              afterPanelClosed={() => {
+                setTimeout(() => {
+                  setShow(false);
+                }, 300);
+              }}
+              panelElementProps={{ maxWidth: PanelSize.Medium, panelPosition: PanelPosition.Right }}
+            >
+              <PanelContent>
+                hej
+                <Next />
+              </PanelContent>
+            </PanelContainer>
+          )}
+        </div>
+        <PanelsRendererContainer />
+      </PanelsProvider>
+    );
+  },
+};
+
 export const SmallFromTop: Story = {
   render: () => {
     const [show, setShow] = useState(false);

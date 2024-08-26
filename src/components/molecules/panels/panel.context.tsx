@@ -1,5 +1,5 @@
 'use client';
-import { createContext, JSX, useCallback, useState } from 'react';
+import { createContext, JSX, ReactNode, useCallback, useState } from 'react';
 import { PanelProps } from './panel.type';
 
 enum PanelsActionTypes {
@@ -50,44 +50,48 @@ const initialPanelsContext: PanelContext = [
   },
 ];
 
-type PanelProviderProps = { children: JSX.Element | JSX.Element[] };
+type PanelProviderProps = { children: ReactNode | ReactNode[] };
 
 export const PanelsContext = createContext<PanelContext>(initialPanelsContext);
 
 export const PanelsProvider = (props: PanelProviderProps): JSX.Element => {
   const [state, setState] = useState<PanelState>(initialPanelsContext[0]);
 
-  const pushPanelToContext = useCallback(
-    (panel: PanelProps) => {
-      setState((prev) => {
-        const panels = [...prev.panels, panel];
-        return { hasPanels: true, panels };
-      });
-    },
-    [state.panels],
-  );
+  const pushPanelToContext = useCallback((panel: PanelProps) => {
+    setState((prev) => {
+      if (prev.panels.some((p) => p.id === panel.id)) {
+        return prev;
+      }
+      const panels = [...prev.panels, panel];
+      return { hasPanels: true, panels };
+    });
+  }, []);
+
+  const clearAllPanels = useCallback(() => {
+    setState(initialPanelsContext[0]);
+  }, []);
+
+  const removePanelByPosition = useCallback((position: number) => {
+    setState((prev) => {
+      const index = prev.panels.map((_, i) => i).indexOf(position);
+      let panels = prev.panels;
+      if (index > -1) {
+        panels = panels.toSpliced(index, 1);
+      }
+
+      return {
+        panels,
+        hasPanels: panels.length > 0,
+      };
+    });
+  }, []);
 
   const context: PanelContext = [
     state,
     {
       pushPanelToContext,
-      removePanelByPosition(position: number) {
-        setState((prev) => {
-          const index = prev.panels.map((_, i) => i).indexOf(position);
-          let panels = prev.panels;
-          if (index > -1) {
-            panels = panels.toSpliced(index, 1);
-          }
-
-          return {
-            panels,
-            hasPanels: panels.length > 0,
-          };
-        });
-      },
-      clearAllPanels() {
-        setState(initialPanelsContext[0]);
-      },
+      removePanelByPosition,
+      clearAllPanels,
     },
   ];
 

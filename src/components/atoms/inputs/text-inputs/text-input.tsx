@@ -14,7 +14,7 @@ import {
 import { mergeRefs } from '../../../../helpers/refs';
 import { Icon } from '../../icons';
 import {
-  label as classLabel,
+  label as labelClass,
   error as errorClass,
   errorSvg,
   fieldset,
@@ -98,7 +98,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div className={wrapper({ width: full ? 'full' : undefined })}>
           {!!label && (
             <label
-              className={classLabel({
+              className={labelClass({
                 errored: focus && !!error,
                 float: focus || autoFocus || !!inputValue,
                 focus: focus && !error,

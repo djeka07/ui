@@ -6,6 +6,7 @@ export const wrapper = recipe({
   base: {
     display: 'flex',
     alignItems: 'center',
+    position: 'relative',
   },
   variants: {
     width: {
@@ -69,7 +70,7 @@ export const pill = style({
   alignItems: 'center',
   gap: 2,
   cursor: 'pointer',
-  backgroundColor:'var(--300-grey-color)',
+  backgroundColor: 'var(--300-grey-color)',
   borderRadius: 20,
   padding: '4px 8px',
 });

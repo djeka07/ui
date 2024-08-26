@@ -1,7 +1,7 @@
 'use client';
 import { isEscape } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { JSX, useEffect, useState } from 'react';
+import { JSX, useCallback, useEffect, useRef, useState } from 'react';
 import { Icon } from '../../atoms';
 import { getPanelHiddenVariants, getPanelVisibleVariants } from './get-panel-variants';
 import { clickOutside as clickOutsideClass, closeButton, overlay, panelElement } from './panel.css';
@@ -30,10 +30,10 @@ const Panel = ({
 }: ExtendedPanelProps): JSX.Element => {
   const animationDuration = PANEL_ANIMATION_DURATION.DEFAULT;
   const [isActive, setIsActive] = useState<boolean>(true);
-  const [contentRef, setContentRef] = useState<HTMLElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
   const { shouldCloseOnClick } = overlayElementProps as OverlayElementProps;
-  let controller: AbortController;
+  const controller = useRef<AbortController>(null);
 
   const closePanel = () => {
     setIsActive(false);
@@ -47,27 +47,33 @@ const Panel = ({
     }
   }, [isActive]);
 
-  const onClickOutside = (e: Event & { target: EventTarget | null }) => {
-    if (!contentRef?.contains(e.target as Node) && lastInStack) {
-      setIsActive(false);
-      controller.abort();
-    }
-  };
+  const onClickOutside = useCallback(
+    (e: Event & { target: EventTarget | null }) => {
+      if (!contentRef?.current?.contains(e.target as Node) && lastInStack) {
+        setIsActive(false);
+        controller.current?.abort();
+      }
+    },
+    [lastInStack],
+  );
 
-  const onKeyDown = (event: KeyboardEvent) => {
-    if (isEscape(event) && lastInStack) {
-      setIsActive(false);
-      controller.abort();
-    }
-  };
+  const onKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (isEscape(event) && lastInStack) {
+        setIsActive(false);
+        controller.current?.abort();
+      }
+    },
+    [lastInStack],
+  );
 
   useEffect(() => {
-    controller = new AbortController();
+    controller.current = new AbortController();
     if (shouldCloseOnClick) {
-      document.addEventListener('click', onClickOutside, { signal: controller.signal });
+      document.addEventListener('click', onClickOutside, { signal: controller.current.signal });
     }
     if (panelElementProps?.closeOnEscape) {
-      document.addEventListener('keydown', onKeyDown, { signal: controller.signal });
+      document.addEventListener('keydown', onKeyDown, { signal: controller.current.signal });
     }
     return () => {
       if (shouldCloseOnClick) {
@@ -77,7 +83,7 @@ const Panel = ({
         document.removeEventListener('keydown', onKeyDown);
       }
     };
-  });
+  }, [onClickOutside, onKeyDown, panelElementProps?.closeOnEscape, shouldCloseOnClick]);
 
   const onExit = () => {
     if (!isActive) {
@@ -111,7 +117,6 @@ const Panel = ({
           transition={{ duration: animationDuration.overlay.in }}
           className={overlay({ panelPosition: panelElementProps?.panelPosition })}
         >
-          <div></div>
           <motion.div
             role="dialog"
             aria-labelledby="panel"
@@ -133,7 +138,7 @@ const Panel = ({
               panelPosition: panelElementProps?.panelPosition,
               animationDuration,
             })}
-            ref={setContentRef}
+            ref={contentRef}
           >
             <div className={clickOutsideClass}>
               {typeof children === 'function' ? children({ closePanel }) : children}

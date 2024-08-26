@@ -5,9 +5,10 @@ import { PanelRendererProps } from './panel-renderer.props';
 const PanelRenderer = ({ hasPanels, panels, removePanelByPosition }: PanelRendererProps) => (
   <div id="panel-renderer">
     {hasPanels && (
-      <For each={panels} keyed={(_item, index) => `panel_${index}`}>
+      <For each={panels} keyed={(item) => `panel_${item.id}`}>
         {(item, index) => (
           <Panel
+            id={item.id}
             afterPanelClosed={item.afterPanelClosed}
             removePanelFromContext={() => {
               removePanelByPosition(index);

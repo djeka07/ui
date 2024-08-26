@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useId } from 'react';
 import { PanelProps } from './panel.type';
 import { usePanels } from './use-panels';
 
@@ -10,10 +10,13 @@ const PanelContainer = ({
   overlayElementProps,
   panelElementProps,
   putFocusOnCloseRef,
-}: PanelProps): null => {
+}: Omit<PanelProps, 'id'>): null => {
+  const id = useId();
   const [, { pushPanelToContext }] = usePanels();
   useEffect(() => {
+    console.log(id);
     pushPanelToContext({
+      id,
       afterPanelClosed,
       initialFocusOnElement,
       children,

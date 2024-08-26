@@ -9,11 +9,11 @@ import {
   input,
   InputVariants,
   inputWrapper,
-  label as labelClass,
   pill,
   wrapper,
   WrapperVariants,
 } from './pill-input.css';
+import { fieldset, label as labelClass, legend, legentSpan } from '../text-inputs/text-input.css';
 import { css, isEmpty, isEnter } from '@djeka07/utils';
 import { For } from '../../for';
 
@@ -82,21 +82,24 @@ const PillInput = forwardRef<HTMLInputElement, TextInputProps>(
     ref,
   ) => {
     const [value, setValue] = useState(initialValue);
-
+    const [focus, setFocus] = useState(false);
+    const hasPills = !isEmpty(pills);
     const internalOnFocus = (e: FocusEvent<HTMLInputElement, Element>) => {
+      setFocus(true);
       if (onFocus) {
         onFocus(e);
       }
     };
 
     const internalOnBlur = (e: FocusEvent<HTMLInputElement, Element>) => {
+      setFocus(false);
       if (onBlur) {
         onBlur(e);
       }
     };
 
     const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (e.code === 'Backspace' && value === '' && !isEmpty(pills)) {
+      if (e.code === 'Backspace' && value === '' && hasPills) {
         onDeletePill?.(pills![pills!.length - 1]?.id);
       }
     };
@@ -115,7 +118,18 @@ const PillInput = forwardRef<HTMLInputElement, TextInputProps>(
 
     return (
       <div className={css(wrapperClass, wrapper({ width }))}>
-        {!!label && <span className={labelClass}>{label}</span>}
+        {!!label && (
+          <label
+            className={labelClass({
+              errored: focus && !!error,
+              float: focus || !!value || hasPills,
+              focus: focus && !error,
+            })}
+            htmlFor={id || name}
+          >
+            {label}
+          </label>
+        )}
         <div className={inputWrapper({ radius })}>
           <For each={pills} keyed="id">
             {(p) => (
@@ -145,6 +159,13 @@ const PillInput = forwardRef<HTMLInputElement, TextInputProps>(
             type={type}
             className={css(input, className)}
           />
+          {!!label && (
+            <fieldset className={fieldset({ errored: !!error, errorFocus: focus && !!error, focus: focus, radius })}>
+              <legend className={legend({ focus: focus || !!value || hasPills })}>
+                <span className={legentSpan}>{label}</span>
+              </legend>
+            </fieldset>
+          )}
         </div>
         <AnimatePresence>
           {error && (

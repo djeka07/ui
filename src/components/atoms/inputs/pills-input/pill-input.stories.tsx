@@ -1,6 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react/*';
+import { Meta, StoryObj } from '@storybook/react';
 import PillInput from './pill-input';
-import { label } from './pill-input.css';
 
 const meta: Meta<typeof PillInput> = {
   title: 'Atoms/Inputs/PillInput',
@@ -11,6 +10,13 @@ export default meta;
 type Story = StoryObj<typeof PillInput>;
 
 export const Main: Story = {
+  args: {
+    label: 'Email',
+    pills: [],
+  },
+};
+
+export const WithPills: Story = {
   args: {
     label: 'Email',
     pills: [

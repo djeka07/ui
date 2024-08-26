@@ -17,6 +17,7 @@ export type PanelChildrenReturn = {
 };
 
 export type PanelProps = {
+  id: string;
   children: ((params: PanelChildrenReturn) => JSX.Element) | JSX.Element;
   putFocusOnCloseRef?: Ref<undefined>;
   initialFocusOnElement?: HTMLElement | null;
