@@ -1,11 +1,11 @@
 import createBorder, { Border } from './border';
 import createBreakPoints, { BreakPointProps } from './breakpoint';
-import createTypography, { Typography } from './typography';
+import createTypography, { TypographyProps } from './typography';
 import createPalette, { Palette } from './palette';
 import createStyleSheet from './stylesheet';
 
 export type Theme = {
-  typography: Typography;
+  typography: TypographyProps;
   breakpoint: BreakPointProps;
   border: Border;
   palette: Palette;

@@ -1,5 +1,5 @@
-import type { Preview } from '@storybook/react';
 import React from 'react';
+import type { Preview } from '@storybook/react';
 import createVariables from '../src/styles/stylesheet';
 import { createDefaultTheme } from '../src/styles/theme';
 

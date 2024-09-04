@@ -2,6 +2,7 @@
 import { css } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
+  ChangeEvent,
   FocusEvent,
   FormEvent,
   forwardRef,
@@ -14,12 +15,12 @@ import {
 import { mergeRefs } from '../../../../helpers/refs';
 import { Icon } from '../../icons';
 import {
-  label as labelClass,
   error as errorClass,
   errorSvg,
   fieldset,
   iconWrapper,
   input,
+  label as labelClass,
   legend,
   legentSpan,
   root,
@@ -65,7 +66,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       }
     };
 
-    const internalOnChange = (e: FormEvent<HTMLInputElement>) => {
+    const internalOnChange = (e: ChangeEvent<HTMLInputElement>) => {
       setValue(e.currentTarget.value);
       if (onChange) {
         onChange(e);

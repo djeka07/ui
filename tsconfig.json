@@ -22,6 +22,6 @@
     "types": ["./svg.d.ts"]
   },
   "include": [
-    "src"
+    "src",
   ],
 }

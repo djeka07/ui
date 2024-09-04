@@ -1,8 +1,11 @@
 'use client';
 
-import { ChangeEvent, KeyboardEvent, useState, FocusEvent, MouseEvent, forwardRef } from 'react';
-import { Icon } from '../../icons';
+import { css, isEmpty, isEnter } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
+import { ChangeEvent, FocusEvent, forwardRef, KeyboardEvent, MouseEvent, useState } from 'react';
+import { For } from '../../for';
+import { Icon } from '../../icons';
+import { fieldset, label as labelClass, legend, legentSpan } from '../text-inputs/text-input.css';
 import {
   error as errorClass,
   errorSvg,
@@ -13,9 +16,6 @@ import {
   wrapper,
   WrapperVariants,
 } from './pill-input.css';
-import { fieldset, label as labelClass, legend, legentSpan } from '../text-inputs/text-input.css';
-import { css, isEmpty, isEnter } from '@djeka07/utils';
-import { For } from '../../for';
 
 export type TextEvent = InputEvent & {
   currentTarget: HTMLInputElement;

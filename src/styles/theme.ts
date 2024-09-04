@@ -1,13 +1,13 @@
 import defaultBorder, { Border } from './border';
 import breakpoint, { BreakPointProps } from './breakpoint';
 import palette, { Palette } from './palette';
-import typography, { Typography } from './typography';
+import typography, { TypographyProps } from './typography';
 
 type Theme = {
   border: Border;
   palette: Palette;
   breakpoint: BreakPointProps;
-  typography: Typography;
+  typography: TypographyProps;
 };
 
 export const createDefaultTheme = (theme: 'light' | 'dark' = 'dark'): Theme => ({

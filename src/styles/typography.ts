@@ -35,9 +35,9 @@ export type FontFace = {
   weight?: string | number;
   style?: string;
   display: string;
-}
+};
 
-export type Typography = {
+export type TypographyProps = {
   family: Family;
   weight: Weight;
   size: Size;
@@ -70,32 +70,32 @@ export default {
     {
       family: 'Campton',
       src: [
-        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Book.woff2', format: 'woff2'},
-        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Book.woff', format: 'woff'}
+        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Book.woff2', format: 'woff2' },
+        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Book.woff', format: 'woff' },
       ],
       weight: 400,
       style: 'normal',
-      display: 'swap'
+      display: 'swap',
     },
     {
       family: 'Campton',
       src: [
-        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Light.woff2', format: 'woff2'},
-        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Light.woff', format: 'woff'}
+        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Light.woff2', format: 'woff2' },
+        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Light.woff', format: 'woff' },
       ],
       weight: 300,
       style: 'normal',
-      display: 'swap'
+      display: 'swap',
     },
     {
       family: 'Campton',
       src: [
-        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Bold.woff2', format: 'woff2'},
-        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Bold.woff', format: 'woff'}
+        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Bold.woff2', format: 'woff2' },
+        { url: 'https://solid-static.azureedge.net/static/fonts/subset-Campton-Bold.woff', format: 'woff' },
       ],
       weight: 700,
       style: 'normal',
-      display: 'swap'
-    }
-  ]
-} satisfies Typography;
+      display: 'swap',
+    },
+  ],
+} satisfies TypographyProps;

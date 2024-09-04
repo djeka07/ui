@@ -1,7 +1,7 @@
 import { css } from '@djeka07/utils';
 import { svg, wrapper, WrapperStyleVariants } from './icon.css';
-import * as Svgs from './svgs';
 import { IconProps } from './icon.props';
+import * as Svgs from './svgs';
 
 const IconSvg = ({ name, onClick, color, size, className }: IconProps) => {
   // eslint-disable-next-line import/namespace

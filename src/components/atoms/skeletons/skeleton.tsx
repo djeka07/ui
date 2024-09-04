@@ -1,6 +1,6 @@
+import { css } from '@djeka07/utils';
 import { For } from '../for';
 import { skeleton, SkeletonVariants, wrapper } from './skeleton.css';
-import { css } from '@djeka07/utils';
 
 type SkeletonProps = SkeletonVariants & {
   amount?: number;

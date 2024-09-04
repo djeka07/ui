@@ -4,5 +4,6 @@ import Checkbox from './checkboxes/checkbox';
 import ActionButton from './buttons/action-button';
 import PillInput from './pills-input/pill-input';
 import TextArea from './text-area/text-area';
+import DropDown from './drop-down/drop-down';
 
-export { ActionButton, Button, TextInput, Checkbox, PillInput, TextArea };
+export { ActionButton, Button, TextInput, Checkbox, PillInput, TextArea, DropDown };

@@ -1,4 +1,4 @@
-import { FormEvent, KeyboardEvent } from 'react';
+import { ChangeEvent, FormEvent, KeyboardEvent } from 'react';
 import { RadiusKeys } from '../../../../styles/border';
 
 export type InputTypes =
@@ -36,7 +36,7 @@ type NewType = {
   readOnly?: boolean;
   backgroundColor?: 'light' | 'main' | 'dark';
   onClick?: (event: FormEvent<HTMLInputElement>) => void;
-  onChange?: (event: FormEvent<HTMLInputElement>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: FormEvent<HTMLInputElement>) => void;
   onFocus?: (event: FormEvent<HTMLInputElement>) => void;
   onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;

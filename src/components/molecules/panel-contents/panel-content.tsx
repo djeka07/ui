@@ -1,5 +1,5 @@
-import { JSX } from 'react';
 import { css } from '@djeka07/utils';
+import { JSX } from 'react';
 import { Typography } from '../../atoms/typographies';
 import { content, root, titleWrapper } from './panel-content.css';
 import { PanelContentProps } from './panel-content.props';

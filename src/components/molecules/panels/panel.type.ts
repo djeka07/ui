@@ -38,11 +38,13 @@ export type PanelAnimationDuration = {
 };
 
 export enum PanelSize {
+  Xxsmall = '250px',
   Xsmall = '350px',
   Small = '500px',
   Medium = '700px',
   Large = '850px',
   Xlarge = '1024px',
+  Xxlarge = '1280px',
   Max = '100%',
 }
 
