@@ -2,6 +2,7 @@ import AlertCircle from './alert-circle.svg';
 import AlertCircleOctagon from './alert-octagon.svg';
 import AlertTriangle from './alert-triangle.svg';
 import Bookmark from './bookmark.svg';
+import BookmarkFilled from './bookmark-filled.svg';
 import Close from './close.svg';
 import CloseCircle from './x-circle.svg';
 import Down from './chevron-down.svg';
@@ -37,6 +38,7 @@ export {
   AlertCircleOctagon,
   AlertTriangle,
   Bookmark,
+  BookmarkFilled,
   Close,
   CloseCircle,
   Down,
@@ -73,6 +75,7 @@ export type IconNames =
   | 'AlertCircleOctagon'
   | 'AlertTriangle'
   | 'Bookmark'
+  | 'BookmarkFilled'
   | 'Close'
   | 'CloseCircle'
   | 'Down'

@@ -65,4 +65,5 @@ export type ButtonProps = ButtonOmittedVariants &
     children: ReactNode;
     className?: string;
     innerClass?: string;
+    title: string;
   } & (ButtonNoType | ButtonPrimary | ButtonSuccess | ButtonError | ButtonWarning | ButtonInfo | ButtonTransparent);

@@ -27,6 +27,7 @@ const Button = ({
   success,
   transparent,
   warning,
+  title,
 }: ButtonProps) => {
   const defaultPrimary = primary && (error || success || warning || info || transparent) ? false : true;
   const internalOnClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -37,6 +38,7 @@ const Button = ({
 
   return (
     <button
+      title={title}
       disabled={disabled || isLoading}
       onClick={internalOnClick}
       className={css(
