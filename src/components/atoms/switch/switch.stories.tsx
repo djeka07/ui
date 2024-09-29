@@ -1,4 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react/*';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { Meta, StoryObj } from '@storybook/react';
 import Switch, { Match } from './switch';
 import { useState } from 'react';
 import { Button } from '../inputs';
