@@ -1,4 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react/*';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { Meta, StoryObj } from '@storybook/react';
 import Switch, { Match } from './switch';
 import { useState } from 'react';
 import { Button } from '../inputs';
@@ -29,7 +30,9 @@ export const All: Story = {
           <Match when="loading">Loading</Match>
           <Match when="done">Done</Match>
         </Switch>
-        <Button onClick={runState}>Start</Button>
+        <Button title="Start" onClick={runState}>
+          Start
+        </Button>
       </div>
     );
   },

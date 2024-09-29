@@ -22,7 +22,9 @@ export const SmallFromRight: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button onClick={() => setShow(true)}>Open</Button>
+          <Button title="Open panel" onClick={() => setShow(true)}>
+            Open
+          </Button>
           {show && (
             <PanelContainer
               afterPanelClosed={() => {
@@ -48,7 +50,9 @@ export const SmallFromLeft: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button onClick={() => setShow(true)}>Open</Button>
+          <Button title="Open panel" onClick={() => setShow(true)}>
+            Open
+          </Button>
           {show && (
             <PanelContainer
               afterPanelClosed={() => {
@@ -73,7 +77,9 @@ const Next = () => {
 
   return (
     <>
-      <Button onClick={() => setShowSecond(true)}>Next</Button>
+      <Button title="Open panel" onClick={() => setShowSecond(true)}>
+        Next
+      </Button>
       {showSecond && (
         <PanelContainer
           afterPanelClosed={() => {
@@ -97,7 +103,9 @@ export const FromRightMultiple: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button onClick={() => setShow(true)}>Open</Button>
+          <Button title="Open panel" onClick={() => setShow(true)}>
+            Open
+          </Button>
           {show && (
             <PanelContainer
               afterPanelClosed={() => {
@@ -126,7 +134,9 @@ export const SmallFromTop: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button onClick={() => setShow(true)}>Open</Button>
+          <Button title="Open panel" onClick={() => setShow(true)}>
+            Open
+          </Button>
           {show && (
             <PanelContainer
               afterPanelClosed={() => {
@@ -152,7 +162,9 @@ export const SmallFromBottom: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button onClick={() => setShow(true)}>Open</Button>
+          <Button title="Open panel" onClick={() => setShow(true)}>
+            Open
+          </Button>
           {show && (
             <PanelContainer
               afterPanelClosed={() => {
@@ -178,7 +190,9 @@ export const SmallFromCenter: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button onClick={() => setShow(true)}>Open</Button>
+          <Button title="Open panel" onClick={() => setShow(true)}>
+            Open
+          </Button>
           {show && (
             <PanelContainer
               afterPanelClosed={() => {

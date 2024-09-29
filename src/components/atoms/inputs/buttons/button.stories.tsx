@@ -29,18 +29,22 @@ export const Main: Story = {
       <div style={{ display: 'grid', gap: 8 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button>{args.children}</Button>
+            <Button title="button">{args.children}</Button>
           </div>
           <div>
-            <Button outlined>{args.children}</Button>
+            <Button title="outlined" outlined>
+              {args.children}
+            </Button>
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button isLoading>{args.children}</Button>
+            <Button title="isloading" isLoading>
+              {args.children}
+            </Button>
           </div>
           <div>
-            <Button isLoading outlined>
+            <Button title="isloading-outlined" isLoading outlined>
               {args.children}
             </Button>
           </div>
@@ -64,22 +68,24 @@ export const Success: Story = {
       <div style={{ display: 'grid', gap: 8 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button success>{args.children}</Button>
+            <Button title="success" success>
+              {args.children}
+            </Button>
           </div>
           <div>
-            <Button success outlined>
+            <Button title="success-outlined" success outlined>
               {args.children}
             </Button>
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button success isLoading>
+            <Button title="success-loading" success isLoading>
               {args.children}
             </Button>
           </div>
           <div>
-            <Button success isLoading outlined>
+            <Button title="success-outlined-loading" success isLoading outlined>
               {args.children}
             </Button>
           </div>
@@ -103,22 +109,24 @@ export const Error: Story = {
       <div style={{ display: 'grid', gap: 8 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button error>{args.children}</Button>
+            <Button title="error" error>
+              {args.children}
+            </Button>
           </div>
           <div>
-            <Button error outlined>
+            <Button title="error-outlined" error outlined>
               {args.children}
             </Button>
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button error isLoading>
+            <Button title="info-outlined" error isLoading>
               {args.children}
             </Button>
           </div>
           <div>
-            <Button error isLoading outlined>
+            <Button title="error-outlined-isloading" error isLoading outlined>
               {args.children}
             </Button>
           </div>
@@ -142,22 +150,24 @@ export const Warning: Story = {
       <div style={{ display: 'grid', gap: 8 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button warning>{args.children}</Button>
+            <Button title="warning" warning>
+              {args.children}
+            </Button>
           </div>
           <div>
-            <Button warning outlined>
+            <Button title="warning-outlined" warning outlined>
               {args.children}
             </Button>
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button warning isLoading>
+            <Button title="warning-outlined-irloasing" warning isLoading>
               {args.children}
             </Button>
           </div>
           <div>
-            <Button warning outlined isLoading>
+            <Button title="warning-outlined" warning outlined isLoading>
               {args.children}
             </Button>
           </div>
@@ -181,22 +191,24 @@ export const Info: Story = {
       <div style={{ display: 'grid', gap: 8 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button info>{args.children}</Button>
+            <Button title="info-outlined" info>
+              {args.children}
+            </Button>
           </div>
           <div>
-            <Button info outlined>
+            <Button title="info-outlined" info outlined>
               {args.children}
             </Button>
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button info isLoading>
+            <Button title="info-outlined-isloading" info isLoading>
               {args.children}
             </Button>
           </div>
           <div>
-            <Button info outlined isLoading>
+            <Button title="info-outlined" info outlined isLoading>
               {args.children}
             </Button>
           </div>
@@ -219,12 +231,14 @@ export const Transparent: Story = {
       <div style={{ display: 'grid', gap: 8 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button transparent>{args.children}</Button>
+            <Button title="transparent" transparent>
+              {args.children}
+            </Button>
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
           <div>
-            <Button transparent isLoading>
+            <Button title="isloading" transparent isLoading>
               {args.children}
             </Button>
           </div>
