@@ -1,4 +1,5 @@
 'use client';
+
 import { css } from '@djeka07/utils';
 import { MouseEvent } from 'react';
 import { Spinner } from '../../spinners';
@@ -27,7 +28,7 @@ const Button = ({
   success,
   transparent,
   warning,
-  title,
+  ...rest
 }: ButtonProps) => {
   const defaultPrimary = primary && (error || success || warning || info || transparent) ? false : true;
   const internalOnClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -38,7 +39,6 @@ const Button = ({
 
   return (
     <button
-      title={title}
       disabled={disabled || isLoading}
       onClick={internalOnClick}
       className={css(
@@ -58,6 +58,7 @@ const Button = ({
         className,
       )}
       type={type}
+      {...rest}
     >
       {!isLoading ? (
         <span

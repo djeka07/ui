@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, KeyboardEvent } from 'react';
+import { ChangeEvent, ComponentPropsWithoutRef, FormEvent, KeyboardEvent } from 'react';
 import { RadiusKeys } from '../../../../styles/border';
 
 export type InputTypes =
@@ -24,7 +24,7 @@ export type InputTypes =
   | 'url'
   | 'week';
 
-type NewType = {
+type NewType = ComponentPropsWithoutRef<'input'> & {
   name: string;
   value?: string;
   defaultValue?: string;

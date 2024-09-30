@@ -13,6 +13,7 @@ const PanelContainer = ({
 }: Omit<PanelProps, 'id'>): null => {
   const id = useId();
   const [, { pushPanelToContext }] = usePanels();
+
   useEffect(() => {
     console.log(id);
     pushPanelToContext({
