@@ -416,6 +416,13 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@djeka07/hooks@^1.0.0-rc-0.2":
+  version "1.0.0-rc-0.2"
+  resolved "https://registry.yarnpkg.com/@djeka07/hooks/-/hooks-1.0.0-rc-0.2.tgz#bce5ce531e25cfc6f4a5226b652c07369d991196"
+  integrity sha512-o/7nlEIIbvMzL3njPmJ6jOqepD+T0g2tPdUsATZQ5qtImkFu7I2FPwvfNgizv+giCNZCDyJuA26G3IvA2Fpx6g==
+  dependencies:
+    react "^19.0.0-rc-fb9a90fa48-20240614"
+
 "@djeka07/utils@1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@djeka07/utils/-/utils-1.0.6.tgz#041c04c22248526f6508bd00788d1e950b982d68"
@@ -4016,10 +4023,10 @@ forwarded@0.2.0:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.2.0.tgz#2269936428aad4c15c7ebe9779a84bf0b2a81811"
   integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
 
-framer-motion@11.9.0:
-  version "11.9.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.9.0.tgz#862e8fd83840afa9b31484946cb92e2ee3dbb0aa"
-  integrity sha512-nCfGxvsQecVLjjYDu35G2F5ls+ArE3FBfhxV0RSiisMaUKqteq5DMBFNRKwMyVj+VqKTNhawt+BV480YCHKFlQ==
+framer-motion@12.0.0-alpha.0:
+  version "12.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.0.0-alpha.0.tgz#a175520c02c57615f437dd189586bbd24bb6627f"
+  integrity sha512-rw0+O0kqsSFPrYrSnHXrZTGAKteCj9D9HzDdHjJR8GyPWADLoQstgUYeSvLxrO3P+HlBfQtmu/SOsM9eLhKXtQ==
   dependencies:
     tslib "^2.4.0"
 
@@ -5568,7 +5575,14 @@ react-docgen@^7.0.0:
     resolve "^1.22.1"
     strip-indent "^4.0.0"
 
-react-dom@18.3.1, "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0":
+react-dom@19.0.0-rc-fb9a90fa48-20240614:
+  version "19.0.0-rc-fb9a90fa48-20240614"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.0.0-rc-fb9a90fa48-20240614.tgz#8dce9ed0650096d65437e4bce790628e483831a2"
+  integrity sha512-PoEsPe32F7KPLYOBvZfjylEI1B67N44PwY3lyvpmBkhlluLnLz0jH8q2Wg9YidAi6z0k3iUnNRm5x10wurzt9Q==
+  dependencies:
+    scheduler "0.25.0-rc-fb9a90fa48-20240614"
+
+"react-dom@^16.8.0 || ^17.0.0 || ^18.0.0":
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.3.1.tgz#c2265d79511b57d479b3dd3fdfa51536494c5cb4"
   integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
@@ -5610,7 +5624,12 @@ react-refresh@^0.14.2:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.14.2.tgz#3833da01ce32da470f1f936b9d477da5c7028bf9"
   integrity sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==
 
-react@18.3.1, "react@^16.8.0 || ^17.0.0 || ^18.0.0":
+react@19.0.0-rc-fb9a90fa48-20240614, react@^19.0.0-rc-fb9a90fa48-20240614:
+  version "19.0.0-rc-fb9a90fa48-20240614"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.0.0-rc-fb9a90fa48-20240614.tgz#90eb43a0b005e8cc3cbf0d801c14816d01df1b08"
+  integrity sha512-nvE3Gy+IOIfH/DXhkyxFVQSrITarFcQz4+shzC/McxQXEUSonpw2oDy/Wi9hdDtV3hlP12VYuDL95iiBREedNQ==
+
+"react@^16.8.0 || ^17.0.0 || ^18.0.0":
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
@@ -5863,6 +5882,11 @@ saxes@^6.0.0:
   integrity sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==
   dependencies:
     xmlchars "^2.2.0"
+
+scheduler@0.25.0-rc-fb9a90fa48-20240614:
+  version "0.25.0-rc-fb9a90fa48-20240614"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.25.0-rc-fb9a90fa48-20240614.tgz#9ee11063b7c0f47aef3fea53d9f1be3f13794dce"
+  integrity sha512-HHqQ/SqbeiDfXXVKgNxTpbQTD4n7IUb4hZATvHjp03jr3TF7igehCyHdOjeYTrzIseLO93cTTfSb5f4qWcirMQ==
 
 scheduler@^0.23.2:
   version "0.23.2"
@@ -6662,10 +6686,10 @@ vite-plugin-svgr@^4.2.0:
     "@svgr/core" "^8.1.0"
     "@svgr/plugin-jsx" "^8.1.0"
 
-vite-tsconfig-paths@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/vite-tsconfig-paths/-/vite-tsconfig-paths-5.0.1.tgz#c9387a29c32fd586e4c7f4e2b2da1f0b5c9a7403"
-  integrity sha512-yqwv+LstU7NwPeNqajZzLEBVpUFU6Dugtb2P84FXuvaoYA+/70l9MHE+GYfYAycVyPSDYZ7mjOFuYBRqlEpTig==
+vite-tsconfig-paths@4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/vite-tsconfig-paths/-/vite-tsconfig-paths-4.3.2.tgz#321f02e4b736a90ff62f9086467faf4e2da857a9"
+  integrity sha512-0Vd/a6po6Q+86rPlntHye7F31zA2URZMbH8M3saAZ/xR9QoGN/L21bxEGfXdWmFdNkqPpRdxFT7nmNe12e9/uA==
   dependencies:
     debug "^4.1.1"
     globrex "^0.1.2"

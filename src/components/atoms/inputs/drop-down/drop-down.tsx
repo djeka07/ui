@@ -1,5 +1,11 @@
 'use client';
 
+import { useDidUpdate } from '@djeka07/hooks';
+import { css, isObjectEmpty } from '@djeka07/utils';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, JSX, useState } from 'react';
+import { RadiusKeys } from '../../../../styles/border';
+import { Icon } from '../../icons';
 import {
   error as errorClass,
   errorSvg,
@@ -10,13 +16,7 @@ import {
   root,
   wrapper,
 } from '../text-inputs/text-input.css';
-import { css, isObjectEmpty } from '@djeka07/utils';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, JSX, useState } from 'react';
 import { dropDown, iconWrapper } from './drop-down.css';
-import { RadiusKeys } from '../../../../styles/border';
-import { useDidUpdate } from '../../../../hooks';
-import { Icon } from '../../icons';
 
 type SelectEventProps = {
   value: string;
