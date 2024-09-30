@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import { PanelAnimationDuration, PanelPosition } from './panel.type';
 
 type GetPanelVariants = {

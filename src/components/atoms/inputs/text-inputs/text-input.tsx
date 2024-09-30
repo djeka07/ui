@@ -1,4 +1,5 @@
 'use client';
+
 import { css } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
@@ -51,6 +52,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       backgroundColor = 'main',
       value,
       defaultValue,
+      ...rest
     }: TextInputProps,
     ref,
   ) => {
@@ -125,6 +127,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             name={name}
             type={type as HTMLInputTypeAttribute}
             className={css(input({ focus, errorFocus: focus && !!error }), className)}
+            {...rest}
           />
           {!!readOnly ||
             (!!disabled && (

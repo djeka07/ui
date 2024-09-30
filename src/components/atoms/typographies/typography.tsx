@@ -1,4 +1,3 @@
-/* eslint-disable react/no-children-prop */
 import { css } from '@djeka07/utils';
 import { createElement } from 'react';
 import { typography } from './typography.css';

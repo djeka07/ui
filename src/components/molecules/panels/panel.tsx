@@ -33,7 +33,7 @@ const Panel = ({
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   const { shouldCloseOnClick } = overlayElementProps as OverlayElementProps;
-  const controller = useRef<AbortController>(undefined);
+  const controller = useRef<AbortController>();
 
   const closePanel = () => {
     setIsActive(false);

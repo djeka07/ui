@@ -2,7 +2,15 @@
 
 import { css, isEmpty, isEnter } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChangeEvent, FocusEvent, forwardRef, KeyboardEvent, MouseEvent, useState } from 'react';
+import {
+  ChangeEvent,
+  ComponentPropsWithoutRef,
+  FocusEvent,
+  forwardRef,
+  KeyboardEvent,
+  MouseEvent,
+  useState,
+} from 'react';
 import { For } from '../../for';
 import { Icon } from '../../icons';
 import { fieldset, label as labelClass, legend, legentSpan } from '../text-inputs/text-input.css';
@@ -37,7 +45,8 @@ type Pill = {
   label: string;
 };
 
-type TextInputProps = WrapperVariants &
+type TextInputProps = ComponentPropsWithoutRef<'input'> &
+  WrapperVariants &
   InputVariants & {
     pills?: Pill[];
     type: string;
@@ -78,6 +87,7 @@ const PillInput = forwardRef<HTMLInputElement, TextInputProps>(
       value: initialValue,
       width,
       wrapperClass,
+      ...rest
     },
     ref,
   ) => {
@@ -158,6 +168,7 @@ const PillInput = forwardRef<HTMLInputElement, TextInputProps>(
             name={name}
             type={type}
             className={css(input, className)}
+            {...rest}
           />
           {!!label && (
             <fieldset className={fieldset({ errored: !!error, errorFocus: focus && !!error, focus: focus, radius })}>

@@ -21,6 +21,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       onBlur,
       radius,
       value,
+      ...rest
     },
     ref,
   ) => {
@@ -55,6 +56,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             onChange={toggleCheckboxChange}
             disabled={disabled}
             onBlur={onBlur}
+            {...rest}
           />
           {label && (
             <span

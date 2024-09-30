@@ -1,5 +1,5 @@
 import { ButtonVariants, ChildrenVariants } from './button.css';
-import { MouseEvent, ReactNode } from 'react';
+import { MouseEvent, ReactNode, ComponentPropsWithoutRef } from 'react';
 
 type ButtonOmittedVariants = Omit<ButtonVariants, 'primary' | 'success' | 'error' | 'warning' | 'info' | 'transparent'>;
 
@@ -53,7 +53,8 @@ type ButtonTransparent = {
   transparent: true;
 };
 
-export type ButtonProps = ButtonOmittedVariants &
+export type ButtonProps = ComponentPropsWithoutRef<'button'> &
+  ButtonOmittedVariants &
   ChildrenVariants & {
     type?: 'submit' | 'button' | 'reset';
     round?: boolean;
@@ -65,5 +66,4 @@ export type ButtonProps = ButtonOmittedVariants &
     children: ReactNode;
     className?: string;
     innerClass?: string;
-    title?: string;
   } & (ButtonNoType | ButtonPrimary | ButtonSuccess | ButtonError | ButtonWarning | ButtonInfo | ButtonTransparent);

@@ -1,7 +1,16 @@
 'use client';
 import { css, isBackSpace, isEnterWithoutShift, isEnterWithShift } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { FormEvent, forwardRef, KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  ComponentPropsWithoutRef,
+  FormEvent,
+  forwardRef,
+  KeyboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { mergeRefs } from '../../../../helpers/refs';
 import { RadiusKeys } from '../../../../styles/border';
 import { Icon } from '../../icons';
@@ -18,7 +27,7 @@ import {
 } from '../text-inputs/text-input.css';
 import { getHeight } from './get-height';
 
-type TextAreaProps = {
+type TextAreaProps = ComponentPropsWithoutRef<'textarea'> & {
   name: string;
   id?: string;
   defaultValue?: string;
@@ -62,6 +71,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       value,
       defaultValue,
       backgroundColor = 'main',
+      ...rest
     },
     ref,
   ) => {
@@ -159,6 +169,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             onChange={internalOnChange}
             name={name}
             className={css(input({ focus, errorFocus: focus && !!error }), className)}
+            {...rest}
           />
           {!!readOnly ||
             (!!disabled && (

@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GIVEN Button > WHEN 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="hej"
+    class="button_button__1w9iyj40 button_button_primary_true__1w9iyj41 button_button_fullWidthMobile_true__1w9iyj49"
+    type="button"
+  >
+    <span
+      class="button_childrenRecipe__1w9iyj417 button_childrenRecipe_size_normal__1w9iyj41h button_childrenRecipe_primary_true__1w9iyj419 button_childrenRecipe_direction_row__1w9iyj41j button_childrenRecipe_align_flex-start__1w9iyj41n button_childrenRecipe_justify_flex-start__1w9iyj41p"
+      tabindex="-1"
+    >
+      Click
+    </span>
+  </button>
+</DocumentFragment>
+`;

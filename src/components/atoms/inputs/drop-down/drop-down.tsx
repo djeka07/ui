@@ -12,7 +12,7 @@ import {
 } from '../text-inputs/text-input.css';
 import { css, isObjectEmpty } from '@djeka07/utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChangeEvent, forwardRef, JSX, useState } from 'react';
+import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, JSX, useState } from 'react';
 import { dropDown, iconWrapper } from './drop-down.css';
 import { RadiusKeys } from '../../../../styles/border';
 import { useDidUpdate } from '../../../../hooks';
@@ -23,7 +23,7 @@ type SelectEventProps = {
   isDefault: boolean;
 };
 
-export type SelectProps = {
+export type SelectProps = ComponentPropsWithoutRef<'select'> & {
   id?: string;
   initialValue?: string | number;
   name: string;
@@ -65,6 +65,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
       full = true,
       readOnly,
       radius,
+      ...rest
     }: SelectProps,
     ref,
   ): JSX.Element => {
@@ -135,6 +136,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
             onFocus={internalSetFocus}
             aria-label={ariaLabel}
             tabIndex={tabIndex}
+            {...rest}
           >
             <option key={'default'} value={defaultItem.value}>
               {defaultItem.name}
