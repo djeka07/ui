@@ -9,6 +9,14 @@ variables:
     value: $(token)
 
 stages:
+  - stage: Build
+    displayName: Build project
+    jobs:
+    - job: Build
+      steps:
+      - task: Yarn@3
+        inputs:
+          arguments: 'yarn build'
   - stage: Deploy
     displayName: Deploy to static app
     jobs:
