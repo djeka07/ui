@@ -20,6 +20,9 @@ stages:
           versionSpec: '1.22'
       - task: Yarn@3
         inputs:
+          arguments: 'install'
+      - task: Yarn@3
+        inputs:
           arguments: 'build'
       - task: AzureStaticWebApp@0
         inputs:
