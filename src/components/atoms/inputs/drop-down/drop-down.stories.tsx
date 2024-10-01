@@ -12,7 +12,7 @@ type Story = StoryObj<typeof DropDown>;
 export const Main: Story = {
   args: {
     label: 'Email',
-    defaultItem: { name: 'Default', value: '' },
+    defaultItem: { name: 'Default', value: 'default' },
     items: [{ name: 'a', value: 'd' }],
   },
 };
@@ -21,5 +21,6 @@ export const Disabled: Story = {
   args: {
     label: 'Email',
     disabled: true,
+    defaultItem: { name: 'Default', value: 'default' },
   },
 };

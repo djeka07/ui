@@ -351,6 +351,13 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@djeka07/hooks@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@djeka07/hooks/-/hooks-0.0.12.tgz#68345d5329004070d1537be50b8f104bc01cf087"
+  integrity sha512-G75BJpFS06rZK/5/LwR94aU1AFAXzXHMjcvXAHKTde1yBsq+IXoHHCMw8ceuhDpU6vG0ykvypDtTEB0UkSCKxA==
+  dependencies:
+    react "18.3.1"
+
 "@djeka07/utils@1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@djeka07/utils/-/utils-1.0.6.tgz#041c04c22248526f6508bd00788d1e950b982d68"

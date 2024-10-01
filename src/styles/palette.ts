@@ -44,21 +44,7 @@ const base = {
     white: '#ffffff',
     black: '#000000',
   },
-  success: {
-    light: '#d1e7dd',
-    main: '#198754',
-    dark: '#0f5132',
-  },
-  warning: {
-    light: '#fff3cd',
-    main: '#ffc107',
-    dark: '#664d03',
-  },
-  info: {
-    light: '#cff4fc',
-    main: '#3fc6e1',
-    dark: '#055160',
-  },
+  
   grey: {
     100: '#f5f5f5',
     200: '#eeeeee',
@@ -112,10 +98,25 @@ const createDarkPalette = (): Palette => ({
     main: '#ffffff',
     dark: darken(0.1, '#ffffff'),
   },
+  success: {
+    light: '#81c784',
+    main: '#66bb6a',
+    dark: '#388e3c',
+  },
+  warning: {
+    light: '#ffb74d',
+    main: '#ffa726',
+    dark: '#f57c00',
+  },
+  info: {
+    light: '#4fc3f7',
+    main: '#29b6f6',
+    dark: '#0288d1',
+  },
   error: {
-    light: '#f8d7da',
-    main: '#dc3545',
-    dark: '#842029',
+    light: '#e57373',
+    main: '#f44336',
+    dark: '#d32f2f',
   },
   background: {
     light: lighten(0.1, '#354052'),
@@ -175,9 +176,24 @@ const createLightPalette = (): Palette => ({
     main: 'rgb(0 0 0 / 25%) 0px 1px 5px -1px',
   },
   error: {
-    light: '#f8d7da',
-    main: '#dc3545',
-    dark: '#842029',
+    light: '#ef5350',
+    main: '#d32f2f',
+    dark: '#c62828',
+  },
+  success: {
+    light: '#4caf50',
+    main: '#2e7d32',
+    dark: '#1b5e20',
+  },
+  warning: {
+    light: '#ff9800',
+    main: '#ed6c02',
+    dark: '#e65100',
+  },
+  info: {
+    light: '#03a9f4',
+    main: '#0288d1',
+    dark: '#01579b',
   },
 });
 

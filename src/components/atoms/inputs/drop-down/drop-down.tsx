@@ -15,8 +15,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, JSX, useState } from 'react';
 import { dropDown, iconWrapper } from './drop-down.css';
 import { RadiusKeys } from '../../../../styles/border';
-import { useDidUpdate } from '../../../../hooks';
+
 import { Icon } from '../../icons';
+import { useDidUpdate } from '@djeka07/hooks';
 
 type SelectEventProps = {
   value: string;
@@ -70,13 +71,13 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
     ref,
   ): JSX.Element => {
     const selectedItem = items?.find((val) => val.isSelected);
-    const [focus, setFocus] = useState(!!defaultItem?.value);
+    const [focus, setFocus] = useState(false);
+
     const [selectedValue, setSelectedValue] = useState(
       !isObjectEmpty(selectedItem) ? selectedItem?.value : defaultItem?.value,
     );
 
     useDidUpdate(() => {
-      console.log('use effect', selectedItem?.value !== selectedValue, selectedItem?.value, selectedValue);
       if (selectedItem?.value !== selectedValue) {
         const value = selectedItem?.value || defaultItem.value;
         setSelectedValue(value);
@@ -141,7 +142,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
             <option key={'default'} value={defaultItem.value}>
               {defaultItem.name}
             </option>
-            {items.map((item) => (
+            {items?.map((item) => (
               <option key={`${item.name}-${item.value}`} disabled={item.isDisabled} value={item.value}>
                 {item.name}
               </option>
