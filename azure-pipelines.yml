@@ -14,8 +14,8 @@ stages:
     jobs:
     - job: Deploy
       steps:
-    - task: AzureStaticWebApp@0
-      inputs:
-        app_build_command: 'yarn build:storybook'
-        output_location: 'storybook-static'
-        azure_static_web_apps_api_token: $(appToken)
+      - task: AzureStaticWebApp@0
+        inputs:
+          app_build_command: yarn build:storybook
+          output_location: storybook-static
+          azure_static_web_apps_api_token: $(appToken)
