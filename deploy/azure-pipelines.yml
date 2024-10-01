@@ -12,13 +12,11 @@ stages:
   - stage: Deploy
     displayName: Deploy to static app
     jobs:
-    - job: Build
+    - job: Deploy
       steps:
       - task: Yarn@3
         inputs:
           arguments: 'yarn build'
-    - job: Deploy
-      steps:
       - task: AzureStaticWebApp@0
         inputs:
           app_build_command: 'yarn build:storybook'
