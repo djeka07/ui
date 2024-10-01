@@ -1,4 +1,5 @@
 trigger:
+
 - main
 
 pool:
@@ -14,6 +15,9 @@ stages:
     jobs:
     - job: Deploy
       steps:
+      - task: YarnInstaller@3
+        inputs:
+          versionSpec: '1.22'
       - task: Yarn@3
         inputs:
           arguments: 'yarn build'
