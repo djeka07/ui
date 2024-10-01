@@ -11,7 +11,7 @@ export type Theme = {
   palette: Palette;
 };
 
-export default (theme: 'dark' | 'light') =>
+const createDefaultTheme = (theme: 'dark' | 'light') =>
   ({
     typography: createTypography,
     breakpoint: createBreakPoints(),
@@ -19,4 +19,4 @@ export default (theme: 'dark' | 'light') =>
     border: createBorder,
   }) satisfies Theme;
 
-export { createStyleSheet };
+export { createStyleSheet, createDefaultTheme };

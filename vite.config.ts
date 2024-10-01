@@ -1,21 +1,19 @@
 /// <reference types="vite/client" />
-import { defineConfig } from 'vite';
+import { defineConfig, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
-import { libInjectCss } from 'vite-plugin-lib-inject-css';
-// import preserveDirectives from 'rollup-preserve-directives';
+import preserveDirectives from 'rollup-preserve-directives';
 
 export default defineConfig({
   plugins: [
-    // preserveDirectives({ exclude: ["**/*.css.ts"]}),
+    preserveDirectives() as Plugin,
     react(),
     svgr({ include: '**/*.svg' }),
     dts({ include: 'src', exclude: ['**/*.stories.tsx'], insertTypesEntry: true, rollupTypes: true }),
-    { ...libInjectCss(), enforce: 'pre' },
     tsconfigPaths(),
     vanillaExtractPlugin({ unstable_mode: 'emitCss'}),
   ],
