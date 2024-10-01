@@ -16,6 +16,8 @@ stages:
       steps:
       - task: AzureStaticWebApp@0
         inputs:
-          app_build_command: yarn build:storybook
-          output_location: storybook-static
-          azure_static_web_apps_api_token: $(appToken)
+          app_build_command: 'yarn build:storybook'
+          output_location: '/storybook-static'
+          skip_app_build: false
+          is_static_export: true
+          azure_static_web_apps_api_token: '$(appToken)'
