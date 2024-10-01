@@ -20,7 +20,7 @@ stages:
           versionSpec: '1.22'
       - task: Yarn@3
         inputs:
-          arguments: 'yarn build'
+          arguments: 'build'
       - task: AzureStaticWebApp@0
         inputs:
           app_build_command: 'yarn build:storybook'
