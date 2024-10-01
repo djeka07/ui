@@ -1,16 +1,15 @@
 {
   "name": "@djeka07/ui",
-  "version": "1.0.0-rc-0.5",
+  "version": "1.0.0-rc-0.10",
   "private": false,
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "./src/**/*",
-    "./*.md",
-    "./svg.d.ts",
-    "./tsconfig.json"
+    "./dist/**/*"
   ],
   "scripts": {
-    "build": "yarn clean && tsc && vite build && yarn copy:svgs",
+    "build": "yarn clean && tsc && vite build",
     "copy:svgs": "cp ./src/components/atoms/icons/svgs/*.svg ./dist/components/atoms/icons/svgs",
     "clean": "rm -rf ./dist",
     "test": "vitest",
@@ -60,10 +59,12 @@
     "globals": "^15.9.0",
     "jsdom": "^25.0.1",
     "prettier-eslint": "^16.3.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-preserve-directives": "^1.1.1",
     "storybook": "^8.3.4",
     "storybook-theme-toggle": "^0.1.2",
     "ts-node": "^10.9.2",
+    "tsup": "^8.3.0",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.7.0",
     "vite": "^5.4.8",
@@ -74,8 +75,8 @@
     "vitest": "^2.1.1"
   },
   "peerDependencies": {
-    "@vanilla-extract/css": "1.15.5",
-    "@vanilla-extract/recipes": "0.5.5",
+    "@djeka07/hooks": "^1.0.0-rc-0.2",
+    "@djeka07/utils": "1.0.6",
     "framer-motion": "12.0.0-alpha.0",
     "react": "19.0.0-rc-fb9a90fa48-20240614",
     "react-dom": "19.0.0-rc-fb9a90fa48-20240614"
