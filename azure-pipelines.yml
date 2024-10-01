@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: Macbook pool
+  vmImage: ubuntu-latest
 
 variables:
   - name: appToken
