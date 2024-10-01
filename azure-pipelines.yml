@@ -1,0 +1,21 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - name: appToken
+    value: $(token)
+
+stages:
+  - stage: Deploy
+    displayName: Deploy to static app
+    jobs:
+    - job: Deploy
+      steps:
+      - task: AzureStaticWebApp@0
+        inputs:
+          app_build_command: yarn build:storybook
+          output_location: storybook-static
+          azure_static_web_apps_api_token: $(appToken)
