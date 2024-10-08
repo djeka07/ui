@@ -14,7 +14,7 @@ stages:
     displayName: Deploy to static app
     jobs:
     - job: BuildAndDeploy
-      displayName: Build and deployt
+      displayName: Build and deploy to storybook
       steps:
       - task: YarnInstaller@3
         displayName: Install Yarn 1.22
