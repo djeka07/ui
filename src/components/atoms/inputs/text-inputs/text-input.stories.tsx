@@ -16,6 +16,13 @@ export const Main: Story = {
   },
 };
 
+export const WithNoLabel: Story = {
+  args: {
+    material: false,
+    placeholder: 'Enter email',
+  },
+};
+
 export const Disabled: Story = {
   args: {
     label: 'Email',

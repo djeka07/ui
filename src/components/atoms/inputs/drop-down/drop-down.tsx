@@ -24,11 +24,12 @@ type SelectEventProps = {
   isDefault: boolean;
 };
 
-export type SelectProps = ComponentPropsWithoutRef<'select'> & {
+export type SelectProps = Omit<ComponentPropsWithoutRef<'select'>, 'size'> & {
   id?: string;
   initialValue?: string | number;
   name: string;
   radius?: RadiusKeys;
+  size?: 'small' | 'normal';
   defaultItem?: { name: string; value: string };
   items: {
     name: string;
@@ -44,6 +45,7 @@ export type SelectProps = ComponentPropsWithoutRef<'select'> & {
   disabled?: boolean;
   readOnly?: boolean;
   className?: string;
+  selectClassName?: string;
   ariaLabel?: string;
   tabIndex?: number;
 };
@@ -53,14 +55,16 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
     {
       id,
       name,
-      defaultItem = { name: '', value: '' },
+      defaultItem,
       items,
+      size = 'normal',
       onChange,
       onBlur,
       error,
       label,
       disabled,
       className,
+      selectClassName,
       ariaLabel,
       tabIndex,
       full = true,
@@ -79,7 +83,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
 
     useDidUpdate(() => {
       if (selectedItem?.value !== selectedValue) {
-        const value = selectedItem?.value || defaultItem.value;
+        const value = selectedItem?.value || defaultItem?.value;
         setSelectedValue(value);
       }
     }, [selectedItem?.isSelected, selectedItem?.value]);
@@ -116,6 +120,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
                 errored: focus && !!error,
                 float: focus || !!selectedValue,
                 focus: focus && !error,
+                size,
               })}
               htmlFor={id || name}
             >
@@ -130,7 +135,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
             name={name}
             id={id}
             value={selectedValue}
-            className={dropDown}
+            className={css(dropDown({ size }), selectClassName)}
             disabled={disabled}
             onChange={internalOnChange}
             onBlur={internalOnBlur}
@@ -139,9 +144,11 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
             tabIndex={tabIndex}
             {...rest}
           >
-            <option key={'default'} value={defaultItem.value}>
-              {defaultItem.name}
-            </option>
+            {!!defaultItem && (
+              <option key={'default'} value={defaultItem.value}>
+                {defaultItem.name}
+              </option>
+            )}
             {items?.map((item) => (
               <option key={`${item.name}-${item.value}`} disabled={item.isDisabled} value={item.value}>
                 {item.name}
@@ -149,13 +156,11 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
             ))}
           </select>
 
-          {!!label && (
-            <fieldset className={fieldset({ errored: !!error, errorFocus: focus && !!error, focus: focus, radius })}>
-              <legend className={legend({ focus: focus || !!selectedValue })}>
-                <span className={legentSpan}>{label}</span>
-              </legend>
-            </fieldset>
-          )}
+          <fieldset className={fieldset({ errored: !!error, errorFocus: focus && !!error, focus: focus, radius })}>
+            <legend className={legend({ focus: focus || !!selectedValue })}>
+              {!!label && <span className={legentSpan}>{label}</span>}
+            </legend>
+          </fieldset>
           <AnimatePresence>
             {!!error && (
               <motion.div

@@ -1,5 +1,3 @@
-import { compose } from '@djeka07/utils';
-import { darken, desaturate, lighten, saturate } from 'polished';
 export type ColorVariants = { light: string; main: string; dark: string };
 export type ColorVariantsKeys = keyof ColorVariants;
 type ColorMain = Pick<ColorVariants, 'main'>;
@@ -16,6 +14,16 @@ export type Grey = {
   '700': string;
   '800': string;
   '900': string;
+};
+
+type BackgroundForeground = { background: string; foreground: string };
+
+export type GridPalette = {
+  border: string;
+  row: { odd: BackgroundForeground; even: BackgroundForeground };
+  header: BackgroundForeground;
+  main: BackgroundForeground;
+  footer: BackgroundForeground;
 };
 
 export type Palette = {
@@ -35,6 +43,7 @@ export type Palette = {
   background: ColorVariants;
   notification: ColorMain;
   boxShadow: ColorMain;
+  grid: GridPalette;
 };
 
 export type PaletteKeys = keyof Palette;
@@ -44,7 +53,7 @@ const base = {
     white: '#ffffff',
     black: '#000000',
   },
-  
+
   grey: {
     100: '#f5f5f5',
     200: '#eeeeee',
@@ -58,9 +67,6 @@ const base = {
   },
 };
 
-const toneLighten = compose(lighten(0.1), desaturate(0.1));
-const toneDarken = compose(darken(0.1), saturate(0.1));
-
 const createDarkPalette = (): Palette => ({
   ...base,
   primary: {
@@ -69,59 +75,79 @@ const createDarkPalette = (): Palette => ({
     dark: '#11254e',
   },
   secondary: {
-    light: lighten(0.1, '#491b6e'),
+    light: 'color-mix(in srgb, #491b6e, white 25%)',
     main: '#491b6e',
-    dark: darken(0.1, '#491b6e'),
+    dark: 'color-mix(in srgb, #491b6e, #000000 25%)',
   },
   link: {
-    light: lighten(0.1, '#cedff6'),
+    light: 'color-mix(in srgb, #cedff6, white 25%)',
     main: '#cedff6',
-    dark: toneDarken('#cedff6'),
+    dark: 'color-mix(in srgb, #cedff6, #000000 25%)',
   },
   input: {
-    light: lighten(0.1, '#ffffff'),
+    light: '#ffffff',
     main: '#ffffff',
-    dark: darken(0.1, '#ffffff'),
+    dark: 'color-mix(in srgb, #ffffff, #000000 25%)',
   },
   focus: {
-    light: lighten(0.1, '#93b0ec'),
+    light: 'color-mix(in srgb, #93b0ec, white 25%)',
     main: '#93b0ec',
-    dark: darken(0.1, '#93b0ec'),
+    dark: 'color-mix(in srgb, #93b0ec, #000000 25%)',
   },
   heading: {
-    light: toneLighten('#bdc9e2'),
+    light: 'color-mix(in srgb, #bdc9e2, #000000 25%)',
     main: '#bdc9e2',
-    dark: toneDarken('#bdc9e2'),
+    dark: 'color-mix(in srgb, #bdc9e2, #000000 25%)',
   },
   text: {
     light: '#ffffff',
     main: '#ffffff',
-    dark: darken(0.1, '#ffffff'),
+    dark: 'color-mix(in srgb, #ffffff, #000000 25%)',
   },
   success: {
-    light: '#81c784',
-    main: '#66bb6a',
-    dark: '#388e3c',
+    light: '#d1e7dd',
+    main: '#198754',
+    dark: '#0f5132',
   },
   warning: {
-    light: '#ffb74d',
-    main: '#ffa726',
-    dark: '#f57c00',
+    light: '#fff3cd',
+    main: '#ffc107',
+    dark: '#664d03',
   },
   info: {
-    light: '#4fc3f7',
-    main: '#29b6f6',
-    dark: '#0288d1',
+    light: '#cff4fc',
+    main: '#3fc6e1',
+    dark: '#055160',
   },
   error: {
-    light: '#e57373',
-    main: '#f44336',
-    dark: '#d32f2f',
+    light: '#f8d7da',
+    main: '#dc3545',
+    dark: '#842029',
   },
+  grid: {
+    border: 'color-mix(in srgb, transparent, #fff 10%)',
+    row: {
+      odd: { background: 'color-mix(in srgb, #354052, #ffffff 25%)', foreground: '#ffffff' },
+      even: { background: '#354052', foreground: '#ffffff' },
+    },
+    header: {
+      background: '#354052',
+      foreground: '#ffffff',
+    },
+    footer: {
+      background: '#354052',
+      foreground: '#ffffff',
+    },
+    main: {
+      background: '#354052',
+      foreground: '#ffffff',
+    },
+  },
+
   background: {
-    light: lighten(0.1, '#354052'),
+    light: 'color-mix(in srgb, #354052, #ffffff 25%)',
     main: '#354052',
-    dark: darken(0.1, '#354052'),
+    dark: 'color-mix(in srgb, #354052, #000000 25%)',
   },
   notification: { main: '#4A699B' },
   boxShadow: {
@@ -137,19 +163,19 @@ const createLightPalette = (): Palette => ({
     dark: '#3b105e',
   },
   secondary: {
-    light: lighten(0.1, '#491b6e'),
+    light: 'color-mix(in srgb, #491b6e, #ffffff 25%)',
     main: '#491b6e',
-    dark: darken(0.1, '#491b6e'),
+    dark: 'color-mix(in srgb, #491b6e, #000000 25%)',
   },
   input: {
-    light: lighten(0.1, '#616161'),
+    light: 'color-mix(in srgb, #616161, #ffffff 25%)',
     main: '#616161',
-    dark: darken(0.1, '#616161'),
+    dark: 'color-mix(in srgb, #616161, #000000 25%)',
   },
   focus: {
-    light: lighten(0.1, '#491b6e'),
+    light: 'color-mix(in srgb, #491b6e, #ffffff 25%)',
     main: '#491b6e',
-    dark: darken(0.1, '#491b6e'),
+    dark: 'color-mix(in srgb, #491b6e, #000000 25%)',
   },
   heading: {
     light: base.grey[500],
@@ -157,9 +183,9 @@ const createLightPalette = (): Palette => ({
     dark: base.grey[900],
   },
   text: {
-    light: lighten(0.1, '#616161'),
+    light: 'color-mix(in srgb, #616161, #ffffff 25%)',
     main: '#616161',
-    dark: darken(0.1, '#616161'),
+    dark: 'color-mix(in srgb, #616161, #000000 25%)',
   },
   link: {
     light: '#ffffff',
@@ -167,33 +193,52 @@ const createLightPalette = (): Palette => ({
     dark: '#1e3c68',
   },
   background: {
-    light: lighten(0.1, '#e1e0e3'),
+    light: 'color-mix(in srgb, #e1e0e3, #ffffff 25%)',
     main: '#e1e0e3',
-    dark: darken(0.1, '#e1e0e3'),
+    dark: 'color-mix(in srgb, #e1e0e3, #000000 25%)',
   },
   notification: { main: '#4A699B' },
   boxShadow: {
     main: 'rgb(0 0 0 / 25%) 0px 1px 5px -1px',
   },
   error: {
-    light: '#ef5350',
-    main: '#d32f2f',
-    dark: '#c62828',
+    light: '#f8d7da',
+    main: '#dc3545',
+    dark: '#842029',
   },
   success: {
-    light: '#4caf50',
-    main: '#2e7d32',
-    dark: '#1b5e20',
+    light: '#d1e7dd',
+    main: '#198754',
+    dark: '#0f5132',
   },
   warning: {
-    light: '#ff9800',
-    main: '#ed6c02',
-    dark: '#e65100',
+    light: '#fff3cd',
+    main: '#ffc107',
+    dark: '#664d03',
   },
   info: {
-    light: '#03a9f4',
-    main: '#0288d1',
-    dark: '#01579b',
+    light: '#cff4fc',
+    main: '#3fc6e1',
+    dark: '#055160',
+  },
+  grid: {
+    border: 'color-mix(in srgb, transparent, #181d1f 15%)',
+    row: {
+      odd: { background: 'color-mix(in srgb, #e1e0e3, white 25%)', foreground: '#616161' },
+      even: { background: '#e1e0e3', foreground: '#616161' },
+    },
+    header: {
+      background: 'color-mix(in srgb, #e1e0e3, #ffffff 25%)',
+      foreground: '#616161',
+    },
+    footer: {
+      background: '#e1e0e3',
+      foreground: '#616161',
+    },
+    main: {
+      background: '#e1e0e3',
+      foreground: '#616161',
+    },
   },
 });
 

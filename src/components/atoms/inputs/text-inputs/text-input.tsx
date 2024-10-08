@@ -40,6 +40,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       full = true,
       id,
       label,
+      size = 'normal',
       onBlur,
       readOnly,
       disabled,
@@ -105,6 +106,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 errored: focus && !!error,
                 float: focus || autoFocus || !!inputValue,
                 focus: focus && !error,
+                size,
               })}
               htmlFor={id || name}
             >
@@ -122,11 +124,11 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             onKeyDown={(e) => onKeyDown?.(e)}
             autoComplete={autoComplete}
             id={id || name}
-            placeholder={focus ? placeholder : undefined}
+            placeholder={focus || !label ? placeholder : undefined}
             value={inputValue || ''}
             name={name}
             type={type as HTMLInputTypeAttribute}
-            className={css(input({ focus, errorFocus: focus && !!error }), className)}
+            className={css(input({ focus, errorFocus: focus && !!error, size }), className)}
             {...rest}
           />
           {!!readOnly ||
@@ -141,13 +143,11 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 size="normal"
               />
             ))}
-          {!!label && (
-            <fieldset className={fieldset({ errored: !!error, errorFocus: focus && !!error, focus: focus, radius })}>
-              <legend className={legend({ focus: focus || autoFocus || !!inputValue })}>
-                <span className={legentSpan}>{label}</span>
-              </legend>
-            </fieldset>
-          )}
+          <fieldset className={fieldset({ errored: !!error, errorFocus: focus && !!error, focus: focus, radius })}>
+            <legend className={legend({ focus: focus || autoFocus || !!inputValue })}>
+              {!!label && <span className={legentSpan}>{label}</span>}
+            </legend>
+          </fieldset>
         </div>
         <AnimatePresence>
           {!!error && (

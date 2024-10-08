@@ -1,5 +1,6 @@
 'use client';
-import { useEffect, useId } from 'react';
+import { useDidMount } from '@djeka07/hooks';
+import { useId } from 'react';
 import { PanelProps } from './panel.type';
 import { usePanels } from './use-panels';
 
@@ -14,8 +15,7 @@ const PanelContainer = ({
   const id = useId();
   const [, { pushPanelToContext }] = usePanels();
 
-  useEffect(() => {
-    console.log(id);
+  useDidMount(() => {
     pushPanelToContext({
       id,
       afterPanelClosed,
@@ -28,7 +28,7 @@ const PanelContainer = ({
     return () => {
       afterPanelClosed();
     };
-  }, []);
+  });
 
   return null;
 };

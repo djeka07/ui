@@ -22,9 +22,9 @@ export const actionButton = recipe({
       transparent: {
         backgroundColor: 'transparent',
       },
-      light: { backgroundColor: 'var(--light-bqckground-color)' },
-      main: { backgroundColor: 'var(--main-bqckground-color)' },
-      dark: { backgroundColor: 'var(--dark-bqckground-color)' },
+      light: { backgroundColor: 'var(--light-background-color)' },
+      main: { backgroundColor: 'var(--main-background-color)' },
+      dark: { backgroundColor: 'var(--dark-background-color)' },
     },
   },
 });

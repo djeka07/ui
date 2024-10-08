@@ -1,2 +1,3 @@
 import BarChart from './bar-chart/bar-chart';
-export { BarChart };
+import LineChart from './line-chart/line-chart';
+export { BarChart, LineChart };
