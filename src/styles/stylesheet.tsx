@@ -44,11 +44,9 @@ export default (theme: Theme) => {
     --main-text-color: ${theme.palette.text.main};
     --dark-text-color: ${theme.palette.text.dark};
 
-
     --light-success-color: ${theme.palette.success.light};
     --main-success-color: ${theme.palette.success.main};
     --dark-success-color: ${theme.palette.success.dark};
-
 
     --light-info-color: ${theme.palette.info.light};
     --main-info-color: ${theme.palette.info.main};
@@ -67,7 +65,7 @@ export default (theme: Theme) => {
     --dark-link-color: ${theme.palette.link.dark};
 
     --base-font-family: ${theme.typography.family.body};
-    --heading-font-family: ${theme.typography.family.heading}
+    --heading-font-family: ${theme.typography.family.heading};
 
     --xxsmall-font-size: ${theme.typography.size.xxsmall};
     --xsmall-font-size: ${theme.typography.size.xsmall};
@@ -79,6 +77,23 @@ export default (theme: Theme) => {
     --xxlarge-font-size: ${theme.typography.size.xxlarge};
     --xxxlarge-font-size: ${theme.typography.size.xxxlarge};
 
+    --grid-header-bg-color: ${theme.palette.grid.header.background};
+    --grid-header-fg-color: ${theme.palette.grid.header.foreground};
+
+    --grid-border-fg-color: ${theme.palette.grid.border};
+
+    --grid-row-odd-bg-color: ${theme.palette.grid.row.odd.background};
+    --grid-row-odd-fg-color: ${theme.palette.grid.row.odd.foreground};
+
+    --grid-row-even-bg-color: ${theme.palette.grid.row.even.background};
+    --grid-row-even-fg-color: ${theme.palette.grid.row.even.foreground};
+
+    --grid-main-bg-color: ${theme.palette.grid.main.background};
+    --grid-main-fg-color: ${theme.palette.grid.main.foreground};
+
+    --grid-footer-bg-color: ${theme.palette.grid.footer.background};
+    --grid-footer-bg-color: ${theme.palette.grid.footer.foreground};
+  
     --light-font-weight: ${theme.typography.weight.light};
     --regular-font-weight: ${theme.typography.weight.regular};
     --bold-font-weight: ${theme.typography.weight.bold};

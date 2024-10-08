@@ -1,80 +1,58 @@
-import { useDidMount } from '@djeka07/hooks';
-import { css, isEmpty } from '@djeka07/utils';
-import { useRef } from 'react';
-import { root } from './bar-chart.css';
+import { css } from '@djeka07/utils';
+import { toPercents } from '../../../../helpers';
+import { bar, item, label as labelClass, labelValueWrapper, root, value as valueClass, wrapper } from './bar-chart.css';
+import { BarChartProps } from './bar-chart.props';
 
-interface BarChartData {
-  label: string;
-  value: number;
-}
+const barValueGap = '4px';
+const barLabelGap = '4px';
+const defaultLabelSize = 12;
 
-interface BarChartProps {
-  width?: number;
-  height?: number;
-  className?: string;
-  data?: BarChartData[];
-}
-
-const BarChart = ({ width = 100, height = 100, className, data }: BarChartProps): JSX.Element => {
-  const ref = useRef<HTMLCanvasElement>(null);
-
-  const createBars = (context: CanvasRenderingContext2D) => {
-    const padding = 50;
-    const barWidth = 40;
-    const gap = 15;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const yAxisLabelPadding = 10;
-    let x = padding * 1.5;
-    const maxValue = Math.max(...(data?.map((d) => d.value) || []));
-    context.beginPath();
-    context.moveTo(padding, padding);
-    context.lineTo(padding, height - padding);
-    context.strokeStyle = '#000';
-    context.stroke();
-
-    context.beginPath();
-    context.moveTo(padding, height - padding);
-    context.lineTo(width - padding, height - padding);
-    context.stroke();
-
-    data?.forEach((chartData) => {
-      context.fillStyle = '#3498db';
-      const barHeight = (chartData.value / maxValue) * (height - padding * 2); // Calculate bar height based on value
-      context.fillRect(x, height - padding - barHeight, barWidth, barHeight); // Draw the bar
-
-      // Set the fill color for the text (X-axis labels)
-      context.fillStyle = '#000';
-      context.font = '14px Arial';
-      // Draw the X-axis label below the bar
-      context.fillText(
-        chartData.label,
-        x + barWidth / 2 - context.measureText(chartData.label).width / 2,
-        height - padding + 20,
-      );
-
-      x += barWidth + gap;
-    });
-
-    return context;
-  };
-
-  const clearContext = (context: CanvasRenderingContext2D): CanvasRenderingContext2D => {
-    context.clearRect(0, 0, width, height);
-    return context;
-  };
-
-  useDidMount(() => {
-    const context = ref.current?.getContext('2d');
-    if (!context) {
-      return;
-    }
-    if (!isEmpty(data)) {
-      createBars(clearContext(context));
-    }
-    return;
-  });
-
-  return <canvas className={css(root, className)} ref={ref} width={width} height={height}></canvas>;
+const BarChart = ({
+  height = 100,
+  className,
+  items,
+  expectedLabelHeight = defaultLabelSize,
+  expectedValueHeight = defaultLabelSize,
+  minBarWidth,
+}: BarChartProps): JSX.Element => {
+  const maxValue = Math.max(...(items?.map((item) => item.value) || [0]));
+  const hasLabels = items?.some((item) => item.label);
+  const hasRenderValue = items?.some((item) => !!item.renderValue);
+  return (
+    <div className={css(root, className)} style={{ height }}>
+      {hasRenderValue && <div style={{ minHeight: `calc(${expectedValueHeight}px + ${barValueGap})` }} />}
+      <div className={wrapper}>
+        {items?.map(({ value, color, label, renderValue }) => (
+          <div
+            className={item}
+            key={`${label}-${color}-${value}`}
+            style={minBarWidth ? { minWidth: minBarWidth } : undefined}
+          >
+            {!!renderValue && (
+              <div className={labelValueWrapper}>
+                <label className={valueClass} style={{ fontSize: defaultLabelSize }}>
+                  {renderValue(value)}
+                </label>
+              </div>
+            )}
+            <div
+              className={bar}
+              style={{
+                backgroundColor: color,
+                height: toPercents(value / maxValue),
+              }}
+            />
+            <div className={labelValueWrapper}>
+              <label className={labelClass} style={{ fontSize: defaultLabelSize }}>
+                {label}
+              </label>
+            </div>
+          </div>
+        ))}
+      </div>
+      {hasLabels && <div style={{ minHeight: `calc(${expectedLabelHeight}px + ${barLabelGap})` }} />}
+    </div>
+  );
 };
 
 export default BarChart;

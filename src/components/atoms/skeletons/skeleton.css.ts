@@ -1,7 +1,7 @@
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { keyframes, style } from '@vanilla-extract/css';
 
-const ghostAni = keyframes({
+export const ghostAni = keyframes({
   '0%': {
     backgroundPosition: '-468px 0',
   },

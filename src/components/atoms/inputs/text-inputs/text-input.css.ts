@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import media from '../../../../styles/media.css';
 
-export const  root = recipe({
+export const root = recipe({
   base: {
     position: 'relative',
   },
@@ -22,8 +22,6 @@ export const  root = recipe({
 export const wrapper = recipe({
   base: {
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
   },
   variants: {
     width: {
@@ -49,18 +47,28 @@ export const label = recipe({
     pointerEvents: 'none',
   },
   variants: {
+    size: {
+      small: {
+        transform: 'translate(14px, 7px) scale(1)',
+      },
+      normal: {
+        transform: 'translate(14px, 16px) scale(1)',
+      },
+    },
     float: {
       true: {
         fontSize: '0.925rem',
         transform: 'translate(14px, -7px) scale(0.75)',
       },
-      false: {
-        transform: 'translate(14px, 16px) scale(1)',
-      },
     },
     focus: {
       true: {
         color: 'var(--main-focus-color)',
+      },
+    },
+    hide: {
+      true: {
+        opacity: 0,
       },
     },
     errored: {
@@ -260,7 +268,7 @@ export const error = recipe({
 export const errorSvg = style({
   fill: 'var(--dark-error-color)',
   marginRight: 5,
-  flexShrink: 0
+  flexShrink: 0,
 });
 
 export const inputBackgroundColor = 'rgb(255, 255, 255)';
@@ -271,7 +279,7 @@ export const input = recipe({
     position: 'relative',
     width: '100%',
     padding: '0px 12px',
-    height: 48,
+
     borderRadius: 0,
     color: 'var(--main-input-color)',
     backgroundColor: 'transparent',
@@ -279,7 +287,7 @@ export const input = recipe({
     fontSize: 16,
     appearance: 'none',
     outline: 'none',
-    ['-webkit-text-fill-color' as string]: 'var(--main-focus-color) !important',
+    ['-webkit-text-fill-color' as string]: 'var(--main-input-color) !important',
     [media.base]: {
       [media.small.up]: {
         fontSize: 14,
@@ -301,9 +309,18 @@ export const input = recipe({
     },
   },
   variants: {
+    size: {
+      small: {
+        height: 30,
+      },
+      normal: {
+        height: 48,
+      },
+    },
     focus: {
       true: {
         color: 'var(--main-focus-color)',
+        ['-webkit-text-fill-color' as string]: 'var(--main-focus-color) !important',
         selectors: {
           '&:-webkit-autofill': {
             ['-webkit-text-fill-color' as string]: 'var(--main-focus-color) !important',

@@ -24,7 +24,7 @@ export type InputTypes =
   | 'url'
   | 'week';
 
-type NewType = ComponentPropsWithoutRef<'input'> & {
+type TextInputBase = Omit<ComponentPropsWithoutRef<'input'>, 'size'> & {
   name: string;
   value?: string;
   defaultValue?: string;
@@ -32,6 +32,7 @@ type NewType = ComponentPropsWithoutRef<'input'> & {
   id?: string;
   autoComplete?: string;
   radius?: RadiusKeys;
+  size?: 'small' | 'normal';
   disabled?: boolean;
   readOnly?: boolean;
   backgroundColor?: 'light' | 'main' | 'dark';
@@ -43,6 +44,7 @@ type NewType = ComponentPropsWithoutRef<'input'> & {
   placeholder?: string;
   className?: string;
   error?: string | undefined;
+  material?: boolean;
 };
 
-export type TextInputProps = NewType & ({ type: 'hidden'; label?: never } | { type: InputTypes; label: string });
+export type TextInputProps = TextInputBase & ({ type: 'hidden'; label?: never } | { type: InputTypes; label?: string });

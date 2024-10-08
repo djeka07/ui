@@ -95,6 +95,8 @@ export const svg = recipe({
       grey700: { fill: 'var(--700-grey-color)' },
       grey800: { fill: 'var(--800-grey-color)' },
       grey900: { fill: 'var(--900-grey-color)' },
+      gridHeader: { fill: 'var(--grid-header-fg-color)' },
+      gridBorder: { fill: 'var(--grid-border-fg-color)' },
       black: { fill: 'var(--common-black-color)' },
       heading: { fill: 'var(--main-heading-color)' },
       'success-light': { fill: 'var(--light-success-color)' },
