@@ -13,15 +13,19 @@ stages:
   - stage: Deploy
     displayName: Deploy to static app
     jobs:
-    - job: Deploy
+    - job: BuildAndDeploy
+      displayName: Build and deploy to storybook
       steps:
       - task: YarnInstaller@3
+        displayName: Install Yarn 1.22
         inputs:
           versionSpec: '1.22'
       - task: Yarn@3
+        displayName: Install Packages
         inputs:
           arguments: 'install'
       - task: Yarn@3
+        displayName: Build
         inputs:
           arguments: 'build'
       - task: AzureStaticWebApp@0
