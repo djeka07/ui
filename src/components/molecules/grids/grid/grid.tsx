@@ -1,42 +1,15 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import {
-  ColumnDefinitionState,
-  ColumnDefinitionType,
-  DefaultColumnDefinitionType,
-  FilterItemModel,
-  GridRenderers,
-  GridTableRenderers,
-  onGridUpdate,
-  RowClassRules,
-} from './grid.type';
-import { GridVariants, root, wrapper } from './grid.css';
 import { css, isEmpty } from '@djeka07/utils';
-import { GridHeader } from '../../../atoms/grids/grid-header';
-import { GridDefaultLoader } from '../../../atoms/grids/grid-default-loader';
-import { GridRows } from '../../../atoms/grids/grid-rows';
 import Fuse from 'fuse.js';
-
-type GridProps<T> = GridVariants & {
-  items: T[];
-  getRowId: (props: T) => string;
-  onRowClick?: (item: T) => void;
-  isLoading?: boolean;
-  total?: number;
-  className?: string;
-  columnClassName?: string;
-  headerClassName?: string;
-  headerCellClassName?: string;
-  renderers?: GridRenderers;
-  loaderRenderer?: string;
-  itemClassName?: string;
-  columnDefinition: ColumnDefinitionType[];
-  defaultColumnDefinition?: DefaultColumnDefinitionType;
-  rowClassRules?: RowClassRules;
-  onUpdate?: (params: onGridUpdate) => void;
-  rowModelType?: 'client' | 'server';
-};
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { GridDefaultLoader } from '../../../atoms/grids/grid-default-loader';
+import { GridHeader } from '../../../atoms/grids/grid-header';
+import { GridRows } from '../../../atoms/grids/grid-rows';
+import { root, wrapper } from './grid.css';
+import { ColumnDefinitionState, ColumnDefinitionType, FilterItemModel, GridTableRenderers } from './grid.type';
+import { GridProps } from './grid.props';
+import { ClientGrid } from '../client-grid';
 
 const Grid = <T,>({
   columnDefinition,
@@ -53,21 +26,17 @@ const Grid = <T,>({
   loaderRenderer,
   radius = 'small',
   onUpdate,
+  total,
   rowClassRules,
   rowModelType = 'client',
   defaultColumnDefinition = { autoFill: true, minWidth: 100, width: 200 },
 }: GridProps<T>) => {
   const ref = useRef<HTMLDivElement>(null);
   const [columnDefinitionState, setColumnDefinitionState] = useState<ColumnDefinitionState[]>(columnDefinition);
-
+  const [stateItems, setStateItems] = useState<T[]>(items);
   const definitionsToShow = useMemo(
     () => columnDefinitionState?.filter((definition) => definition.hide !== true),
     [columnDefinitionState],
-  );
-
-  const fusedItems = useMemo(
-    () => new Fuse(items, { keys: definitionsToShow.map((def) => def.field), distance: 900 }),
-    [definitionsToShow, items],
   );
 
   const onGridColumnResize = useCallback((column: ColumnDefinitionType, newSize: number) => {
@@ -83,7 +52,10 @@ const Grid = <T,>({
 
   const onResize = useCallback(() => {
     const { width } = ref.current?.getBoundingClientRect() || { width: 0 };
-    const columnWidth = width / columnDefinitionState?.length || 0;
+    const numberOfColumns = columnDefinitionState?.length;
+    const gap = numberOfColumns * 2;
+    const columnWidth = width / numberOfColumns - gap || 0;
+    console.log(width, columnWidth);
     setColumnDefinitionState((prev) =>
       prev.map((columnDefinition) => {
         const minWidth = columnDefinition.minWidth || defaultColumnDefinition.minWidth;
@@ -112,47 +84,35 @@ const Grid = <T,>({
     };
   }, [columnDefinitionState.length, defaultColumnDefinition.autoFill, defaultColumnDefinition.minWidth, onResize]);
 
-  const onFilterChange = (filter: FilterItemModel) => {
-    console.log(filter, fusedItems.search({ $and: [{ [filter.field]: filter.filter }] }));
+  const onGridColumnReorder = (newOrder: ColumnDefinitionState[]) => {
+    setColumnDefinitionState(newOrder);
   };
 
   return (
     <div ref={ref} className={css(root({ radius }), className)}>
       <div className={wrapper}>
-        {!isEmpty(definitionsToShow) && (
-          <GridHeader
+        {rowModelType === 'client' ? (
+          <ClientGrid
             columnDefinition={definitionsToShow}
-            onUpdate={onUpdate}
-            onFilterChange={onFilterChange}
             defaultColumnDefinition={defaultColumnDefinition}
-            className={headerClassName}
-            headerCellClassName={headerCellClassName}
-            onResize={onGridColumnResize}
-            radius={radius}
-          />
-        )}
-        {isLoading ? (
-          !!loaderRenderer && !!renderers?.[loaderRenderer] ? (
-            (renderers as GridTableRenderers)[loaderRenderer]()
-          ) : (
-            <GridDefaultLoader
-              columnDefinitions={definitionsToShow}
-              defaultColumnDefinition={defaultColumnDefinition}
-              rows={10}
-            />
-          )
-        ) : (
-          <GridRows
             getRowId={getRowId}
-            className={columnClassName}
-            itemClassName={itemClassName}
-            onRowClick={onRowClick}
-            columnDefinition={definitionsToShow}
-            defaultColumnDefinition={defaultColumnDefinition}
-            renderers={renderers}
-            rowClassRules={rowClassRules ? Object.entries(rowClassRules) : undefined}
             items={items}
+            columnClassName={columnClassName}
+            headerCellClassName={headerCellClassName}
+            headerClassName={headerClassName}
+            isLoading={isLoading}
+            itemClassName={itemClassName}
+            loaderRenderer={loaderRenderer}
+            onGridColumnResize={onGridColumnResize}
+            onGridColumnReorder={onGridColumnReorder}
+            onRowClick={onRowClick}
+            radius={radius}
+            renderers={renderers}
+            rowClassRules={rowClassRules}
+            total={total}
           />
+        ) : (
+          <div>Server</div>
         )}
       </div>
     </div>

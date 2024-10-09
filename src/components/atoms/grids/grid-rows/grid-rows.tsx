@@ -46,32 +46,38 @@ const GridRows = <T,>({
 
   return (
     <div className={css(root, className)}>
-      {items?.map((item, index) => {
-        const rowClasses = !isEmpty(rowClassRules) ? getRowClasses(item) : undefined;
-        return (
-          <div key={getRowId(item)} className={css(wrapper({ odd: index % 2 !== 0 }), rowClassName, rowClasses)}>
-            {columnDefinition.map((def) => {
-              const renderer = renderers?.[def.cellRenderer as string];
-              const value = item?.[def.field as keyof T];
-              return value ? (
-                <GridItem
-                  row={index}
-                  columnDefinition={def}
-                  className={itemClassName}
-                  tabIndex={index + 1}
-                  onClick={onRowClick ? () => onRowClick(item) : undefined}
-                  key={`-grid-item-${def.field}-${value}`}
-                  defaultColumnDefinition={defaultColumnDefinition}
-                  onMount={(width) => ref.current.push(width)}
-                  renderer={
-                    renderer ? () => renderer({ data: item, value: value as T[keyof T] }) : (value as ReactNode)
-                  }
-                />
-              ) : null;
-            })}
-          </div>
-        );
-      }) || 'no items'}
+      {!isEmpty(items) ? (
+        <>
+          {items.map((item, index) => {
+            const rowClasses = !isEmpty(rowClassRules) ? getRowClasses(item) : undefined;
+            return (
+              <div key={getRowId(item)} className={css(wrapper({ odd: index % 2 !== 0 }), rowClassName, rowClasses)}>
+                {columnDefinition.map((def) => {
+                  const renderer = renderers?.[def.cellRenderer as string];
+                  const value = item?.[def.field as keyof T];
+                  return value ? (
+                    <GridItem
+                      row={index}
+                      columnDefinition={def}
+                      className={itemClassName}
+                      tabIndex={index + 1}
+                      onClick={onRowClick ? () => onRowClick(item) : undefined}
+                      key={`-grid-item-${def.field}-${value}`}
+                      defaultColumnDefinition={defaultColumnDefinition}
+                      onMount={(width) => ref.current.push(width)}
+                      renderer={
+                        renderer ? () => renderer({ data: item, value: value as T[keyof T] }) : (value as ReactNode)
+                      }
+                    />
+                  ) : null;
+                })}
+              </div>
+            );
+          })}
+        </>
+      ) : (
+        'no items'
+      )}
     </div>
   );
 };

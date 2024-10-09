@@ -9,6 +9,7 @@ import { Typography } from '../../../atoms';
 const meta: Meta<typeof Grid> = {
   title: 'Molecules/Grids/Grid',
   component: Grid,
+  tags: ['!autodocs'],
 };
 
 const DateRenderer = (props: CellRenderParams): JSX.Element => <div>{formatDate(props.value)}</div>;

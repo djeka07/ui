@@ -5,8 +5,10 @@ export const root = recipe({
   base: {
     position: 'relative',
     maxHeight: 'calc(100vh - 48px)',
-    overflow: 'auto',
+    overflowX: 'auto',
     boxShadow: 'var(--main-box-shadow)',
+    backgroundColor: 'var(--grid-main-bg-color)',
+    minHeight: 200,
   },
   variants: {
     radius: {

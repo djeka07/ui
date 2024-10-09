@@ -15,3 +15,7 @@ export const root = style({
     },
   },
 });
+
+export const gridColumnHeaderWrapper = style({
+  padding: '4px 0',
+});

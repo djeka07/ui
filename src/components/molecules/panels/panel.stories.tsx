@@ -11,6 +11,7 @@ import { PanelsProvider } from './panel.context';
 const meta: Meta<typeof PanelContainer> = {
   title: 'Molecules/Panels/Panel',
   component: PanelContainer,
+  tags: ['!autodocs'],
 };
 
 export default meta;

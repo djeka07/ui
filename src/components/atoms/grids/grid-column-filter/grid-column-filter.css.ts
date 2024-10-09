@@ -7,10 +7,37 @@ export const root = style({
   gap: 8,
 });
 
-export const button = style({
-  border: 0,
-  backgroundColor: 'transparent',
-  cursor: 'pointer',
+export const button = recipe({
+  base: {
+    border: 0,
+    backgroundColor: 'transparent',
+    cursor: 'pointer',
+  },
+  variants: {
+    active: {
+      true: {
+        backgroundColor: 'var(--main-primary-color)',
+        selectors: {
+          '&:hover': {
+            backgroundColor: 'color-mix(in srgb, var(--main-primary-color), black 50%)',
+          },
+        },
+      },
+    },
+  },
+});
+
+export const icon = recipe({
+  base: {
+    fill: 'var(--grid-header-fg-color)',
+  },
+  variants: {
+    active: {
+      true: {
+        fill: 'var(--white-common-color)',
+      },
+    },
+  },
 });
 
 export const textInput = style({

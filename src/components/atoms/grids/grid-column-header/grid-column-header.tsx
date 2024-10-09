@@ -1,17 +1,23 @@
 import { css } from '@djeka07/utils';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { ColumnDefinitionType, DefaultColumnDefinitionType, FilterItemModel } from '../grid.type';
+import { useCallback, useEffect, useRef, useState, DragEvent } from 'react';
+import { ColumnDefinitionState, DefaultColumnDefinitionType, FilterItemModel } from '../grid.type';
 import { resize, root, text, wrapper } from './grid-column-header.css';
 import { useDidUpdate } from '@djeka07/hooks';
 import { GridColumnFilterWrapper } from '../grid-column-filter';
 import { PopupVariants } from '../grid-column-filter/grid-column-filter.css';
 
 type GridColumnHeaderProps = PopupVariants & {
+  appliedFilter?: FilterItemModel;
   className?: string;
-  columnDefinition: ColumnDefinitionType;
+  draggingDefinition: ColumnDefinitionState | null;
+  draggingOverDefinition: ColumnDefinitionState | null;
+  columnDefinition: ColumnDefinitionState;
   defaultColumnDefinition: DefaultColumnDefinitionType;
-  onResize?: (column: ColumnDefinitionType, newSize: number) => void;
   onFilterChange?: (filter: FilterItemModel) => void;
+  onResize?: (column: ColumnDefinitionState, newSize: number) => void;
+  onDragStart: (e: DragEvent<HTMLDivElement>, columnDefinition: ColumnDefinitionState) => void;
+  onDragEnd: (e: DragEvent<HTMLDivElement>) => void;
+  onDragOver: (e: DragEvent<HTMLDivElement>, columnDefinition: ColumnDefinitionState) => void;
 };
 
 type ColumnState = {
@@ -20,11 +26,17 @@ type ColumnState = {
 };
 
 const GridColumnHeader = ({
+  draggingDefinition,
+  draggingOverDefinition,
+  appliedFilter,
+  className,
   columnDefinition,
   defaultColumnDefinition,
-  className,
-  onResize,
   onFilterChange,
+  onResize,
+  onDragStart,
+  onDragEnd,
+  onDragOver,
   radius,
 }: GridColumnHeaderProps) => {
   const shouldRenderFilter = columnDefinition.filter !== false && columnDefinition.floatingFilter !== true;
@@ -85,19 +97,43 @@ const GridColumnHeader = ({
       currentRef?.removeEventListener('mousedown', onMouseDown);
     };
   }, [defaultColumnDefinition.autoFill, onMouseDown]);
+
+  const internalOnDragStart = (e: DragEvent<HTMLDivElement>) => {
+    onDragStart(e, columnDefinition);
+  };
+
+  const internalOnDragOver = (e: DragEvent<HTMLDivElement>) => {
+    onDragOver(e, columnDefinition);
+  };
+
+  console.log(draggingDefinition, draggingOverDefinition);
+
   return (
     <div
-      className={css(root(), className)}
+      className={css(
+        root({
+          showDropZone: !!draggingDefinition && draggingDefinition.field !== columnDefinition.field,
+          showActiveDropZone: !!draggingOverDefinition && draggingOverDefinition.field === columnDefinition.field,
+        }),
+        className,
+      )}
       ref={ref}
       style={{
         minWidth,
         width: state.width,
       }}
+      id={columnDefinition.field}
+      draggable
+      onDragStart={internalOnDragStart}
+      onDragEnd={onDragEnd}
+      onDragOver={internalOnDragOver}
+      onDrop={(e) => console.log('drop', e)}
     >
       <div className={wrapper({ shouldRenderFloatingFilter })}>
         <div className={text}>{columnDefinition.fieldName}</div>
         {shouldRenderFloatingFilter && (
           <GridColumnFilterWrapper
+            appliedFilter={appliedFilter}
             columnDefinition={columnDefinition}
             isFloating
             radius={radius}
@@ -107,7 +143,11 @@ const GridColumnHeader = ({
         {columnDefinition.resizeable !== false && <div ref={dragRef} className={resize} />}
       </div>
       {shouldRenderFilter && (
-        <GridColumnFilterWrapper columnDefinition={columnDefinition} onFilterChange={onFilterChange} />
+        <GridColumnFilterWrapper
+          appliedFilter={appliedFilter}
+          columnDefinition={columnDefinition}
+          onFilterChange={onFilterChange}
+        />
       )}
     </div>
   );

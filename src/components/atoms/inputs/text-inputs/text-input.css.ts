@@ -39,6 +39,10 @@ export const label = recipe({
     fontSize: 'var(--small-font-size)',
     marginBottom: 4,
     position: 'absolute',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    width: 'calc(100% - 24px)',
+    overflow: 'hidden',
     zIndex: 1,
     top: 0,
     left: 0,
@@ -59,6 +63,7 @@ export const label = recipe({
       true: {
         fontSize: '0.925rem',
         transform: 'translate(14px, -7px) scale(0.75)',
+        width: '100%',
       },
     },
     focus: {

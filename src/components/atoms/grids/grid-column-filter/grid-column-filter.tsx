@@ -1,16 +1,17 @@
-import { useDebounce, useDidUpdate } from '@djeka07/hooks';
+import { useDebounce, useDidUpdate, usePrevious } from '@djeka07/hooks';
 import { ChangeEvent, useState } from 'react';
 import { Icon } from '../../icons';
 import { Button, DropDown, TextInput } from '../../inputs';
 import { Popup } from '../../popups';
 import { ColumnDefinitionType, FilterItemModel, FilterOperator } from '../grid.type';
 import { columnTypes, FilterParams } from './filter-column-types';
-import { button, PopupVariants, popupWrapper, root, textInput } from './grid-column-filter.css';
+import { button, icon, PopupVariants, popupWrapper, root, textInput } from './grid-column-filter.css';
 
 type GridColumnFilterProps = PopupVariants & {
   onFilterChange?: (filter: FilterItemModel) => void;
   columnDefinition: ColumnDefinitionType;
   isFloating?: boolean;
+  appliedFilter?: FilterItemModel;
 };
 
 type GridColumnFilterBaseProps = {
@@ -68,12 +69,13 @@ const GridColumnFilterWrapper = ({
   isFloating = false,
   radius,
   onFilterChange,
+  appliedFilter,
 }: GridColumnFilterProps) => {
   const [state, setState] = useState<Pick<FilterItemModel, 'type' | 'filter'>>({
     type: FilterOperator.CONTAINS,
     filter: '',
   });
-
+  const previousState = usePrevious(state);
   const internalFilterChange = useDebounce(state, 300);
 
   const onChange = (value: string) => {
@@ -81,7 +83,7 @@ const GridColumnFilterWrapper = ({
   };
 
   useDidUpdate(() => {
-    if (internalFilterChange.filter) {
+    if (previousState) {
       onFilterChange?.({ ...internalFilterChange, field: columnDefinition.field, filterType: columnDefinition.type });
     }
   }, [internalFilterChange]);
@@ -103,6 +105,7 @@ const GridColumnFilterWrapper = ({
     filterParams: undefined,
     defaultFilterOption: undefined,
   };
+  const isApplied = appliedFilter?.field === columnDefinition?.field;
   return (
     <Popup
       wrapperClassName={popupWrapper({ radius })}
@@ -110,13 +113,17 @@ const GridColumnFilterWrapper = ({
         <Button
           size="xsmall"
           transparent
-          className={button}
+          className={button({ active: isApplied })}
           onClick={(e) => {
-            e.stopPropagation();
             toggleShow();
+            e.stopPropagation();
           }}
         >
-          <Icon name="Filter" color="gridHeader" />
+          <Icon
+            className={icon({ active: isApplied })}
+            name="Filter"
+            color={appliedFilter?.field === columnDefinition?.field ? 'success-dark' : 'gridHeader'}
+          />
         </Button>
       )}
     >
