@@ -1,10 +1,11 @@
 import createBorder, { Border } from './border';
 import createBreakPoints, { BreakPointProps } from './breakpoint';
-import createTypography, { TypographyProps } from './typography';
+import createTypography, { TypographyProps, SizeKeys } from './typography';
 import createPalette, { Palette } from './palette';
 import createStyleSheet from './stylesheet';
+import media from './media.css';
 
-export type Theme = {
+type Theme = {
   typography: TypographyProps;
   breakpoint: BreakPointProps;
   border: Border;
@@ -19,4 +20,5 @@ const createDefaultTheme = (theme: 'dark' | 'light') =>
     border: createBorder,
   }) satisfies Theme;
 
-export { createStyleSheet, createDefaultTheme };
+export { createStyleSheet, createDefaultTheme, media };
+export type { TypographyProps, BreakPointProps, Border, Palette, Theme, SizeKeys };

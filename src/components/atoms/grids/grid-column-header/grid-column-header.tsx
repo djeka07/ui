@@ -1,5 +1,5 @@
 import { css } from '@djeka07/utils';
-import { useCallback, useEffect, useRef, useState, DragEvent } from 'react';
+import { useCallback, useEffect, useRef, useState, DragEvent, MutableRefObject } from 'react';
 import { ColumnDefinitionState, DefaultColumnDefinitionType, FilterItemModel } from '../grid.type';
 import { resize, root, text, wrapper } from './grid-column-header.css';
 import { useDidUpdate } from '@djeka07/hooks';
@@ -9,6 +9,7 @@ import { PopupVariants } from '../grid-column-filter/grid-column-filter.css';
 type GridColumnHeaderProps = PopupVariants & {
   appliedFilter?: FilterItemModel;
   className?: string;
+  gridColumnHeaderRefs: MutableRefObject<HTMLDivElement[]>;
   draggingDefinition: ColumnDefinitionState | null;
   draggingOverDefinition: ColumnDefinitionState | null;
   columnDefinition: ColumnDefinitionState;
@@ -37,6 +38,7 @@ const GridColumnHeader = ({
   onDragStart,
   onDragEnd,
   onDragOver,
+  gridColumnHeaderRefs,
   radius,
 }: GridColumnHeaderProps) => {
   const shouldRenderFilter = columnDefinition.filter !== false && columnDefinition.floatingFilter !== true;
@@ -91,10 +93,10 @@ const GridColumnHeader = ({
   );
 
   useEffect(() => {
-    const currentRef = dragRef.current;
-    currentRef?.addEventListener('mousedown', onMouseDown);
+    const dragCurrentRef = dragRef.current;
+    dragCurrentRef?.addEventListener('mousedown', onMouseDown);
     return () => {
-      currentRef?.removeEventListener('mousedown', onMouseDown);
+      dragCurrentRef?.removeEventListener('mousedown', onMouseDown);
     };
   }, [defaultColumnDefinition.autoFill, onMouseDown]);
 
@@ -106,8 +108,6 @@ const GridColumnHeader = ({
     onDragOver(e, columnDefinition);
   };
 
-  console.log(draggingDefinition, draggingOverDefinition);
-
   return (
     <div
       className={css(
@@ -117,7 +117,7 @@ const GridColumnHeader = ({
         }),
         className,
       )}
-      ref={ref}
+      ref={(element: HTMLDivElement) => gridColumnHeaderRefs.current.push(element)}
       style={{
         minWidth,
         width: state.width,
@@ -125,9 +125,9 @@ const GridColumnHeader = ({
       id={columnDefinition.field}
       draggable
       onDragStart={internalOnDragStart}
-      onDragEnd={onDragEnd}
       onDragOver={internalOnDragOver}
-      onDrop={(e) => console.log('drop', e)}
+      onDragEnd={onDragEnd}
+      onDrop={(e) => console.log(e)}
     >
       <div className={wrapper({ shouldRenderFloatingFilter })}>
         <div className={text}>{columnDefinition.fieldName}</div>

@@ -5,7 +5,7 @@ import { resolve } from 'path';
 import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig, Plugin } from 'vite';
 import dts from 'vite-plugin-dts';
-import { libInjectCss } from 'vite-plugin-lib-inject-css';
+// import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
@@ -13,7 +13,7 @@ export default defineConfig({
   plugins: [
     preserveDirectives() as Plugin,
     react(),
-    libInjectCss(),
+    // libInjectCss(),
     svgr({ include: '**/*.svg' }),
     dts({ include: 'src', exclude: ['**/*.stories.tsx'], insertTypesEntry: true, rollupTypes: true }),
     tsconfigPaths(),

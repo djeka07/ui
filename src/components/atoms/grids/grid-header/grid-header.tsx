@@ -1,5 +1,5 @@
 import { css } from '@djeka07/utils';
-import { DragEvent, useRef, useState } from 'react';
+import { DragEvent, useEffect, useRef, useState } from 'react';
 import { GridColumnHeader } from '../grid-column-header';
 import {
   ColumnDefinitionState,
@@ -10,6 +10,8 @@ import {
 } from '../grid.type';
 import { gridColumnHeaderWrapper, root } from './grid-header.css';
 import { PopupVariants } from '../grid-column-filter/grid-column-filter.css';
+import { motion } from 'framer-motion';
+import { useDidMount } from '@djeka07/hooks';
 
 type GridHeaderProps = PopupVariants & {
   className?: string;
@@ -34,14 +36,16 @@ const GridHeader = ({
   radius,
   appliedFilters,
 }: GridHeaderProps) => {
+  const gridColumnHeaderRefs = useRef<HTMLDivElement[]>([]);
   const headerRef = useRef<HTMLDivElement>(null);
   const [draggingDefinition, setDraggingDefinition] = useState<ColumnDefinitionState | null>(null);
   const [draggingOverDefinition, setDraggingOverDefinition] = useState<ColumnDefinitionState | null>(null);
   const onDragStart = (e: DragEvent<HTMLDivElement>, columnDefinition: ColumnDefinitionState) => {
     setDraggingDefinition(columnDefinition);
+    console.log('start');
   };
 
-  const onDragEnd = () => {
+  const onReorder = () => {
     if (draggingDefinition?.field !== draggingOverDefinition?.field) {
       const newOrder = columnDefinition.reduce((amount, curr) => {
         if (!!draggingDefinition && curr.field === draggingOverDefinition?.field) {
@@ -56,20 +60,31 @@ const GridHeader = ({
       }, [] as ColumnDefinitionState[]);
       onColumnReorder?.(newOrder);
     }
+  };
+
+  const onDragEnd = (e: DragEvent<HTMLDivElement>) => {
+    console.log('dragend', e);
     setDraggingDefinition(null);
     setDraggingOverDefinition(null);
   };
 
-  const onDragOver = (e: DragEvent<HTMLDivElement>, columnDefinition: ColumnDefinitionState) => {
-    if (draggingOverDefinition?.field !== columnDefinition.field) {
-      setDraggingOverDefinition(columnDefinition);
+  const onDragOver = (e: DragEvent<HTMLDivElement>, colDef: ColumnDefinitionState) => {
+    if (draggingOverDefinition?.field !== colDef.field) {
+      setDraggingOverDefinition(colDef);
     }
+    onReorder();
   };
+
+  useEffect(() => {
+    console.log(gridColumnHeaderRefs);
+  }, []);
+
   return (
-    <div id="drop_zone" ref={headerRef} className={css(root, className)} onDrop={(e) => console.log('drop', e)}>
+    <div ref={headerRef} className={css(root, className)}>
       {columnDefinition.map((colDef, columnIndex) => (
         <div className={gridColumnHeaderWrapper} key={`column-${columnIndex}-${colDef.field}`}>
           <GridColumnHeader
+            gridColumnHeaderRefs={gridColumnHeaderRefs}
             draggingDefinition={draggingDefinition}
             draggingOverDefinition={draggingOverDefinition}
             onDragStart={onDragStart}
