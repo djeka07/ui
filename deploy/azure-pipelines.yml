@@ -1,0 +1,37 @@
+trigger:
+
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - name: appToken
+    value: $(token)
+
+stages:
+  - stage: Deploy
+    displayName: Deploy to static app
+    jobs:
+    - job: BuildAndDeploy
+      displayName: Build and deploy to storybook
+      steps:
+      - task: YarnInstaller@3
+        displayName: Install Yarn 1.22
+        inputs:
+          versionSpec: '1.22'
+      - task: Yarn@3
+        displayName: Install Packages
+        inputs:
+          arguments: 'install'
+      - task: Yarn@3
+        displayName: Build
+        inputs:
+          arguments: 'build'
+      - task: AzureStaticWebApp@0
+        inputs:
+          app_build_command: 'yarn build:storybook'
+          output_location: '/storybook-static'
+          skip_app_build: false
+          is_static_export: true
+          azure_static_web_apps_api_token: '$(appToken)'

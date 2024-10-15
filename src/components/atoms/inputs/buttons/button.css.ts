@@ -251,7 +251,7 @@ export const button = recipe({
           '&:hover': {
             backgroundColor: 'var(--main-warning-color)',
             borderColor: 'var(--main-warning-color)',
-            color: 'var(--white-common-color)',
+            color: 'var(--black-common-color)',
           },
         },
       },
@@ -272,28 +272,7 @@ export const button = recipe({
           '&:hover': {
             backgroundColor: 'var(--main-info-color)',
             borderColor: 'var(--main-info-color)',
-            color: 'var(--white-common-color)',
-          },
-        },
-      },
-    },
-    {
-      variants: {
-        info: true,
-        outlined: true,
-      },
-      style: {
-        border: '2px solid var(--main-info-color)',
-        backgroundColor: 'transparent',
-        color: 'var(--main-info-color)',
-        selectors: {
-          '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-info-color)`,
-          },
-          '&:hover': {
-            backgroundColor: 'var(--main-info-color)',
-            borderColor: 'var(--main-info-color)',
-            color: 'var(--white-common-color)',
+            color: 'var(--black-common-color)',
           },
         },
       },

@@ -7,6 +7,7 @@ import Close from './close.svg';
 import CloseCircle from './x-circle.svg';
 import Down from './chevron-down.svg';
 import Edit from './edit.svg';
+import Filter from './filter.svg';
 import Home from './home.svg';
 import Layers from './layers.svg';
 import Left from './chevron-left.svg';
@@ -43,6 +44,7 @@ export {
   CloseCircle,
   Down,
   Edit,
+  Filter,
   Home,
   Layers,
   Left,
@@ -80,6 +82,7 @@ export type IconNames =
   | 'CloseCircle'
   | 'Down'
   | 'Edit'
+  | 'Filter'
   | 'Home'
   | 'Layers'
   | 'Left'
