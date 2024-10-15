@@ -143,11 +143,13 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 size="normal"
               />
             ))}
-          <fieldset className={fieldset({ errored: !!error, errorFocus: focus && !!error, focus: focus, radius })}>
-            <legend className={legend({ focus: focus || autoFocus || !!inputValue })}>
-              {!!label && <span className={legentSpan}>{label}</span>}
-            </legend>
-          </fieldset>
+          {type !== 'hidden' && (
+            <fieldset className={fieldset({ errored: !!error, errorFocus: focus && !!error, focus: focus, radius })}>
+              <legend className={legend({ focus: focus || autoFocus || !!inputValue })}>
+                {!!label && <span className={legentSpan}>{label}</span>}
+              </legend>
+            </fieldset>
+          )}
         </div>
         <AnimatePresence>
           {!!error && (

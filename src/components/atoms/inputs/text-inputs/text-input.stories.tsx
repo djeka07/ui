@@ -29,3 +29,9 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
+
+export const WithTypeHidden: Story = {
+  args: {
+    type: 'hidden',
+  },
+};
