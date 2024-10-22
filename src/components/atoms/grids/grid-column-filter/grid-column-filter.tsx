@@ -3,13 +3,19 @@ import { ChangeEvent, useState } from 'react';
 import { Icon } from '../../icons';
 import { Button, DropDown, TextInput } from '../../inputs';
 import { Popup } from '../../popups';
-import { ColumnDefinitionType, FilterItemModel, FilterOperator } from '../grid.type';
 import { columnTypes, FilterParams } from './filter-column-types';
-import { button, icon, PopupVariants, popupWrapper, root, textInput } from './grid-column-filter.css';
+import { button, icon, PopupVariants, popupWrapper, root } from './grid-column-filter.css';
+import {
+  ColumnDefinitionType,
+  FilterItemModel,
+  FilterOperator,
+  GetLocaleTextFunc,
+} from '../../../molecules/grids/grid/grid.type';
 
 type GridColumnFilterProps = PopupVariants & {
   onFilterChange?: (filter: FilterItemModel) => void;
   columnDefinition: ColumnDefinitionType;
+  getLocaleText?: GetLocaleTextFunc;
   isFloating?: boolean;
   appliedFilter?: FilterItemModel;
 };
@@ -41,7 +47,6 @@ const GridColumnFilterBase = ({
         <DropDown
           size="small"
           label="Type"
-          selectClassName={textInput}
           name="filterParams"
           items={filterParams.filterOptions.map((filterOption) => ({
             name: filterOption,
@@ -54,7 +59,6 @@ const GridColumnFilterBase = ({
         size="small"
         label={label}
         placeholder={placeholder}
-        className={textInput}
         name={field}
         type="text"
         value={filter}
@@ -69,6 +73,7 @@ const GridColumnFilterWrapper = ({
   isFloating = false,
   radius,
   onFilterChange,
+  getLocaleText,
   appliedFilter,
 }: GridColumnFilterProps) => {
   const [state, setState] = useState<Pick<FilterItemModel, 'type' | 'filter'>>({
@@ -88,7 +93,14 @@ const GridColumnFilterWrapper = ({
     }
   }, [internalFilterChange]);
 
-  const placeholder = `Filter on ${columnDefinition.fieldName}`;
+  const placeholder =
+    getLocaleText?.({ key: 'filter-on', defaultValue: columnDefinition.fieldName }) ||
+    `Filter on ${columnDefinition.fieldName}`;
+
+  const filterParams = (columnTypes[columnDefinition.type]?.filterParams as FilterParams) || {
+    filterParams: undefined,
+    defaultFilterOption: undefined,
+  };
 
   if (!isFloating) {
     return (
@@ -97,14 +109,11 @@ const GridColumnFilterWrapper = ({
         placeholder={placeholder}
         field={columnDefinition.field}
         filter={state.filter}
+        filterParams={filterParams}
         onChange={onChange}
       />
     );
   }
-  const filterParams = (columnTypes[columnDefinition.type]?.filterParams as FilterParams) || {
-    filterParams: undefined,
-    defaultFilterOption: undefined,
-  };
   const isApplied = appliedFilter?.field === columnDefinition?.field;
   return (
     <Popup

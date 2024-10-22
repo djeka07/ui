@@ -113,7 +113,7 @@ export const button = recipe({
       true: {
         backgroundColor: 'transparent',
         border: '2px solid transparent',
-        color: 'var(--main-input-color)',
+        color: 'var(--input-fg-color)',
         selectors: {
           '&:focus': {
             boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-info-color)`,

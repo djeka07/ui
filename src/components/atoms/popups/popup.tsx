@@ -33,7 +33,6 @@ const PopupChildren = ({ children, variants, wrapperClassName, toggleShow }: Pop
   const ref = useRef<HTMLDivElement>(null);
 
   useClickOutside(ref, () => {
-    console.log('outside');
     toggleShow();
   });
 

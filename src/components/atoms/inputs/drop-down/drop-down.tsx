@@ -90,7 +90,6 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
 
     const internalOnChange = (event: ChangeEvent<HTMLSelectElement>) => {
       const { value } = event.target;
-      console.log('onchange', event);
       setSelectedValue(value);
       setFocus(false);
       if (onChange) {
@@ -99,7 +98,6 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
     };
 
     const internalOnBlur = (event: ChangeEvent<HTMLSelectElement>) => {
-      console.log('blur', event);
       if (onBlur) {
         const { value } = event.target;
         onBlur({ value, isDefault: value === '' });

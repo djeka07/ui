@@ -35,7 +35,7 @@ export type Palette = {
   grey: Grey;
   primary: ColorVariants;
   secondary: ColorVariants;
-  input: ColorVariants;
+  input: BackgroundForeground;
   focus: ColorVariants;
   heading: ColorVariants;
   text: ColorVariants;
@@ -85,9 +85,8 @@ const createDarkPalette = (): Palette => ({
     dark: 'color-mix(in srgb, #cedff6, #000000 25%)',
   },
   input: {
-    light: '#ffffff',
-    main: '#ffffff',
-    dark: 'color-mix(in srgb, #ffffff, #000000 25%)',
+    background: 'transparent',
+    foreground: '#ffffff',
   },
   focus: {
     light: 'color-mix(in srgb, #93b0ec, white 25%)',
@@ -125,7 +124,7 @@ const createDarkPalette = (): Palette => ({
     dark: '#842029',
   },
   grid: {
-    border: 'color-mix(in srgb, transparent, #fff 10%)',
+    border: 'color-mix(in srgb, transparent, #fff 50%)',
     row: {
       odd: { background: 'color-mix(in srgb, #354052, #ffffff 25%)', foreground: '#ffffff' },
       even: { background: '#354052', foreground: '#ffffff' },
@@ -168,9 +167,8 @@ const createLightPalette = (): Palette => ({
     dark: 'color-mix(in srgb, #491b6e, #000000 25%)',
   },
   input: {
-    light: 'color-mix(in srgb, #616161, #ffffff 25%)',
-    main: '#616161',
-    dark: 'color-mix(in srgb, #616161, #000000 25%)',
+    background: '#fff',
+    foreground: '#616161',
   },
   focus: {
     light: 'color-mix(in srgb, #491b6e, #ffffff 25%)',

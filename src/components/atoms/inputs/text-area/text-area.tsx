@@ -148,6 +148,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                 errored: focus && !!error,
                 float: focus || autoFocus || !!inputValue,
                 focus: focus && !error,
+                size: 'normal',
               })}
               htmlFor={id || name}
             >

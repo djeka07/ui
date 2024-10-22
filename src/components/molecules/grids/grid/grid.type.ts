@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export enum ColumnType {
   Text = 'text',
   Number = 'number',
@@ -24,6 +23,14 @@ export enum SortType {
   DESC = 'desc',
 }
 
+export type GetLocaleTextFunc = (params: GetLocaleTextParams) => string;
+
+export type GetLocaleTextParams = {
+  key: string;
+  defaultValue?: string;
+  variableValues?: string[];
+};
+
 export type ColumnDefinitionType = {
   fieldName: string;
   field: string;
@@ -43,26 +50,37 @@ export type DefaultColumnDefinitionType = {
   autoFill: boolean;
 };
 
-export type CellRenderParams<TData = any, TValue = any> = {
-  data: TData;
-  value: TValue;
+export type DefaultGridDefinitionType = {
+  heigth: number;
 };
 
-export type GridCellRenderers = {
-  [name: string]: (props: CellRenderParams) => JSX.Element;
+type ValueOf<T> = T[keyof T];
+
+export type CellRenderParams<TData = unknown> = {
+  data: TData;
+  value: ValueOf<TData>;
+};
+
+export type TableRenderParams<T = unknown> = {
+  data: T[];
+  columnDefinition: ColumnDefinitionType;
+};
+
+export type GridCellRenderers<T> = {
+  [name: string]: (props: CellRenderParams<T>) => JSX.Element;
 };
 
 export type GridTableRenderers = {
   [name: string]: () => JSX.Element;
 };
 
-export type GridRenderers = GridCellRenderers | GridTableRenderers;
+export type GridRenderers<T> = GridCellRenderers<T> | GridTableRenderers;
 
 export type ColumnDefinitionState = ColumnDefinitionType & {
   widthChanged?: boolean;
 };
 
-export type RowEvent<TData = any> = {
+export type RowEvent<TData = unknown> = {
   data: TData;
 };
 
@@ -81,4 +99,29 @@ export type FilterItemModel = {
 
 export type SortModel = { columnField: string; sort: SortType };
 
-export type onGridUpdate = { startRow: number; endRow: number; filters: FilterItemModel[]; sorts: SortModel[] };
+export type OnGridUpdate = { startRow: number; endRow: number; filters: FilterItemModel[]; sorts: SortModel[] };
+
+export type ServerSideRequest = {
+  startRow: number;
+  endRow: number;
+  filter?: FilterItemModel[];
+  sorts?: SortModel[];
+};
+
+export type SuccessParams<T> = { items: T[]; total: number };
+
+export type GetRowsParams<T> = {
+  request: ServerSideRequest;
+  success: (params: SuccessParams<T>) => void;
+  fail: () => void;
+};
+
+export type ServerGridState<T> = {
+  items: T[];
+  total: number;
+  filter: FilterItemModel[];
+  sort: SortModel[];
+  pageNumber: number;
+  pageSize: number;
+  state: 'pending' | 'ready' | 'errored' | 'repending';
+};

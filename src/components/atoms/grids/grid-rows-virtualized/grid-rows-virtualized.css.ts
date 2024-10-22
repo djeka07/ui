@@ -1,8 +1,20 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 import media from '../../../../styles/media.css';
+import { ghostAni } from '../../skeletons/skeleton.css';
 
-export const root = style({});
+export const root = recipe({
+  base: {
+    overflow: 'auto',
+  },
+  variants: {
+    hasSidebar: {
+      true: {
+        marginRight: 25,
+      },
+    },
+  },
+});
 
 export const wrapper = recipe({
   base: {
@@ -28,4 +40,22 @@ export const wrapper = recipe({
       },
     },
   },
+});
+
+export const itemSkeleton = style({
+  animationFillMode: 'forwards',
+  background: 'linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%) 0% 0% / 900px 104px',
+  animation: `${ghostAni} 1s linear infinite`,
+  width: '100%',
+  height: 20,
+  borderRadius: 3,
+});
+
+export const text = style({
+  opacity: 0,
+});
+
+export const loaderItem = style({
+  display: 'grid',
+  alignItems: 'center',
 });

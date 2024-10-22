@@ -28,9 +28,8 @@ export default (theme: Theme) => {
     --800-grey-color: ${theme.palette.grey[800]};
     --900-grey-color: ${theme.palette.grey[900]};
 
-    --light-input-color: ${theme.palette.input.light};
-    --main-input-color: ${theme.palette.input.main};
-    --dark-input-color: ${theme.palette.input.dark};
+    --input-bg-color: ${theme.palette.input.background};
+    --input-fg-color: ${theme.palette.input.foreground};
 
     --light-focus-color: ${theme.palette.focus.light};
     --main-focus-color: ${theme.palette.focus.main};
@@ -92,7 +91,7 @@ export default (theme: Theme) => {
     --grid-main-fg-color: ${theme.palette.grid.main.foreground};
 
     --grid-footer-bg-color: ${theme.palette.grid.footer.background};
-    --grid-footer-bg-color: ${theme.palette.grid.footer.foreground};
+    --grid-footer-fg-color: ${theme.palette.grid.footer.foreground};
   
     --light-font-weight: ${theme.typography.weight.light};
     --regular-font-weight: ${theme.typography.weight.regular};

@@ -1,20 +1,30 @@
 import { css, isEmpty } from '@djeka07/utils';
-import { ReactNode, useRef } from 'react';
+import { ReactNode } from 'react';
+import { GridDefaultNoItems } from '../grid-default-no-items';
 import { GridItem } from '../grid-item';
-import { ColumnDefinitionType, DefaultColumnDefinitionType, GridRenderers, RowEvent } from '../grid.type';
+import getRowClasses from './get-row-classes';
 import { root, wrapper } from './grid-rows.css';
+import {
+  ColumnDefinitionType,
+  DefaultColumnDefinitionType,
+  GridRenderers,
+  GridTableRenderers,
+  RowEvent,
+} from '../../../molecules/grids/grid/grid.type';
 
 type GridRowsProps<T> = {
   className?: string;
   rowClassName?: string;
   itemClassName?: string;
-  renderers?: GridRenderers;
+  noItemsRenderer?: string;
+  renderers?: GridRenderers<T>;
   getRowId: (props: T) => string;
   onRowClick?: (item: T) => void;
-  items: T[];
   rowClassRules?: [string, string | ((params: RowEvent<T>) => boolean)][];
   columnDefinition: ColumnDefinitionType[];
+  items: T[];
   defaultColumnDefinition: DefaultColumnDefinitionType;
+  onCloseToBottom?: () => Promise<void>;
 };
 
 const GridRows = <T,>({
@@ -26,30 +36,16 @@ const GridRows = <T,>({
   itemClassName,
   rowClassName,
   rowClassRules,
+  noItemsRenderer,
   getRowId,
   onRowClick,
 }: GridRowsProps<T>) => {
-  const ref = useRef<number[]>([]);
-
-  const getRowClasses = (item: T): Record<string, string | boolean> | undefined => {
-    return rowClassRules?.reduce(
-      (amount, [key, value]) => {
-        if (typeof value === 'function') {
-          return { ...amount, [key]: value({ data: item }) };
-        }
-
-        return { ...amount, [key]: value };
-      },
-      {} as Record<string, string | boolean>,
-    );
-  };
-
   return (
     <div className={css(root, className)}>
       {!isEmpty(items) ? (
         <>
           {items.map((item, index) => {
-            const rowClasses = !isEmpty(rowClassRules) ? getRowClasses(item) : undefined;
+            const rowClasses = !isEmpty(rowClassRules) ? getRowClasses(item, rowClassRules) : undefined;
             return (
               <div key={getRowId(item)} className={css(wrapper({ odd: index % 2 !== 0 }), rowClassName, rowClasses)}>
                 {columnDefinition.map((def) => {
@@ -64,7 +60,6 @@ const GridRows = <T,>({
                       onClick={onRowClick ? () => onRowClick(item) : undefined}
                       key={`-grid-item-${def.field}-${value}`}
                       defaultColumnDefinition={defaultColumnDefinition}
-                      onMount={(width) => ref.current.push(width)}
                       renderer={
                         renderer ? () => renderer({ data: item, value: value as T[keyof T] }) : (value as ReactNode)
                       }
@@ -75,8 +70,10 @@ const GridRows = <T,>({
             );
           })}
         </>
+      ) : !!noItemsRenderer && !!renderers?.[noItemsRenderer] ? (
+        (renderers as GridTableRenderers)[noItemsRenderer]()
       ) : (
-        'no items'
+        <GridDefaultNoItems />
       )}
     </div>
   );
