@@ -9,7 +9,7 @@ import { button, filter } from './grid-filter-sidebar.css';
 type GridFilterSidebarProps = {
   columnDefinition: ColumnDefinitionState[];
   getLocaleText?: GetLocaleTextFunc;
-  onClose: () => void;
+  onClose?: () => void;
 };
 
 const GridFilterSidebar = ({ columnDefinition, getLocaleText }: GridFilterSidebarProps) => {
