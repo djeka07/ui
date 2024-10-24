@@ -22,6 +22,8 @@ stages:
     - job: BuildAndDeploy
       displayName: Build and deploy to storybook
       steps:
+      - checkout: self
+      - checkout: Infrastructure
       - task: YarnInstaller@3
         displayName: Install Yarn 1.22
         inputs:
