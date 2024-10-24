@@ -25,10 +25,6 @@ stages:
         inputs:
           arguments: 'install'
       - task: Yarn@3
-        displayName: Build
-        inputs:
-          arguments: 'build'
-      - task: Yarn@3
         displayName: Run test
         inputs:
           arguments: test
