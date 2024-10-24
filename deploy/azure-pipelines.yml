@@ -31,10 +31,12 @@ stages:
       - task: Yarn@3
         displayName: Install Packages
         inputs:
+          projectDirectory: '/ui'
           arguments: 'install'
       - task: Yarn@3
         displayName: Run test
         inputs:
+          projectDirectory: '/ui'
           arguments: test
       - task: Bash@3
         displayName: Check package version
@@ -50,6 +52,7 @@ stages:
         displayName: 'Publish Npm package'
         condition: and(eq(variables['SHOULD_PUBLISH'], true), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
         inputs:
+          workingDir: '/ui'
           command: 'publish'
           verbose: true
           publishEndpoint: 'Npm feed'
@@ -57,10 +60,12 @@ stages:
         displayName: Build for storybook
         condition: eq(variables['SHOULD_PUBLISH'], false)
         inputs:
+          projectDirectory: '/ui'
           arguments: 'build'
       - task: AzureStaticWebApp@0
         condition: always()
         inputs:
+          workingDirectory: '/ui'
           app_build_command: 'yarn build:storybook'
           output_location: '/storybook-static'
           skip_app_build: false
