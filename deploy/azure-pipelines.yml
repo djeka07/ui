@@ -40,6 +40,7 @@ stages:
             echo "variables: $(SHOULD_PUBLISH)"
       - task: Npm@1
         displayName: 'Publish Npm package'
+        condition: and(eq(variables['SHOULD_PUBLISH'], true), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
         inputs:
           command: 'publish'
           verbose: true
