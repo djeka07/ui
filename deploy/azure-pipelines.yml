@@ -30,7 +30,7 @@ stages:
           arguments: test
       - task: Bash@3
         inputs:
-          filePath: '$(System.DefaultWorkingDirectory)/deploy/version.sh'
+          filePath: '$(System.DefaultWorkingDirectory)/deploy/check-npm-version.sh'
       - task: Npm@1
         inputs:
           command: 'publish'
