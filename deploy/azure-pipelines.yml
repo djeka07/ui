@@ -28,7 +28,16 @@ stages:
         displayName: Build
         inputs:
           arguments: 'build'
+      - task: Yarn@3
+        displayName: Run test
+        inputs:
+          arguments: test
+      - task: Npm@1
+        inputs:
+          command: 'publish'
+          verbose: true
       - task: AzureStaticWebApp@0
+        condition: always()
         inputs:
           app_build_command: 'yarn build:storybook'
           output_location: '/storybook-static'
