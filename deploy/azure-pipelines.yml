@@ -29,9 +29,17 @@ stages:
         inputs:
           arguments: test
       - task: Bash@3
+        displayName: Check package version
         inputs:
           filePath: '$(System.DefaultWorkingDirectory)/deploy/check-npm-version.sh'
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            # Write your commands here
+            echo "variables: $(SHOULD_PUBLISH)"
       - task: Npm@1
+        displayName: 'Publish Npm package'
         inputs:
           command: 'publish'
           verbose: true
