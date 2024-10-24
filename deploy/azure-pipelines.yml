@@ -36,6 +36,7 @@ stages:
         inputs:
           command: 'publish'
           verbose: true
+          publishEndpoint: 'Npm feed'
       - task: AzureStaticWebApp@0
         condition: always()
         inputs:
