@@ -19,6 +19,16 @@ export const Primary: Story = {
   },
 };
 
+export const Secondary: Story = {
+  args: {
+    secondary: true,
+    icon: 'Message',
+    children: `loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum 
+    loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum 
+    loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum loreem ipsuum `,
+  },
+};
+
 export const Warning: Story = {
   args: {
     warning: true,

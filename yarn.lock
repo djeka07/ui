@@ -1157,6 +1157,14 @@
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
+"@storybook/addon-a11y@^8.3.6":
+  version "8.3.6"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-8.3.6.tgz#4d4528718b378886b7f5602880162145f819abad"
+  integrity sha512-EeVzUN+WaLtz/DXVBL3rIGvP8+pTuJXA3lEz9CbTQXRO7QMhzTTXLKmp8xmSA2w5H01a8XpjLcZ5LYjdKrvw0g==
+  dependencies:
+    "@storybook/addon-highlight" "8.3.6"
+    axe-core "^4.2.0"
+
 "@storybook/addon-actions@8.3.6":
   version "8.3.6"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-8.3.6.tgz#80c5dbfc2278d72dc461a954bb729165ee1dfecb"
@@ -2713,6 +2721,11 @@ axe-core@^4.10.0:
   version "4.10.0"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.10.0.tgz#d9e56ab0147278272739a000880196cdfe113b59"
   integrity sha512-Mr2ZakwQ7XUAjp7pAwQWRhhK8mQQ6JAaNWSjmjxil0R8BPioMtQsTLOolGYkji1rcL++3dCqZA3zWqpT+9Ew6g==
+
+axe-core@^4.2.0:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.10.1.tgz#7d2589b0183f05b0f23e55c2f4cdf97b5bdc66d9"
+  integrity sha512-qPC9o+kD8Tir0lzNGLeghbOrWMr3ZJpaRlCIb6Uobt/7N4FiEDvqUMnxzCHRHmg8vOg14kr5gVNyScRmbMaJ9g==
 
 axobject-query@^4.1.0:
   version "4.1.0"

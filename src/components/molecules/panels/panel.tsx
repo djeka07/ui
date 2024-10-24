@@ -1,6 +1,6 @@
 'use client';
 import { isEscape } from '@djeka07/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import { JSX, useCallback, useEffect, useRef, useState } from 'react';
 import { Icon } from '../../atoms';
 import { getPanelHiddenVariants, getPanelVisibleVariants } from './get-panel-variants';
@@ -109,7 +109,7 @@ const Panel = ({
   return (
     <AnimatePresence onExitComplete={onExit}>
       {isActive && (
-        <motion.div
+        <m.div
           style={{ zIndex: zIndex || 50 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -117,7 +117,7 @@ const Panel = ({
           transition={{ duration: animationDuration.overlay.in }}
           className={overlay({ panelPosition: panelElementProps?.panelPosition })}
         >
-          <motion.div
+          <m.div
             role="dialog"
             aria-labelledby="panel"
             aria-modal="true"
@@ -148,8 +148,8 @@ const Panel = ({
                 </button>
               )}
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

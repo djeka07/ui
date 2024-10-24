@@ -11,7 +11,7 @@ import {
   wrapper,
 } from '../text-inputs/text-input.css';
 import { css, isObjectEmpty } from '@djeka07/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, JSX, useState } from 'react';
 import { dropDown, iconWrapper } from './drop-down.css';
 import { RadiusKeys } from '../../../../styles/border';
@@ -161,7 +161,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
           </fieldset>
           <AnimatePresence>
             {!!error && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, height: '0px', overflow: 'hidden' }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: '0px', overflow: 'hidden' }}
@@ -170,7 +170,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
                   <Icon className={errorSvg} name="AlertCircle" color="error-dark" size="small" />
                   {error}
                 </div>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>

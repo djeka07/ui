@@ -1,7 +1,7 @@
 'use client';
 
 import { css, isEmpty, isEnter } from '@djeka07/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import {
   ChangeEvent,
   ComponentPropsWithoutRef,
@@ -180,7 +180,7 @@ const PillInput = forwardRef<HTMLInputElement, TextInputProps>(
         </div>
         <AnimatePresence>
           {error && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: '0px' }}
               animate={{ opacity: 1, height: '30px' }}
               exit={{ opacity: 0, height: '0px' }}
@@ -189,7 +189,7 @@ const PillInput = forwardRef<HTMLInputElement, TextInputProps>(
                 <Icon name="AlertCircle" className={errorSvg} size="small" />
                 {error}
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>

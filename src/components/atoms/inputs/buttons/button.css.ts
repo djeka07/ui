@@ -27,15 +27,33 @@ export const button = recipe({
   variants: {
     primary: {
       true: {
-        backgroundColor: 'var(--main-primary-color)',
-        border: '2px solid var(--main-primary-color)',
+        backgroundColor: 'var(--button-primary-bg-color)',
+        color: 'var(--button-primary-fg-color)',
+        border: '2px solid var(--button-primary-bg-color)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-primary-color)`,
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-primary-bg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--dark-primary-color)',
-            border: '2px solid var(--dark-primary-color)',
+            backgroundColor: 'color-mix(in srgb, var(--button-primary-bg-color), black 25%)',
+            border: '2px solid color-mix(in srgb, var(--button-primary-bg-color), black 25%)',
+            opacity: 0.9,
+          },
+        },
+      },
+    },
+    secondary: {
+      true: {
+        backgroundColor: 'var(--button-secondary-bg-color)',
+        color: 'var(--button-secondary-fg-color)',
+        border: '2px solid var(--button-secondary-bg-color)',
+        selectors: {
+          '&:focus': {
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-secondary-bg-color)`,
+          },
+          '&:hover': {
+            backgroundColor: 'color-mix(in srgb, var(--button-secondary-bg-color), black 25%)',
+            border: '2px solid color-mix(in srgb, var(--button-secondary-bg-color), black 25%)',
             opacity: 0.9,
           },
         },
@@ -43,15 +61,16 @@ export const button = recipe({
     },
     success: {
       true: {
-        backgroundColor: 'var(--main-success-color)',
-        border: '2px solid var(--main-success-color)',
+        backgroundColor: 'var(--button-success-bg-color)',
+        color: 'var(--button-success-fg-color)',
+        border: '2px solid var(--button-success-bg-color)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-success-color)`,
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-success-bg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--dark-success-color)',
-            border: '2px solid var(--dark-success-color)',
+            backgroundColor: 'color-mix(in srgb, var(--button-success-bg-color), black 25%)',
+            border: '2px solid color-mix(in srgb, var(--button-success-bg-color), black 25%)',
             opacity: 0.9,
           },
         },
@@ -59,15 +78,16 @@ export const button = recipe({
     },
     error: {
       true: {
-        backgroundColor: 'var(--main-error-color)',
-        border: '2px solid var(--main-error-color)',
+        backgroundColor: 'var(--button-error-bg-color)',
+        color: 'var(--button-success-fg-color)',
+        border: '2px solid var(--button-error-bg-color)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-error-color)`,
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-error-bg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--dark-error-color)',
-            border: '2px solid var(--dark-error-color)',
+            backgroundColor: 'color-mix(in srgb, var(--button-error-bg-color), black 25%)',
+            border: '2px solid color-mix(in srgb, var(--button-error-bg-color), black 25%)',
             opacity: 0.9,
           },
         },
@@ -75,17 +95,16 @@ export const button = recipe({
     },
     warning: {
       true: {
-        backgroundColor: 'var(--main-warning-color)',
-        border: '2px solid var(--main-warning-color)',
-        color: 'var(--black-common-color)',
+        backgroundColor: 'var(--button-warning-bg-color)',
+        color: 'var(--button-warning-fg-color)',
+        border: '2px solid var(--button-warning-bg-color)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-warning-color)`,
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-warning-bg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--dark-warning-color)',
-            border: '2px solid var(--dark-warning-color)',
-            color: 'var(--white-common-color)',
+            backgroundColor: 'color-mix(in srgb, var(--button-warning-bg-color), black 25%)',
+            border: '2px solid color-mix(in srgb, var(--button-warning-bg-color), black 25%)',
             opacity: 0.9,
           },
         },
@@ -93,16 +112,16 @@ export const button = recipe({
     },
     info: {
       true: {
-        backgroundColor: 'var(--main-info-color)',
-        color: 'var(--black-common-color)',
-        border: '2px solid var(--main-info-color)',
+        backgroundColor: 'var(--button-info-bg-color)',
+        color: 'var(--button-info-fg-color)',
+        border: '2px solid var(--button-info-bg-color)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-info-color)`,
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-info-bg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--dark-info-color)',
-            border: '2px solid var(--dark-info-color)',
+            backgroundColor: 'color-mix(in srgb, var(--button-info-bg-color), black 25%)',
+            border: '2px solid color-mix(in srgb, var(--button-info-bg-color), black 25%)',
             color: 'var(--white-common-color)',
             opacity: 0.9,
           },
@@ -113,13 +132,13 @@ export const button = recipe({
       true: {
         backgroundColor: 'transparent',
         border: '2px solid transparent',
-        color: 'var(--input-fg-color)',
+        color: 'var(--button-transparent-fg-color)',
         selectors: {
           '&:focus': {
             boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-info-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--100-grey-color)',
+            backgroundColor: 'color-mix(in srgb, transparent, black 25%)',
             opacity: 0.9,
           },
         },
@@ -179,16 +198,38 @@ export const button = recipe({
         outlined: true,
       },
       style: {
-        border: '2px solid var(--main-primary-color)',
+        border: '2px solid var(--button-primary-bg-color)',
         backgroundColor: 'transparent',
-        color: 'var(--main-primary-color)',
+        color: 'var(--button-primary-bg-color)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-primary-color)`,
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-primary-bg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--main-primary-color)',
-            color: 'var(--white-common-color)',
+            backgroundColor: 'var(--button-primary-bg-color)',
+            borderColor: 'var(--button-primary-bg-color)',
+            color: 'var(--button-primary-fg-color)',
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        secondary: true,
+        outlined: true,
+      },
+      style: {
+        border: '2px solid var(--button-secondary-bg-color)',
+        backgroundColor: 'transparent',
+        color: 'var(--button-secondary-bg-color)',
+        selectors: {
+          '&:focus': {
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-secondary-bg-color)`,
+          },
+          '&:hover': {
+            backgroundColor: 'var(--button-secondary-bg-color)',
+            borderColor: 'var(--button-secondary-bg-color)',
+            color: 'var(--button-secondary-fg-color)',
           },
         },
       },
@@ -199,17 +240,17 @@ export const button = recipe({
         outlined: true,
       },
       style: {
-        border: '2px solid var(--main-error-color)',
+        border: '2px solid var(--button-error-bg-color)',
         backgroundColor: 'transparent',
-        color: 'var(--main-error-color)',
+        color: 'var(--button-error-bg-color)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-error-color)`,
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-error-bg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--main-error-color)',
-            borderColor: 'var(--main-error-color)',
-            color: 'var(--white-common-color)',
+            backgroundColor: 'var(--button-error-bg-color)',
+            borderColor: 'var(--button-error-bg-color)',
+            color: 'var(--button-error-fg-color)',
           },
         },
       },
@@ -220,17 +261,17 @@ export const button = recipe({
         outlined: true,
       },
       style: {
-        border: '2px solid var(--main-success-color)',
+        border: '2px solid color-mix(in srgb, var(--button-success-bg-color), black 25%)',
         backgroundColor: 'transparent',
-        color: 'var(--main-success-color)',
+        color: 'color-mix(in srgb, var(--button-success-bg-color), black 25%)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-success-color)`,
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-success-bg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--main-success-color)',
-            borderColor: 'var(--main-success-color)',
-            color: 'var(--white-common-color)',
+            backgroundColor: 'var(--button-success-bg-color)',
+            borderColor: 'var(--button-success-bg-color)',
+            color: 'var(--button-success-fg-color)',
           },
         },
       },
@@ -241,17 +282,17 @@ export const button = recipe({
         outlined: true,
       },
       style: {
-        border: '2px solid var(--main-warning-color)',
+        border: '2px solid color-mix(in srgb, var(--button-warning-bg-color), black 25%)',
         backgroundColor: 'transparent',
-        color: 'var(--main-warning-color)',
+        color: 'color-mix(in srgb, var(--button-warning-bg-color), black 25%)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-warning-color)`,
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-warning-bg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--main-warning-color)',
-            borderColor: 'var(--main-warning-color)',
-            color: 'var(--black-common-color)',
+            backgroundColor: 'var(--button-warning-bg-color)',
+            borderColor: 'var(--button-warning-bg-color)',
+            color: 'var(--button-warning-fg-color)',
           },
         },
       },
@@ -262,17 +303,17 @@ export const button = recipe({
         outlined: true,
       },
       style: {
-        border: '2px solid var(--main-info-color)',
+        border: '2px solid color-mix(in srgb, var(--button-info-bg-color), black 25%)',
         backgroundColor: 'transparent',
-        color: 'var(--main-info-color)',
+        color: 'color-mix(in srgb, var(--button-info-bg-color), black 25%)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-info-color)`,
+            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--button-info-bg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'var(--main-info-color)',
-            borderColor: 'var(--main-info-color)',
-            color: 'var(--black-common-color)',
+            backgroundColor: 'var(--button-info-bg-color)',
+            borderColor: 'var(--button-info-bg-color)',
+            color: 'var(--button-info-fg-color)',
           },
         },
       },
@@ -285,7 +326,8 @@ export const button = recipe({
       style: {
         selectors: {
           '&:hover': {
-            backgroundColor: 'var(--main-primary-color)',
+            backgroundColor: 'var(--button-primary-bg-color)',
+            borderColor: 'var(--button-primary-bg-color)',
             opacity: 1,
           },
         },
@@ -294,6 +336,36 @@ export const button = recipe({
     {
       variants: {
         primary: true,
+        disabled: true,
+        outlined: true,
+      },
+      style: {
+        selectors: {
+          '&:hover': {
+            backgroundColor: 'initial',
+            opacity: 1,
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        secondary: true,
+        disabled: true,
+      },
+      style: {
+        selectors: {
+          '&:hover': {
+            backgroundColor: 'var(--button-secondary-bg-color)',
+            borderColor: 'var(--button-secondary-bg-color)',
+            opacity: 1,
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        secondary: true,
         disabled: true,
         outlined: true,
       },
@@ -314,8 +386,8 @@ export const button = recipe({
       style: {
         selectors: {
           '&:hover': {
-            backgroundColor: 'var(--main-error-color)',
-            borderColor: 'var(--main-error-color)',
+            backgroundColor: 'var(--button-error-bg-color)',
+            borderColor: 'var(--button-error-bg-color)',
             opacity: 1,
           },
         },
@@ -331,7 +403,7 @@ export const button = recipe({
         selectors: {
           '&:hover': {
             backgroundColor: 'initial',
-            borderColor: 'var(--main-error-color)',
+            borderColor: 'var(--button-error-bg-color)',
             opacity: 1,
           },
         },
@@ -345,7 +417,8 @@ export const button = recipe({
       style: {
         selectors: {
           '&:hover': {
-            backgroundColor: 'var(--main-success-color)',
+            backgroundColor: 'var(--button-success-bg-color)',
+            borderColor: 'var(--button-success-bg-color)',
             opacity: 1,
           },
         },
@@ -361,6 +434,7 @@ export const button = recipe({
         selectors: {
           '&:hover': {
             backgroundColor: 'initial',
+            borderColor: 'color-mix(in srgb, var(--button-success-bg-color), black 25%)',
             opacity: 1,
           },
         },
@@ -388,8 +462,8 @@ export const button = recipe({
       style: {
         selectors: {
           '&:hover': {
-            backgroundColor: 'var(--main-info-color)',
-            borderColor: 'var(--main-info-color)',
+            backgroundColor: 'var(--button-info-bg-color)',
+            borderColor: 'var(--button-info-bg-color)',
             opacity: 1,
           },
         },
@@ -405,6 +479,7 @@ export const button = recipe({
         selectors: {
           '&:hover': {
             backgroundColor: 'initial',
+            borderColor: 'color-mix(in srgb, var(--button-info-bg-color), black 25%)',
             opacity: 1,
           },
         },
@@ -418,8 +493,8 @@ export const button = recipe({
       style: {
         selectors: {
           '&:hover': {
-            backgroundColor: 'var(--main-warning-color)',
-            borderColor: 'var(--main-warning-color)',
+            backgroundColor: 'var(--button-warning-bg-color)',
+            borderColor: 'var(--button-warning-bg-color)',
             opacity: 1,
           },
         },
@@ -435,7 +510,7 @@ export const button = recipe({
         selectors: {
           '&:hover': {
             backgroundColor: 'inherit',
-            borderColor: 'var(--main-warning-color)',
+            borderColor: 'color-mix(in srgb, var(--button-warning-bg-color), black 25%)',
             opacity: 1,
           },
         },
@@ -452,22 +527,23 @@ export const button = recipe({
 
 export const spinner = recipe({
   variants: {
-    primary: { true: {} },
-    error: { true: {} },
-    success: { true: {} },
+    primary: { true: { borderColor: 'var(--button-primary-fg-color) transparent transparent transparent' } },
+    secondary: { true: { borderColor: 'var(--button-secondary-fg-color) transparent transparent transparent' } },
+    error: { true: { borderColor: 'var(--button-error-fg-color) transparent transparent transparent' } },
+    success: { true: { borderColor: 'var(--button-success-fg-color) transparent transparent transparent' } },
     warning: {
       true: {
-        borderColor: 'var(--black-common-color) transparent transparent transparent',
+        borderColor: 'var(--button-warning-fg-color) transparent transparent transparent',
       },
     },
     info: {
       true: {
-        borderColor: 'var(--black-common-color) transparent transparent transparent',
+        borderColor: 'var(--button-info-fg-color) transparent transparent transparent',
       },
     },
     transparent: {
       true: {
-        borderColor: 'var(--700-grey-color) transparent transparent transparent',
+        borderColor: 'var(--button-transparent-fg-color) transparent transparent transparent',
       },
     },
     outlined: { true: {} },
@@ -479,7 +555,16 @@ export const spinner = recipe({
         outlined: true,
       },
       style: {
-        borderColor: 'var(--main-primary-color) transparent transparent transparent',
+        borderColor: 'var(--button-primary-bg-color) transparent transparent transparent',
+      },
+    },
+    {
+      variants: {
+        secondary: true,
+        outlined: true,
+      },
+      style: {
+        borderColor: 'var(--button-secondary-bg-color) transparent transparent transparent',
       },
     },
     {
@@ -488,7 +573,7 @@ export const spinner = recipe({
         outlined: true,
       },
       style: {
-        borderColor: 'var(--main-error-color) transparent transparent transparent',
+        borderColor: 'var(--button-error-bg-color) transparent transparent transparent',
       },
     },
     {
@@ -497,7 +582,8 @@ export const spinner = recipe({
         outlined: true,
       },
       style: {
-        borderColor: 'var(--main-success-color) transparent transparent transparent',
+        borderColor:
+          'color-mix(in srgb, var(--button-success-bg-color), black 25%) transparent transparent transparent',
       },
     },
     {
@@ -506,7 +592,8 @@ export const spinner = recipe({
         outlined: true,
       },
       style: {
-        borderColor: 'var(--main-warning-color) transparent transparent transparent',
+        borderColor:
+          'color-mix(in srgb, var(--button-warning-bg-color), black 25%) transparent transparent transparent',
       },
     },
     {
@@ -515,7 +602,7 @@ export const spinner = recipe({
         outlined: true,
       },
       style: {
-        borderColor: 'var(--main-info-color) transparent transparent transparent',
+        borderColor: 'color-mix(in srgb,var(--button-info-bg-color), black 25%) transparent transparent transparent',
       },
     },
   ],
@@ -530,6 +617,7 @@ export const childrenRecipe = recipe({
   variants: {
     outlined: { true: { borderColor: 'var(--light-text-color) transparent transparent transparent' } },
     primary: { true: { borderColor: 'var(--common-white-color) transparent transparent transparent' } },
+    secondary: { true: { borderColor: 'var(--common-white-color) transparent transparent transparent' } },
     success: { true: { borderColor: 'var(--common-white-color) transparent transparent transparent' } },
     error: { true: { borderColor: 'var(--common-white-color) transparent transparent transparent' } },
     warning: { true: { borderColor: 'var(--common-white-color) transparent transparent transparent' } },

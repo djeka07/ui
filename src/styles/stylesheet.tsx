@@ -8,10 +8,6 @@ export default (theme: Theme) => {
     --white-common-color: ${theme.palette.common.white};
     --black-common-color: ${theme.palette.common.black};
 
-    --light-primary-color: ${theme.palette.primary.light};
-    --main-primary-color: ${theme.palette.primary.main};
-    --dark-primary-color: ${theme.palette.primary.dark};
-
     --light-background-color: ${theme.palette.background.light};
     --main-background-color: ${theme.palette.background.main};
     --dark-background-color: ${theme.palette.background.dark};
@@ -43,21 +39,32 @@ export default (theme: Theme) => {
     --main-text-color: ${theme.palette.text.main};
     --dark-text-color: ${theme.palette.text.dark};
 
-    --light-success-color: ${theme.palette.success.light};
-    --main-success-color: ${theme.palette.success.main};
-    --dark-success-color: ${theme.palette.success.dark};
+    --button-primary-bg-color: ${theme.palette.button.primary.background};
+    --button-primary-fg-color: ${theme.palette.button.primary.foreground};
+    --button-secondary-bg-color: ${theme.palette.button.secondary.background};
+    --button-secondary-fg-color: ${theme.palette.button.secondary.foreground};
+    --button-success-bg-color: ${theme.palette.button.success.background};
+    --button-success-fg-color: ${theme.palette.button.success.foreground};
+    --button-error-bg-color: ${theme.palette.button.error.background};
+    --button-error-fg-color: ${theme.palette.button.error.foreground};
+    --button-info-bg-color: ${theme.palette.button.info.background};
+    --button-info-fg-color: ${theme.palette.button.info.foreground};
+    --button-warning-bg-color: ${theme.palette.button.warning.background};
+    --button-warning-fg-color: ${theme.palette.button.warning.foreground};
+    --button-transparent-fg-color: ${theme.palette.button.transparent.foreground};
 
-    --light-info-color: ${theme.palette.info.light};
-    --main-info-color: ${theme.palette.info.main};
-    --dark-info-color: ${theme.palette.info.dark};
-
-    --light-warning-color: ${theme.palette.warning.light};
-    --main-warning-color: ${theme.palette.warning.main};
-    --dark-warning-color: ${theme.palette.warning.dark};
-
-    --light-error-color: ${theme.palette.error.light};
-    --main-error-color: ${theme.palette.error.main};
-    --dark-error-color: ${theme.palette.error.dark};
+    --panel-primary-bg-color: ${theme.palette.panel.primary.background};
+    --panel-primary-fg-color: ${theme.palette.panel.primary.foreground};
+    --panel-secondary-bg-color: ${theme.palette.panel.secondary.background};
+    --panel-secondary-fg-color: ${theme.palette.panel.secondary.foreground};
+    --panel-success-bg-color: ${theme.palette.panel.success.background};
+    --panel-success-fg-color: ${theme.palette.panel.success.foreground};
+    --panel-error-bg-color: ${theme.palette.panel.error.background};
+    --panel-error-fg-color: ${theme.palette.panel.error.foreground};
+    --panel-info-bg-color: ${theme.palette.panel.info.background};
+    --panel-info-fg-color: ${theme.palette.panel.info.foreground};
+    --panel-warning-bg-color: ${theme.palette.panel.warning.background};
+    --panel-warning-fg-color: ${theme.palette.panel.warning.foreground};
 
     --light-link-color: ${theme.palette.link.light};
     --main-link-color: ${theme.palette.link.main};

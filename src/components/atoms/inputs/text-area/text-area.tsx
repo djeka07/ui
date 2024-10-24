@@ -1,6 +1,6 @@
 'use client';
 import { css, isBackSpace, isEnterWithoutShift, isEnterWithShift } from '@djeka07/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import {
   ComponentPropsWithoutRef,
   FormEvent,
@@ -194,7 +194,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         </div>
         <AnimatePresence>
           {!!error && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: '0px' }}
               animate={{ opacity: 1, height: `${errorRef?.current?.clientHeight}px` }}
               exit={{ opacity: 0, height: '0px' }}
@@ -203,7 +203,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                 <Icon name="AlertCircle" className={errorSvg} size="small" />
                 {error}
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>

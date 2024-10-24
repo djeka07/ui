@@ -120,6 +120,7 @@ const GridColumnFilterWrapper = ({
       wrapperClassName={popupWrapper({ radius })}
       toggler={({ toggleShow }) => (
         <Button
+          label="Filter"
           size="xsmall"
           transparent
           className={button({ active: isApplied })}
