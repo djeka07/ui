@@ -45,6 +45,11 @@ stages:
           command: 'publish'
           verbose: true
           publishEndpoint: 'Npm feed'
+      - task: Yarn@3
+        displayName: Build for storybook
+        condition: eq(variables['SHOULD_PUBLISH'], false)
+        inputs:
+          arguments: 'build'
       - task: AzureStaticWebApp@0
         condition: always()
         inputs:
