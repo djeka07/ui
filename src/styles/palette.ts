@@ -28,14 +28,25 @@ export type GridPalette = {
 
 export type Palette = {
   common: { white: string; black: string };
-  success: ColorVariants;
-  warning: ColorVariants;
-  info: ColorVariants;
-  error: ColorVariants;
   grey: Grey;
-  primary: ColorVariants;
-  secondary: ColorVariants;
-  input: ColorVariants;
+  button: {
+    primary: BackgroundForeground;
+    secondary: BackgroundForeground;
+    success: BackgroundForeground;
+    error: BackgroundForeground;
+    info: BackgroundForeground;
+    warning: BackgroundForeground;
+    transparent: { foreground: string };
+  };
+  panel: {
+    primary: BackgroundForeground;
+    secondary: BackgroundForeground;
+    success: BackgroundForeground;
+    error: BackgroundForeground;
+    info: BackgroundForeground;
+    warning: BackgroundForeground;
+  };
+  input: BackgroundForeground;
   focus: ColorVariants;
   heading: ColorVariants;
   text: ColorVariants;
@@ -69,15 +80,22 @@ const base = {
 
 const createDarkPalette = (): Palette => ({
   ...base,
-  primary: {
-    light: '#7aa2f4',
-    main: '#3D71DC',
-    dark: '#11254e',
+  button: {
+    primary: { background: '#3D71DC', foreground: '#ffffff' },
+    secondary: { background: '#616161', foreground: '#c4c4c4' },
+    success: { background: '#198754', foreground: '#ffffff' },
+    error: { background: '#dc3545', foreground: '#ffffff' },
+    info: { background: '#17a2b8', foreground: '#ffffff' },
+    warning: { background: '#ffc107', foreground: '#000000' },
+    transparent: { foreground: '#ffffff' },
   },
-  secondary: {
-    light: 'color-mix(in srgb, #491b6e, white 25%)',
-    main: '#491b6e',
-    dark: 'color-mix(in srgb, #491b6e, #000000 25%)',
+  panel: {
+    primary: { background: '#7aa2f4', foreground: '#11254e' },
+    secondary: { background: '#616161', foreground: '#ffffff' },
+    success: { background: '#d1e7dd', foreground: '#0f5132' },
+    error: { background: '#f8d7da', foreground: '#842029' },
+    info: { background: '#7aa2f4', foreground: '#11254e' },
+    warning: { background: '#fff3cd', foreground: '#664d03' },
   },
   link: {
     light: 'color-mix(in srgb, #cedff6, white 25%)',
@@ -85,9 +103,8 @@ const createDarkPalette = (): Palette => ({
     dark: 'color-mix(in srgb, #cedff6, #000000 25%)',
   },
   input: {
-    light: '#ffffff',
-    main: '#ffffff',
-    dark: 'color-mix(in srgb, #ffffff, #000000 25%)',
+    background: 'transparent',
+    foreground: '#ffffff',
   },
   focus: {
     light: 'color-mix(in srgb, #93b0ec, white 25%)',
@@ -104,28 +121,8 @@ const createDarkPalette = (): Palette => ({
     main: '#ffffff',
     dark: 'color-mix(in srgb, #ffffff, #000000 25%)',
   },
-  success: {
-    light: '#d1e7dd',
-    main: '#198754',
-    dark: '#0f5132',
-  },
-  warning: {
-    light: '#fff3cd',
-    main: '#ffc107',
-    dark: '#664d03',
-  },
-  info: {
-    light: '#cff4fc',
-    main: '#3fc6e1',
-    dark: '#055160',
-  },
-  error: {
-    light: '#f8d7da',
-    main: '#dc3545',
-    dark: '#842029',
-  },
   grid: {
-    border: 'color-mix(in srgb, transparent, #fff 10%)',
+    border: 'color-mix(in srgb, transparent, #fff 50%)',
     row: {
       odd: { background: 'color-mix(in srgb, #354052, #ffffff 25%)', foreground: '#ffffff' },
       even: { background: '#354052', foreground: '#ffffff' },
@@ -157,20 +154,26 @@ const createDarkPalette = (): Palette => ({
 
 const createLightPalette = (): Palette => ({
   ...base,
-  primary: {
-    light: '#a98bc1',
-    main: '#491b6e',
-    dark: '#3b105e',
+  button: {
+    primary: { background: '#491b6e', foreground: '#ffffff' },
+    secondary: { background: '#616161', foreground: '#ffffff' },
+    success: { background: '#198754', foreground: '#ffffff' },
+    error: { background: '#dc3545', foreground: '#ffffff' },
+    info: { background: '#17a2b8', foreground: '#ffffff' },
+    warning: { background: '#ffc107', foreground: '#000000' },
+    transparent: { foreground: '#2f2c2c' },
   },
-  secondary: {
-    light: 'color-mix(in srgb, #491b6e, #ffffff 25%)',
-    main: '#491b6e',
-    dark: 'color-mix(in srgb, #491b6e, #000000 25%)',
+  panel: {
+    primary: { background: '#a98bc1', foreground: '#3b105e' },
+    secondary: { background: '#616161', foreground: '#c4c4c4' },
+    success: { background: '#d1e7dd', foreground: '#0f5132' },
+    error: { background: '#f8d7da', foreground: '#842029' },
+    info: { background: '#7aa2f4', foreground: '#11254e' },
+    warning: { background: '#fff3cd', foreground: '#664d03' },
   },
   input: {
-    light: 'color-mix(in srgb, #616161, #ffffff 25%)',
-    main: '#616161',
-    dark: 'color-mix(in srgb, #616161, #000000 25%)',
+    background: '#fff',
+    foreground: '#616161',
   },
   focus: {
     light: 'color-mix(in srgb, #491b6e, #ffffff 25%)',
@@ -200,26 +203,6 @@ const createLightPalette = (): Palette => ({
   notification: { main: '#4A699B' },
   boxShadow: {
     main: 'rgb(0 0 0 / 25%) 0px 1px 5px -1px',
-  },
-  error: {
-    light: '#f8d7da',
-    main: '#dc3545',
-    dark: '#842029',
-  },
-  success: {
-    light: '#d1e7dd',
-    main: '#198754',
-    dark: '#0f5132',
-  },
-  warning: {
-    light: '#fff3cd',
-    main: '#ffc107',
-    dark: '#664d03',
-  },
-  info: {
-    light: '#cff4fc',
-    main: '#3fc6e1',
-    dark: '#055160',
   },
   grid: {
     border: 'color-mix(in srgb, transparent, #181d1f 15%)',

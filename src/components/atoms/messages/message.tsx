@@ -1,6 +1,6 @@
 'use client';
 import { css } from '@djeka07/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import { createRef, memo } from 'react';
 import Icon from '../icons/icon';
 import { icon as iconCss, innerMessage, message } from './message.css';
@@ -11,6 +11,7 @@ const InnerMessage = memo(
     wrapperClass,
     border,
     primary,
+    secondary,
     error,
     info,
     direction,
@@ -24,9 +25,15 @@ const InnerMessage = memo(
     const ref = createRef<HTMLDivElement>();
 
     return (
-      <div className={css(wrapperClass, message({ error, info, success, warning, primary, border }))}>
+      <div className={css(wrapperClass, message({ error, info, success, secondary, warning, primary, border }))}>
         <div className={css(className, innerMessage({ icon: !!icon, direction }))} ref={ref}>
-          {icon && <Icon name={icon} className={iconCss({ primary, error, success, warning, info })} size={iconSize} />}
+          {icon && (
+            <Icon
+              name={icon}
+              className={iconCss({ primary, error, secondary, success, warning, info })}
+              size={iconSize}
+            />
+          )}
           {children}
         </div>
       </div>
@@ -51,7 +58,7 @@ const Message = ({
   return (
     <AnimatePresence initial={false}>
       {show && (
-        <motion.div
+        <m.div
           style={{ width: '100%' }}
           initial={{
             opacity: 0,
@@ -92,7 +99,7 @@ const Message = ({
           >
             {children}
           </InnerMessage>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

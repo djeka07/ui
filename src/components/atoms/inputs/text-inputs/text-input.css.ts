@@ -35,7 +35,7 @@ export type WrapperVariants = RecipeVariants<typeof wrapper>;
 
 export const label = recipe({
   base: {
-    color: 'var(--main-input-color)',
+    color: 'var(--input-fg-color)',
     fontSize: 'var(--small-font-size)',
     marginBottom: 4,
     position: 'absolute',
@@ -102,7 +102,7 @@ export const fieldset = recipe({
     position: 'absolute',
     borderStyle: 'solid',
     pointerEvents: 'none',
-    borderColor: 'var(--main-input-color)',
+    borderColor: 'var(--input-fg-color)',
     borderWidth: '1px',
   },
   variants: {
@@ -284,15 +284,14 @@ export const input = recipe({
     position: 'relative',
     width: '100%',
     padding: '0px 12px',
-
     borderRadius: 0,
-    color: 'var(--main-input-color)',
-    backgroundColor: 'transparent',
+    color: 'var(--input-fg-color)',
+    backgroundColor: 'var(--input-bg-color)',
     border: 0,
     fontSize: 16,
     appearance: 'none',
     outline: 'none',
-    ['-webkit-text-fill-color' as string]: 'var(--main-input-color) !important',
+    ['-webkit-text-fill-color' as string]: 'var(--input-fg-color) !important',
     [media.base]: {
       [media.small.up]: {
         fontSize: 14,
@@ -301,11 +300,11 @@ export const input = recipe({
     selectors: {
       '&:-webkit-autofill': {
         transition: 'background-color 5000000s ease-in-out 0s',
-        color: 'var(--main-input-color)!important',
-        ['-webkit-text-fill-color' as string]: 'var(--main-input-color) !important',
+        color: 'var(--input-fg-color)!important',
+        ['-webkit-text-fill-color' as string]: 'var(--input-fg-color) !important',
       },
       '&::placeholder': {
-        color: 'var(--main-input-color)',
+        color: 'var(--input-fg-color)',
         opacity: 0.6,
       },
       '&:disabled': {

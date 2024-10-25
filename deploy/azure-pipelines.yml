@@ -5,6 +5,12 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+resources:
+  repositories:
+    - repository: Infrastructure
+      type: git
+      name: Webs/Infrastructure
+
 variables:
   - name: appToken
     value: $(token)
@@ -16,6 +22,8 @@ stages:
     - job: BuildAndDeploy
       displayName: Build and deploy to storybook
       steps:
+      - checkout: self
+      - checkout: Infrastructure
       - task: YarnInstaller@3
         displayName: Install Yarn 1.22
         inputs:
@@ -23,13 +31,42 @@ stages:
       - task: Yarn@3
         displayName: Install Packages
         inputs:
+          projectDirectory: "$(Build.SourcesDirectory)/ui"
           arguments: 'install'
       - task: Yarn@3
-        displayName: Build
+        displayName: Run test
         inputs:
+          projectDirectory: "$(Build.SourcesDirectory)/ui"
+          arguments: test
+      - task: Bash@3
+        displayName: Check package version
+        inputs:
+          filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/check-npm-version.sh"
+          arguments: "@djeka07/ui"
+      - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: |
+            # Write your commands here
+            echo "variables: $(SHOULD_PUBLISH)"
+      - task: Npm@1
+        displayName: 'Publish Npm package'
+        condition: and(eq(variables['SHOULD_PUBLISH'], true), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+        inputs:
+          workingDir: "$(Build.SourcesDirectory)/ui"
+          command: 'publish'
+          verbose: true
+          publishEndpoint: 'Npm feed'
+      - task: Yarn@3
+        displayName: Build for storybook
+        condition: eq(variables['SHOULD_PUBLISH'], false)
+        inputs:
+          projectDirectory: "$(Build.SourcesDirectory)/ui"
           arguments: 'build'
       - task: AzureStaticWebApp@0
+        condition: always()
         inputs:
+          workingDirectory: "$(Build.SourcesDirectory)/ui"
           app_build_command: 'yarn build:storybook'
           output_location: '/storybook-static'
           skip_app_build: false

@@ -24,7 +24,7 @@ export type InputTypes =
   | 'url'
   | 'week';
 
-type TextInputBase = Omit<ComponentPropsWithoutRef<'input'>, 'size'> & {
+type TextInputBase = Omit<ComponentPropsWithoutRef<'input'>, 'size' | 'name'> & {
   name: string;
   value?: string;
   defaultValue?: string;

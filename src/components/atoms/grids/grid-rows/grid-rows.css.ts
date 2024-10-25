@@ -2,14 +2,11 @@ import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 import media from '../../../../styles/media.css';
 
-export const root = style({
-  overflow: 'visible',
-});
+export const root = style({});
 
 export const wrapper = recipe({
   base: {
     display: 'flex',
-    overflow: 'hidden',
     gap: 4,
     padding: '0px 10px',
     borderBottom: '1px solid var(--grid-border-fg-color)',

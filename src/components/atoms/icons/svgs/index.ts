@@ -5,6 +5,7 @@ import Bookmark from './bookmark.svg';
 import BookmarkFilled from './bookmark-filled.svg';
 import Close from './close.svg';
 import CloseCircle from './x-circle.svg';
+import Columns from './columns.svg';
 import Down from './chevron-down.svg';
 import Edit from './edit.svg';
 import Filter from './filter.svg';
@@ -15,6 +16,7 @@ import Logout from './logout.svg';
 import Menu from './menu.svg';
 import Message from './message.svg';
 import Moon from './moon.svg';
+import Move from './move.svg';
 import Plus from './plus.svg';
 import Repeat from './repeat.svg';
 import Right from './chevron-right.svg';
@@ -42,6 +44,7 @@ export {
   BookmarkFilled,
   Close,
   CloseCircle,
+  Columns,
   Down,
   Edit,
   Filter,
@@ -52,6 +55,7 @@ export {
   Menu,
   Message,
   Moon,
+  Move,
   Plus,
   Repeat,
   Right,
@@ -80,6 +84,7 @@ export type IconNames =
   | 'BookmarkFilled'
   | 'Close'
   | 'CloseCircle'
+  | 'Columns'
   | 'Down'
   | 'Edit'
   | 'Filter'
@@ -90,6 +95,7 @@ export type IconNames =
   | 'Menu'
   | 'Message'
   | 'Moon'
+  | 'Move'
   | 'Plus'
   | 'Repeat'
   | 'Right'

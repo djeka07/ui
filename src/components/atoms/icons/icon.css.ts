@@ -84,7 +84,7 @@ export const svg = recipe({
     },
     color: {
       menu: { fill: '#afafaf' },
-      input: { fill: 'var(--main-input-color)' },
+      input: { fill: 'var(--input-fg-color)' },
       white: { fill: 'var(--white-common-color)' },
       grey100: { fill: 'var(--100-grey-color)' },
       grey200: { fill: 'var(--200-grey-color)' },
@@ -99,6 +99,7 @@ export const svg = recipe({
       gridBorder: { fill: 'var(--grid-border-fg-color)' },
       black: { fill: 'var(--common-black-color)' },
       heading: { fill: 'var(--main-heading-color)' },
+      text: { fill: 'var(--main-text-color)' },
       'success-light': { fill: 'var(--light-success-color)' },
       success: { fill: 'var(--main-success-color)' },
       'success-dark': { fill: 'var(--dark-success-color)' },

@@ -4,8 +4,11 @@ import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 export const root = recipe({
   base: {
     position: 'relative',
+    display: 'grid',
+    overflow: 'hidden',
+    gridTemplateRows: 'auto 1fr auto',
+    height: '100%',
     maxHeight: 'calc(100vh - 48px)',
-    overflowX: 'auto',
     boxShadow: 'var(--main-box-shadow)',
     backgroundColor: 'var(--grid-main-bg-color)',
     minHeight: 200,
@@ -34,8 +37,13 @@ export const root = recipe({
   },
 });
 
-export const wrapper = style({
-  display: 'grid',
-});
-
 export type GridVariants = RecipeVariants<typeof root>;
+
+export const rowWrapper = style({
+  position: 'relative',
+  overflow: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
+  flex: '1 1 auto',
+  height: '100%',
+});

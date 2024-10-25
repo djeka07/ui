@@ -1,4 +1,4 @@
-import { ColumnType, FilterOperator } from '../grid.type';
+import { ColumnType, FilterOperator } from '../../../molecules/grids/grid/grid.type';
 
 export type FilterParams = {
   filterOptions: FilterOperator[];

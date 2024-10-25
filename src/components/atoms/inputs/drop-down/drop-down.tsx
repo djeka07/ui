@@ -2,7 +2,7 @@
 
 import { useDidUpdate } from '@djeka07/hooks';
 import { css, isObjectEmpty } from '@djeka07/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, JSX, useState } from 'react';
 import { RadiusKeys } from '../../../../styles/border';
 import { Icon } from '../../icons';
@@ -89,7 +89,6 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
 
     const internalOnChange = (event: ChangeEvent<HTMLSelectElement>) => {
       const { value } = event.target;
-      console.log('onchange', event);
       setSelectedValue(value);
       setFocus(false);
       if (onChange) {
@@ -98,7 +97,6 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
     };
 
     const internalOnBlur = (event: ChangeEvent<HTMLSelectElement>) => {
-      console.log('blur', event);
       if (onBlur) {
         const { value } = event.target;
         onBlur({ value, isDefault: value === '' });
@@ -162,7 +160,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
           </fieldset>
           <AnimatePresence>
             {!!error && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, height: '0px', overflow: 'hidden' }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: '0px', overflow: 'hidden' }}
@@ -171,7 +169,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
                   <Icon className={errorSvg} name="AlertCircle" color="error-dark" size="small" />
                   {error}
                 </div>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>

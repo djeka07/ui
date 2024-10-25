@@ -1,6 +1,6 @@
 'use client';
 import { css, isSpace } from '@djeka07/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import { ChangeEvent, KeyboardEvent, forwardRef, useEffect, useState } from 'react';
 import { Icon } from '../../icons';
 import { childrenClass, errorClass, errorSvg, input, labelClass, root, wrapper } from './checkbox.css';
@@ -74,7 +74,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {!noErrorLabel && (
             <AnimatePresence>
               {!!error && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, height: '0px' }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: '0px' }}
@@ -83,7 +83,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                     <Icon name="AlertCircle" className={errorSvg} size="small" />
                     {error}
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           )}

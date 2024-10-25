@@ -40,13 +40,10 @@ export const icon = recipe({
   },
 });
 
-export const textInput = style({
-  backgroundColor: '#fff',
-});
-
 export const popupWrapper = recipe({
   base: {
     width: 200,
+    position: 'fixed',
     padding: '24px 8px',
     backgroundColor: 'var(--grid-header-bg-color)',
     border: '1px solid var(--grid-border-bg-color)',

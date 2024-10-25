@@ -30,7 +30,7 @@ export const All: Story = {
           <Match when="loading">Loading</Match>
           <Match when="done">Done</Match>
         </Switch>
-        <Button title="Start" onClick={runState}>
+        <Button label="Start" onClick={runState}>
           Start
         </Button>
       </div>

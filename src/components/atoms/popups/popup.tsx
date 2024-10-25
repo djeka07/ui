@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, Variant } from 'framer-motion';
+import { AnimatePresence, m, Variant } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { css } from '@djeka07/utils';
 import { root, wrapper } from './popup.css';
@@ -33,12 +33,11 @@ const PopupChildren = ({ children, variants, wrapperClassName, toggleShow }: Pop
   const ref = useRef<HTMLDivElement>(null);
 
   useClickOutside(ref, () => {
-    console.log('outside');
     toggleShow();
   });
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className={css(wrapper, wrapperClassName)}
       variants={variants}
@@ -47,7 +46,7 @@ const PopupChildren = ({ children, variants, wrapperClassName, toggleShow }: Pop
       exit="exit"
     >
       {children({ toggleShow })}
-    </motion.div>
+    </m.div>
   );
 };
 

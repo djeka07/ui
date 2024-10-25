@@ -9,46 +9,52 @@ export const message = recipe({
   variants: {
     primary: {
       true: {
-        backgroundColor: 'var(--light-primary-color)', 
-        color: 'var(--dark-primary-color)',
-        border: '1px solid var(--main-primary-color)'
-      }
+        backgroundColor: 'var(--panel-primary-bg-color)',
+        color: 'var(--panel-primary-fg-color)',
+        border: '1px solid var(--panel-primary-bg-color)',
+      },
     },
-    error: { 
+    secondary: {
       true: {
-        backgroundColor: 'var(--light-error-color)', 
-        color: 'var(--dark-error-color)',
-        border: '1px solid var(--main-error-color)'
-    }
-  },
+        backgroundColor: 'var(--panel-secondary-bg-color)',
+        color: 'var(--panel-secondary-fg-color)',
+        border: '1px solid var(--panel-secondary-bg-color)',
+      },
+    },
+    error: {
+      true: {
+        backgroundColor: 'var(--panel-error-bg-color)',
+        color: 'var(--panel-error-fg-color)',
+        border: '1px solid var(--panel-error-bg-color)',
+      },
+    },
     success: {
       true: {
-        backgroundColor: 'var(--light-success-color)', 
-        color: 'var(--dark-success-color)',
-        border: '1px solid var(--main-success-color)'
-      }
+        backgroundColor: 'var(--panel-success-bg-color)',
+        color: 'var(--panel-success-fg-color)',
+        border: '1px solid var(--panel-success-bg-color)',
+      },
     },
     warning: {
       true: {
-        backgroundColor: 'var(--light-warning-color)', 
-        color: 'var(--dark-warning-color)',
-        border: '1px solid var(--main-warning-color)'
-      }
+        backgroundColor: 'var(--panel-warning-bg-color)',
+        color: 'var(--panel-warning-fg-color)',
+        border: '1px solid var(--panel-warning-bg-color)',
+      },
     },
     info: {
       true: {
-        backgroundColor: 'var(--light-info-color)', 
-        color: 'var(--dark-info-color)',
-        border: '1px solid var(--main-info-color)'
-      }
+        backgroundColor: 'var(--panel-info-bg-color)',
+        color: 'var(--panel-info-fg-color)',
+        border: '1px solid var(--panel-info-bg-color)',
+      },
     },
     border: {
       false: {
-        border: 'none'
-      }
+        border: 'none',
+      },
     },
   },
-  
 });
 
 export const icon = recipe({
@@ -58,31 +64,36 @@ export const icon = recipe({
   variants: {
     primary: {
       true: {
-        fill: 'var(--dark-primary-color)',
-      }
+        fill: 'var(--panel-primary-fg-color)',
+      },
+    },
+    secondary: {
+      true: {
+        fill: 'var(--panel-secondary-fg-color)',
+      },
     },
     error: {
       true: {
-        fill: 'var(--dark-error-color)',
-      }
+        fill: 'var(--panel-error-fg-color)',
+      },
     },
     success: {
       true: {
-        fill: 'var(--dark-success-color)',
-      }
+        fill: 'var(--panel-success-fg-color)',
+      },
     },
     warning: {
       true: {
-        fill: 'var(--dark-warning-color)',
-      }
+        fill: 'var(--panel-warning-fg-color)',
+      },
     },
     info: {
       true: {
-        fill: 'var(--dark-info-color)',
-      }
-    }
-  }
-})
+        fill: 'var(--panel-info-fg-color)',
+      },
+    },
+  },
+});
 
 export const innerMessage = recipe({
   base: {
@@ -98,12 +109,12 @@ export const innerMessage = recipe({
     },
     direction: {
       column: {
-        flexDirection: 'column'
+        flexDirection: 'column',
       },
       row: {
-        flexDirection: 'row'
-      }
-    }
+        flexDirection: 'row',
+      },
+    },
   },
 });
 

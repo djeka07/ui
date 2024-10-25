@@ -12,6 +12,7 @@ type Story = StoryObj<typeof TextInput>;
 export const Main: Story = {
   args: {
     label: 'Email',
+    name: 'Email',
     placeholder: 'Enter email',
   },
 };
@@ -19,6 +20,7 @@ export const Main: Story = {
 export const WithNoLabel: Story = {
   args: {
     material: false,
+    name: 'Email',
     placeholder: 'Enter email',
   },
 };
@@ -26,6 +28,7 @@ export const WithNoLabel: Story = {
 export const Disabled: Story = {
   args: {
     label: 'Email',
+    name: 'Email',
     disabled: true,
   },
 };

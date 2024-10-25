@@ -13,6 +13,16 @@ type ButtonNoType = {
 };
 type ButtonPrimary = {
   primary: true;
+  secondary?: never;
+  success?: never;
+  error?: never;
+  warning?: never;
+  info?: never;
+  transparent?: never;
+};
+type ButtonSecondary = {
+  primary?: never;
+  secondary: true;
   success?: never;
   error?: never;
   warning?: never;
@@ -21,6 +31,7 @@ type ButtonPrimary = {
 };
 type ButtonSuccess = {
   primary?: never;
+  secondary?: never;
   success: true;
   error?: never;
   warning?: never;
@@ -29,6 +40,7 @@ type ButtonSuccess = {
 };
 type ButtonError = {
   primary?: never;
+  secondary?: never;
   success?: never;
   error: true;
   warning?: never;
@@ -37,15 +49,25 @@ type ButtonError = {
 };
 type ButtonWarning = {
   primary?: never;
+  secondary?: never;
   success?: never;
   error?: never;
   warning: true;
   info?: never;
   transparent?: never;
 };
-type ButtonInfo = { primary?: never; success?: never; error?: never; warning?: never; info: true; transparent?: never };
+type ButtonInfo = {
+  primary?: never;
+  secondary?: never;
+  success?: never;
+  error?: never;
+  warning?: never;
+  info: true;
+  transparent?: never;
+};
 type ButtonTransparent = {
   primary?: never;
+  secondary?: never;
   success?: never;
   error?: never;
   warning?: never;
@@ -56,6 +78,7 @@ type ButtonTransparent = {
 export type ButtonProps = ComponentPropsWithoutRef<'button'> &
   ButtonOmittedVariants &
   ChildrenVariants & {
+    label: string;
     type?: 'submit' | 'button' | 'reset';
     round?: boolean;
     wide?: boolean;
@@ -66,4 +89,13 @@ export type ButtonProps = ComponentPropsWithoutRef<'button'> &
     children: ReactNode;
     className?: string;
     innerClass?: string;
-  } & (ButtonNoType | ButtonPrimary | ButtonSuccess | ButtonError | ButtonWarning | ButtonInfo | ButtonTransparent);
+  } & (
+    | ButtonNoType
+    | ButtonPrimary
+    | ButtonSecondary
+    | ButtonSuccess
+    | ButtonError
+    | ButtonWarning
+    | ButtonInfo
+    | ButtonTransparent
+  );

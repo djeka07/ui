@@ -4,7 +4,7 @@ import { ButtonProps } from './button.props';
 
 export type ActionButtonProps = Pick<
   ButtonProps,
-  'children' | 'className' | 'disabled' | 'isLoading' | 'onClick' | 'title'
+  'children' | 'className' | 'disabled' | 'isLoading' | 'onClick' | 'label'
 > &
   ActionButtonStyleVariant & {
     description?: string;

@@ -1,4 +1,4 @@
-import { ColumnDefinitionType } from '../grid.type';
+import { ColumnDefinitionType } from '../../../molecules/grids/grid/grid.type';
 
 type GridColumnHeaderProps = {
   columnDefinition: ColumnDefinitionType;

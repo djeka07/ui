@@ -1,7 +1,7 @@
 'use client';
 
 import { css } from '@djeka07/utils';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import {
   ChangeEvent,
   FocusEvent,
@@ -153,7 +153,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         </div>
         <AnimatePresence>
           {!!error && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: '0px', overflow: 'hidden' }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: '0px', overflow: 'hidden' }}
@@ -162,7 +162,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 <Icon className={errorSvg} name="AlertCircle" color="error-dark" size="small" />
                 {error}
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>

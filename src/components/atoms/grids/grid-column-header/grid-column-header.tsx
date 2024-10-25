@@ -1,29 +1,25 @@
 import { css } from '@djeka07/utils';
-import { useCallback, useEffect, useRef, useState, DragEvent, MutableRefObject } from 'react';
-import { ColumnDefinitionState, DefaultColumnDefinitionType, FilterItemModel } from '../grid.type';
-import { resize, root, text, wrapper } from './grid-column-header.css';
-import { useDidUpdate } from '@djeka07/hooks';
+import { useCallback, useEffect, useRef, useState, memo } from 'react';
 import { GridColumnFilterWrapper } from '../grid-column-filter';
 import { PopupVariants } from '../grid-column-filter/grid-column-filter.css';
+import { DragOverState } from '../grid-header/grid-header.type';
+import { resize, resizeWrapper, root, text, wrapper } from './grid-column-header.css';
+import { useDidUpdate } from '@djeka07/hooks';
+import {
+  ColumnDefinitionState,
+  DefaultColumnDefinitionType,
+  FilterItemModel,
+} from '../../../molecules/grids/grid/grid.type';
 
 type GridColumnHeaderProps = PopupVariants & {
   appliedFilter?: FilterItemModel;
   className?: string;
-  gridColumnHeaderRefs: MutableRefObject<HTMLDivElement[]>;
   draggingDefinition: ColumnDefinitionState | null;
-  draggingOverDefinition: ColumnDefinitionState | null;
+  draggingOverDefinition: DragOverState | null;
   columnDefinition: ColumnDefinitionState;
   defaultColumnDefinition: DefaultColumnDefinitionType;
   onFilterChange?: (filter: FilterItemModel) => void;
   onResize?: (column: ColumnDefinitionState, newSize: number) => void;
-  onDragStart: (e: DragEvent<HTMLDivElement>, columnDefinition: ColumnDefinitionState) => void;
-  onDragEnd: (e: DragEvent<HTMLDivElement>) => void;
-  onDragOver: (e: DragEvent<HTMLDivElement>, columnDefinition: ColumnDefinitionState) => void;
-};
-
-type ColumnState = {
-  width: number;
-  changed: boolean;
 };
 
 const GridColumnHeader = ({
@@ -35,43 +31,42 @@ const GridColumnHeader = ({
   defaultColumnDefinition,
   onFilterChange,
   onResize,
-  onDragStart,
-  onDragEnd,
-  onDragOver,
-  gridColumnHeaderRefs,
   radius,
 }: GridColumnHeaderProps) => {
-  const shouldRenderFilter = columnDefinition.filter !== false && columnDefinition.floatingFilter !== true;
-  const shouldRenderFloatingFilter = columnDefinition.filter !== false && columnDefinition.floatingFilter === true;
+  const shouldRenderFilter = columnDefinition.filter !== false && columnDefinition.floatingFilter === false;
+  const shouldRenderFloatingFilter = columnDefinition.filter !== false && columnDefinition.floatingFilter !== false;
+  const showDropZone = !!draggingDefinition && draggingDefinition.field !== columnDefinition.field;
+  const showActiveDropZone =
+    !!draggingOverDefinition &&
+    draggingOverDefinition.field === columnDefinition.field &&
+    draggingOverDefinition?.field !== draggingDefinition?.field;
   const minWidth = columnDefinition.minWidth || defaultColumnDefinition.minWidth;
   const ref = useRef<HTMLDivElement>(null);
   const dragRef = useRef<HTMLDivElement>(null);
-  const [state, setState] = useState<ColumnState>({
-    width: columnDefinition.width || defaultColumnDefinition.width,
-    changed: false,
-  });
+  const [columnWidth, _setColumnWidth] = useState<number>(columnDefinition.width || defaultColumnDefinition.width);
+  const columnWidthRef = useRef<number>(columnDefinition.width || defaultColumnDefinition.width);
+
+  const setColumnWidth = (width: number) => {
+    _setColumnWidth(width);
+    columnWidthRef.current = width;
+  };
 
   useDidUpdate(() => {
     const { width } = columnDefinition;
-    if (!!width && width !== state.width) {
-      setState((prev) => ({ ...prev, width }));
+    if (!!width && width !== columnWidthRef.current) {
+      setColumnWidth(width);
     }
   }, [columnDefinition.width]);
 
   const internalOnResize = useCallback(
     (event: MouseEvent) => {
-      const { x } = ref.current?.getBoundingClientRect() || { width: state.width, x: 0 };
+      const { x } = ref.current?.getBoundingClientRect() || { x: 0 };
       const newSize = event.clientX - x;
       const newWidth = newSize <= minWidth ? minWidth : newSize;
-      setState(() => {
-        return {
-          width: newWidth,
-          changed: true,
-        };
-      });
+      setColumnWidth(newWidth);
       onResize?.(columnDefinition, newWidth);
     },
-    [columnDefinition, minWidth, onResize, state.width],
+    [columnDefinition, minWidth, onResize],
   );
 
   const onMouseUp = useCallback(
@@ -100,34 +95,15 @@ const GridColumnHeader = ({
     };
   }, [defaultColumnDefinition.autoFill, onMouseDown]);
 
-  const internalOnDragStart = (e: DragEvent<HTMLDivElement>) => {
-    onDragStart(e, columnDefinition);
-  };
-
-  const internalOnDragOver = (e: DragEvent<HTMLDivElement>) => {
-    onDragOver(e, columnDefinition);
-  };
-
   return (
     <div
-      className={css(
-        root({
-          showDropZone: !!draggingDefinition && draggingDefinition.field !== columnDefinition.field,
-          showActiveDropZone: !!draggingOverDefinition && draggingOverDefinition.field === columnDefinition.field,
-        }),
-        className,
-      )}
-      ref={(element: HTMLDivElement) => gridColumnHeaderRefs.current.push(element)}
+      ref={ref}
+      className={css(root({ showDropZone, showActiveDropZone }), className)}
       style={{
         minWidth,
-        width: state.width,
+        width: columnWidth,
       }}
       id={columnDefinition.field}
-      draggable
-      onDragStart={internalOnDragStart}
-      onDragOver={internalOnDragOver}
-      onDragEnd={onDragEnd}
-      onDrop={(e) => console.log(e)}
     >
       <div className={wrapper({ shouldRenderFloatingFilter })}>
         <div className={text}>{columnDefinition.fieldName}</div>
@@ -140,7 +116,11 @@ const GridColumnHeader = ({
             onFilterChange={onFilterChange}
           />
         )}
-        {columnDefinition.resizeable !== false && <div ref={dragRef} className={resize} />}
+        {columnDefinition.resizeable !== false && (
+          <div ref={dragRef} className={resizeWrapper}>
+            <div className={resize} /> <div className={resize} />
+          </div>
+        )}
       </div>
       {shouldRenderFilter && (
         <GridColumnFilterWrapper
@@ -153,4 +133,4 @@ const GridColumnHeader = ({
   );
 };
 
-export default GridColumnHeader;
+export default memo(GridColumnHeader);

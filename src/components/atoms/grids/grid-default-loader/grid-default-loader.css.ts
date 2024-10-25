@@ -4,13 +4,12 @@ import media from '../../../../styles/media.css';
 import { ghostAni } from '../../skeletons/skeleton.css';
 
 export const root = style({
-  overflow: 'visible',
+  overflow: 'auto',
 });
 
 export const wrapper = recipe({
   base: {
     display: 'flex',
-    overflow: 'hidden',
     gap: 4,
     padding: '0px 10px',
     [media.base]: {
@@ -34,10 +33,12 @@ export const wrapper = recipe({
 });
 
 export const item = style({
-  padding: '10px 0px',
+  padding: '0px 0px',
+  display: 'grid',
+  alignItems: 'center',
   [media.base]: {
     [media.small.up]: {
-      padding: '20px 0px',
+      padding: '0px 0px',
     },
   },
 });

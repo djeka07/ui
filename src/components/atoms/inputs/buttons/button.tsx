@@ -7,6 +7,7 @@ import { button, childrenRecipe, spinner } from './button.css';
 import { ButtonProps } from './button.props';
 
 const Button = ({
+  label,
   children,
   className,
   disabled = false,
@@ -17,14 +18,15 @@ const Button = ({
   round = false,
   outlined,
   direction = 'row',
-  align = 'flex-start',
-  justify = 'flex-start',
+  align = 'center',
+  justify = 'center',
   size = 'normal',
   type = 'button',
   wide = false,
   error,
   info,
   primary = true,
+  secondary,
   success,
   transparent,
   warning,
@@ -39,6 +41,7 @@ const Button = ({
 
   return (
     <button
+      aria-label={label}
       disabled={disabled || isLoading}
       onClick={internalOnClick}
       className={css(
@@ -47,6 +50,7 @@ const Button = ({
           info,
           primary: defaultPrimary,
           success,
+          secondary,
           transparent,
           warning,
           fullWidthMobile,
@@ -64,7 +68,7 @@ const Button = ({
         <span
           tabIndex={-1}
           className={css(
-            childrenRecipe({ size, primary, error, info, success, transparent, direction, align, justify }),
+            childrenRecipe({ size, primary, secondary, error, info, success, transparent, direction, align, justify }),
             innerClass,
           )}
         >
@@ -72,7 +76,16 @@ const Button = ({
         </span>
       ) : (
         <Spinner
-          className={spinner({ error, info, outlined, primary: defaultPrimary, success, transparent, warning })}
+          className={spinner({
+            error,
+            info,
+            outlined,
+            secondary,
+            primary: defaultPrimary,
+            success,
+            transparent,
+            warning,
+          })}
           color="white"
           size={size}
         />

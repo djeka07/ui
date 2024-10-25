@@ -23,7 +23,7 @@ export const SmallFromRight: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button title="Open panel" onClick={() => setShow(true)}>
+          <Button label="Open" onClick={() => setShow(true)}>
             Open
           </Button>
           {show && (
@@ -51,7 +51,7 @@ export const SmallFromLeft: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button title="Open panel" onClick={() => setShow(true)}>
+          <Button label="Open" onClick={() => setShow(true)}>
             Open
           </Button>
           {show && (
@@ -78,7 +78,7 @@ const Next = () => {
 
   return (
     <>
-      <Button title="Open panel" onClick={() => setShowSecond(true)}>
+      <Button label="Open" onClick={() => setShowSecond(true)}>
         Next
       </Button>
       {showSecond && (
@@ -104,7 +104,7 @@ export const FromRightMultiple: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button title="Open panel" onClick={() => setShow(true)}>
+          <Button label="Open" onClick={() => setShow(true)}>
             Open
           </Button>
           {show && (
@@ -135,7 +135,7 @@ export const SmallFromTop: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button title="Open panel" onClick={() => setShow(true)}>
+          <Button label="Open" onClick={() => setShow(true)}>
             Open
           </Button>
           {show && (
@@ -163,7 +163,7 @@ export const SmallFromBottom: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button title="Open panel" onClick={() => setShow(true)}>
+          <Button label="Open" onClick={() => setShow(true)}>
             Open
           </Button>
           {show && (
@@ -191,7 +191,7 @@ export const SmallFromCenter: Story = {
     return (
       <PanelsProvider>
         <div>
-          <Button title="Open panel" onClick={() => setShow(true)}>
+          <Button label="Open" onClick={() => setShow(true)}>
             Open
           </Button>
           {show && (

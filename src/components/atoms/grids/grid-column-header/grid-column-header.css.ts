@@ -53,7 +53,7 @@ export const text = style({
 export const wrapper = recipe({
   base: {
     display: 'grid',
-    gridTemplateColumns: '1fr 8px',
+    gridTemplateColumns: '1fr auto',
     alignItems: 'center',
   },
   variants: {
@@ -66,8 +66,13 @@ export const wrapper = recipe({
 });
 
 export const resize = style({
-  height: '100%',
-  width: 2,
   backgroundColor: 'var(--grid-border-fg-color)',
+});
+
+export const resizeWrapper = style({
+  height: '100%',
   cursor: 'col-resize',
+  display: 'grid',
+  gridTemplateColumns: '2px 2px',
+  gap: 2,
 });

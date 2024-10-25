@@ -4,7 +4,11 @@ import Button from './button';
 
 describe('GIVEN Button', () => {
   test('WHEN', () => {
-    const { asFragment } = render(<Button aria-controls="hej">Click</Button>);
+    const { asFragment } = render(
+      <Button label="Hej" aria-controls="hej">
+        Click
+      </Button>,
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 });

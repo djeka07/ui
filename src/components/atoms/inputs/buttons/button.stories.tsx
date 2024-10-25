@@ -9,7 +9,7 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Main: Story = {
+export const Primary: Story = {
   argTypes: {
     size: {
       control: 'select',
@@ -21,36 +21,63 @@ export const Main: Story = {
     children: 'Button',
   },
   render: (args) => (
-    <>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-        <div>Main</div>
-        <div>Dark</div>
+    <div style={{ display: 'grid', gap: 8 }}>
+      <div>
+        <Button label="Primary">{args.children}</Button>
       </div>
-      <div style={{ display: 'grid', gap: 8 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="button">{args.children}</Button>
-          </div>
-          <div>
-            <Button title="outlined" outlined>
-              {args.children}
-            </Button>
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="isloading" isLoading>
-              {args.children}
-            </Button>
-          </div>
-          <div>
-            <Button title="isloading-outlined" isLoading outlined>
-              {args.children}
-            </Button>
-          </div>
-        </div>
+      <div>
+        <Button label="Primary outline" outlined>
+          {args.children}
+        </Button>
       </div>
-    </>
+      <div>
+        <Button label="Primary loading" isLoading>
+          {args.children}
+        </Button>
+      </div>
+      <div>
+        <Button label="Primary outline loading" isLoading outlined>
+          {args.children}
+        </Button>
+      </div>
+    </div>
+  ),
+};
+
+export const Secondary: Story = {
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['xsmall', 'small', 'normal', 'large'],
+    },
+  },
+  args: {
+    size: 'normal',
+    children: 'Button',
+  },
+  render: (args) => (
+    <div style={{ display: 'grid', gap: 8 }}>
+      <div>
+        <Button secondary label="Secondary">
+          {args.children}
+        </Button>
+      </div>
+      <div>
+        <Button secondary label="Secondary outline" outlined>
+          {args.children}
+        </Button>
+      </div>
+      <div>
+        <Button secondary label="Secondary loading" isLoading>
+          {args.children}
+        </Button>
+      </div>
+      <div>
+        <Button secondary label="Secondary outline loading" isLoading outlined>
+          {args.children}
+        </Button>
+      </div>
+    </div>
   ),
 };
 
@@ -60,38 +87,28 @@ export const Success: Story = {
     isLoading: true,
   },
   render: (args) => (
-    <>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-        <div>Main</div>
-        <div>Outlined</div>
+    <div style={{ display: 'grid', gap: 8 }}>
+      <div>
+        <Button label="Success" success>
+          {args.children}
+        </Button>
       </div>
-      <div style={{ display: 'grid', gap: 8 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="success" success>
-              {args.children}
-            </Button>
-          </div>
-          <div>
-            <Button title="success-outlined" success outlined>
-              {args.children}
-            </Button>
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="success-loading" success isLoading>
-              {args.children}
-            </Button>
-          </div>
-          <div>
-            <Button title="success-outlined-loading" success isLoading outlined>
-              {args.children}
-            </Button>
-          </div>
-        </div>
+      <div>
+        <Button label="Success outline" success outlined>
+          {args.children}
+        </Button>
       </div>
-    </>
+      <div>
+        <Button label="Success loading" success isLoading>
+          {args.children}
+        </Button>
+      </div>
+      <div>
+        <Button label="Success outline loading" success isLoading outlined>
+          {args.children}
+        </Button>
+      </div>
+    </div>
   ),
 };
 
@@ -101,38 +118,28 @@ export const Error: Story = {
     isLoading: true,
   },
   render: (args) => (
-    <>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-        <div>Main</div>
-        <div>Outlined</div>
+    <div style={{ display: 'grid', gap: 8 }}>
+      <div>
+        <Button label="Error" error>
+          {args.children}
+        </Button>
       </div>
-      <div style={{ display: 'grid', gap: 8 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="error" error>
-              {args.children}
-            </Button>
-          </div>
-          <div>
-            <Button title="error-outlined" error outlined>
-              {args.children}
-            </Button>
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="info-outlined" error isLoading>
-              {args.children}
-            </Button>
-          </div>
-          <div>
-            <Button title="error-outlined-isloading" error isLoading outlined>
-              {args.children}
-            </Button>
-          </div>
-        </div>
+      <div>
+        <Button label="Error outline" error outlined>
+          {args.children}
+        </Button>
       </div>
-    </>
+      <div>
+        <Button label="Error loading" error isLoading>
+          {args.children}
+        </Button>
+      </div>
+      <div>
+        <Button label="Error outline loading" error isLoading outlined>
+          {args.children}
+        </Button>
+      </div>
+    </div>
   ),
 };
 
@@ -142,38 +149,28 @@ export const Warning: Story = {
     isLoading: true,
   },
   render: (args) => (
-    <>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-        <div>Main</div>
-        <div>Outlined</div>
+    <div style={{ display: 'grid', gap: 8 }}>
+      <div>
+        <Button label="Warning" warning>
+          {args.children}
+        </Button>
       </div>
-      <div style={{ display: 'grid', gap: 8 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="warning" warning>
-              {args.children}
-            </Button>
-          </div>
-          <div>
-            <Button title="warning-outlined" warning outlined>
-              {args.children}
-            </Button>
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="warning-outlined-irloasing" warning isLoading>
-              {args.children}
-            </Button>
-          </div>
-          <div>
-            <Button title="warning-outlined" warning outlined isLoading>
-              {args.children}
-            </Button>
-          </div>
-        </div>
+      <div>
+        <Button label="Warning outline" warning outlined>
+          {args.children}
+        </Button>
       </div>
-    </>
+      <div>
+        <Button label="Warning loading" warning isLoading>
+          {args.children}
+        </Button>
+      </div>
+      <div>
+        <Button label="Warning outline loading" warning outlined isLoading>
+          {args.children}
+        </Button>
+      </div>
+    </div>
   ),
 };
 
@@ -183,38 +180,28 @@ export const Info: Story = {
     isLoading: true,
   },
   render: (args) => (
-    <>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-        <div>Main</div>
-        <div>Outlined</div>
+    <div style={{ display: 'grid', gap: 8 }}>
+      <div>
+        <Button label="Info" info>
+          {args.children}
+        </Button>
       </div>
-      <div style={{ display: 'grid', gap: 8 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="info-outlined" info>
-              {args.children}
-            </Button>
-          </div>
-          <div>
-            <Button title="info-outlined" info outlined>
-              {args.children}
-            </Button>
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="info-outlined-isloading" info isLoading>
-              {args.children}
-            </Button>
-          </div>
-          <div>
-            <Button title="info-outlined" info outlined isLoading>
-              {args.children}
-            </Button>
-          </div>
-        </div>
+      <div>
+        <Button label="Info outline" info outlined>
+          {args.children}
+        </Button>
       </div>
-    </>
+      <div>
+        <Button label="Info loading" info isLoading>
+          {args.children}
+        </Button>
+      </div>
+      <div>
+        <Button label="Info outline loading" info outlined isLoading>
+          {args.children}
+        </Button>
+      </div>
+    </div>
   ),
 };
 
@@ -224,26 +211,17 @@ export const Transparent: Story = {
     isLoading: true,
   },
   render: (args) => (
-    <>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-        <div>Main</div>
+    <div style={{ display: 'grid', gap: 8 }}>
+      <div>
+        <Button label="Transparent" transparent>
+          {args.children}
+        </Button>
       </div>
-      <div style={{ display: 'grid', gap: 8 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="transparent" transparent>
-              {args.children}
-            </Button>
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
-          <div>
-            <Button title="isloading" transparent isLoading>
-              {args.children}
-            </Button>
-          </div>
-        </div>
+      <div>
+        <Button label="Transparent loading" transparent isLoading>
+          {args.children}
+        </Button>
       </div>
-    </>
+    </div>
   ),
 };

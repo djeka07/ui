@@ -6,7 +6,7 @@ import { ActionButtonProps } from './action-button.props';
 import Button from './button';
 
 const ActionButton = ({
-  title,
+  label,
   children,
   className,
   description,
@@ -17,7 +17,7 @@ const ActionButton = ({
   onClick,
 }: ActionButtonProps) => (
   <Button
-    title={title}
+    label={label}
     align="center"
     justify="center"
     wide

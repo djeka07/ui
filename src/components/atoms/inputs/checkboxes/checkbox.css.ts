@@ -84,14 +84,14 @@ export const input = recipe({
 
 export const labelClass = style({
   fontSize: 'var(--small-font-size)',
-  color: 'var(--main-input-color)',
+  color: 'var(--input-fg-color)',
   textOverflow: 'ellipsis',
 });
 
 export const childrenClass = recipe({
   base: {
     paddingLeft: '10px',
-    color: 'var(--main-input-color)',
+    color: 'var(--input-fg-color)',
     fontSize: 'var(--small-font-size)',
   },
   variants: {
@@ -115,7 +115,6 @@ export const wrapper = recipe({
     gap: 8,
     alignItems: 'center',
     position: 'relative',
-    marginBottom: 10,
     cursor: 'pointer',
     WebkitUserSelect: 'none',
     userSelect: 'none',
