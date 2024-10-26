@@ -62,7 +62,7 @@ stages:
             targetType: 'inline'
             script: |
               # Write your commands here
-              echo "variables: $(SHOULD_PUBLISH) $(IS_RC)"
+              echo "variables: $(OutputVar.SHOULD_PUBLISH) $(OutputVar.IS_RC)"
   - stage: Publish
     displayName: Publish to NPM
     dependsOn: SetVariables
