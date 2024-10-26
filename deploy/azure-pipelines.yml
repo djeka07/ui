@@ -73,20 +73,26 @@ stages:
         steps:
           - checkout: self
           - checkout: Infrastructure
+          - task: Yarn@3
+            displayName: Install Packages
+            inputs:
+              projectDirectory: "$(Build.SourcesDirectory)"
+              arguments: 'install --frozen-lockfile'
           - task: Bash@3
             displayName: 'Publish package to NPM'
             inputs:
               filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/publish.sh"
               arguments: "$(IS_RC) $(npmToken)"
               workingDirectory: "$(Build.SourcesDirectory)/ui"
-  - stage: PublishToStorybook
+  - stage: PublishStorybook
     displayName: Publish to storybook
     dependsOn: SetVariables
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
     pool:
       vmImage: ubuntu-latest
     jobs:
-      - job: BuildForStorybook
+      - job: PublishToStorybook
+        displayName: Publish to storybook 
         steps:
           - checkout: self
           - task: Yarn@3
@@ -100,6 +106,7 @@ stages:
               projectDirectory: "$(Build.SourcesDirectory)"
               arguments: 'build'
           - task: AzureStaticWebApp@0
+            displayName: Publish to static webapp
             condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
             inputs:
               workingDirectory: "$(Build.SourcesDirectory)"
