@@ -50,11 +50,20 @@ stages:
             # Write your commands here
             echo "variables: $(SHOULD_PUBLISH)"
       - task: Npm@1
-        displayName: 'Publish Npm package'
-        condition: and(eq(variables['SHOULD_PUBLISH'], true), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+        displayName: 'Publish package to NPM'
+        condition: and(eq(variables['SHOULD_PUBLISH'], true), eq(variables['IS_RC'], false))
         inputs:
           workingDir: "$(Build.SourcesDirectory)/ui"
           command: 'publish'
+          verbose: true
+          publishEndpoint: 'Npm feed'
+
+      - task: Npm@1
+        displayName: 'Publish RC package to NPM'
+        condition: and(eq(variables['SHOULD_PUBLISH'], true), eq(variables['IS_RC'], true))
+        inputs:
+          workingDir: "$(Build.SourcesDirectory)/ui"
+          command: '"publish --tag rc"'
           verbose: true
           publishEndpoint: 'Npm feed'
       - task: Yarn@3
