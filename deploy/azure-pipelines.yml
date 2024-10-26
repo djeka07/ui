@@ -64,6 +64,7 @@ stages:
   - stage: Publish
     displayName: Publish to NPM
     dependsOn: SetVariables
+    condition: eq(variables['SHOULD_PUBLISH'], true)
     jobs:
       - job: Publish
         steps:
@@ -71,7 +72,6 @@ stages:
           - checkout: Infrastructure
           - task: Bash@3
             displayName: 'Publish package to NPM'
-            condition: eq(variables['SHOULD_PUBLISH'], true)
             inputs:
               filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/publish.sh"
               arguments: "$(IS_RC) $(npmToken)"
@@ -79,7 +79,7 @@ stages:
   - stage: PublishToStorybook
     displayName: Publish to storybook
     dependsOn: SetVariables
-    condition: and(eq(variables['SHOULD_PUBLISH'], false), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
     jobs:
       - job: BuildForStorybook
         steps:
