@@ -56,6 +56,7 @@ stages:
             filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/check-npm-version.sh"
             arguments: "@djeka07/ui"
             workingDirectory: "$(Build.SourcesDirectory)/ui"
+          name: OutputVar
         - task: Bash@3
           inputs:
             targetType: 'inline'
@@ -65,11 +66,13 @@ stages:
   - stage: Publish
     displayName: Publish to NPM
     dependsOn: SetVariables
-    condition: eq(variables['SHOULD_PUBLISH'], true)
+    condition: eq(stageDependencies.SetVariables.SetVariables.outputs['OutputVar.SHOULD_PUBLISH'], true)
     pool:
       name: Macbook pool
     jobs:
       - job: Publish
+        variables:
+          isRc: $[stageDependencies.SetVariables.SetVariables.outputs['OutputVar.IS_RC']]
         steps:
           - checkout: self
           - checkout: Infrastructure
@@ -82,7 +85,7 @@ stages:
             displayName: 'Publish package to NPM'
             inputs:
               filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/publish.sh"
-              arguments: "$(IS_RC) $(npmToken)"
+              arguments: "$(isRc) $(npmToken)"
               workingDirectory: "$(Build.SourcesDirectory)/ui"
   - stage: PublishStorybook
     displayName: Publish to storybook
