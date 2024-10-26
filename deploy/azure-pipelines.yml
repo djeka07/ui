@@ -15,6 +15,8 @@ resources:
 variables:
   - name: appToken
     value: $(token)
+  - name: npmToken
+    value: $(NPM_TOKEN)
 
 stages:
   - stage: Deploy
@@ -63,15 +65,16 @@ stages:
           publishEndpoint: 'Npm feed'
 
 
-      - task: Npm@1
+      - task: Bash@3
         displayName: 'Publish RC package to NPM'
         condition: and(eq(variables['SHOULD_PUBLISH'], true), eq(variables['IS_RC'], true))
         inputs:
-          workingDir: "$(Build.SourcesDirectory)/ui"
-          command: "custom"
-          customCommand: "run publish:rc"
-          verbose: true
-          publishEndpoint: 'Npm feed'
+          targetType: "inline"
+          workingDirectory: "$(Build.SourcesDirectory)/ui"
+          script: |
+            # Write your commands here
+            npm set "//registry.npmjs.org/:_authToken=$(npmToken)";
+            npm publish --tag rc
       - task: Yarn@3
         displayName: Build for storybook
         condition: eq(variables['SHOULD_PUBLISH'], false)
