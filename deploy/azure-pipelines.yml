@@ -3,9 +3,6 @@ trigger:
 - main
 - feature/*
 
-pool:
-  vmImage: ubuntu-latest
-
 resources:
   repositories:
     - repository: Infrastructure
@@ -21,6 +18,8 @@ variables:
 stages:
   - stage: RunTest
     displayName: Run tests
+    pool:
+      name: Macbook pool
     jobs:
     - job: Test
       steps:
@@ -44,6 +43,8 @@ stages:
   - stage: SetVariables
     displayName: Set publish variables
     dependsOn: RunTest
+    pool:
+      name: Macbook pool
     jobs:
     - job: SetVariables
       steps:
@@ -65,6 +66,8 @@ stages:
     displayName: Publish to NPM
     dependsOn: SetVariables
     condition: eq(variables['SHOULD_PUBLISH'], true)
+    pool:
+      name: Macbook pool
     jobs:
       - job: Publish
         steps:
@@ -80,6 +83,8 @@ stages:
     displayName: Publish to storybook
     dependsOn: SetVariables
     condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+    pool:
+      vmImage: ubuntu-latest
     jobs:
       - job: BuildForStorybook
         steps:
