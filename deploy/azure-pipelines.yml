@@ -85,7 +85,12 @@ stages:
         steps:
           - checkout: self
           - task: Yarn@3
-            displayName: Build for storyboo
+            displayName: Install Packages
+            inputs:
+              projectDirectory: "$(Build.SourcesDirectory)"
+              arguments: 'install --frozen-lockfile'
+          - task: Yarn@3
+            displayName: Build for storybook
             inputs:
               projectDirectory: "$(Build.SourcesDirectory)"
               arguments: 'build'
