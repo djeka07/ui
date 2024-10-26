@@ -90,7 +90,7 @@ stages:
   - stage: PublishStorybook
     displayName: Publish to storybook
     dependsOn: SetVariables
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+    condition: and(eq(variables['Build.SourceBranch'], 'refs/heads/main'), succeeded())
     pool:
       vmImage: ubuntu-latest
     jobs:
