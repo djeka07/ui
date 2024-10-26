@@ -60,12 +60,14 @@ stages:
           verbose: true
           publishEndpoint: 'Npm feed'
 
+
       - task: Npm@1
         displayName: 'Publish RC package to NPM'
         condition: and(eq(variables['SHOULD_PUBLISH'], true), eq(variables['IS_RC'], true))
         inputs:
           workingDir: "$(Build.SourcesDirectory)/ui"
-          command: '"publish --tag rc"'
+          command: 'custom'
+          customCommand: 'publish --tag rc'
           verbose: true
           publishEndpoint: 'Npm feed'
       - task: Yarn@3
