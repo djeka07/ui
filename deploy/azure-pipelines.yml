@@ -66,7 +66,7 @@ stages:
   - stage: Publish
     displayName: Publish to NPM
     dependsOn: SetVariables
-    condition: eq(stageDependencies.SetVariables.SetVariables.outputs['OutputVar.SHOULD_PUBLISH'], true)
+    condition: eq(dependencies.SetVariables.outputs['SetVariables.OutputVar.SHOULD_PUBLISH'], true)
     pool:
       name: Macbook pool
     jobs:
