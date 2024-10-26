@@ -3,9 +3,6 @@ trigger:
 - main
 - feature/*
 
-pool:
-  vmImage: ubuntu-latest
-
 resources:
   repositories:
     - repository: Infrastructure
@@ -19,14 +16,16 @@ variables:
     value: $(NPM_TOKEN)
 
 stages:
-  - stage: Deploy
-    displayName: Deploy to static app
+  - stage: RunTest
+    displayName: Run tests
+    pool:
+      name: Macbook pool
     jobs:
-    - job: BuildAndDeploy
-      displayName: Build and deploy to storybook
+    - job: Test
       steps:
       - checkout: self
-      - checkout: Infrastructure
+        clean: false
+        submodules: true
       - task: YarnInstaller@3
         displayName: Install Yarn 1.22
         inputs:
@@ -34,46 +33,88 @@ stages:
       - task: Yarn@3
         displayName: Install Packages
         inputs:
-          projectDirectory: "$(Build.SourcesDirectory)/ui"
-          arguments: 'install'
+          projectDirectory: "$(Build.SourcesDirectory)"
+          arguments: 'install --frozen-lockfile'
       - task: Yarn@3
         displayName: Run test
         inputs:
-          projectDirectory: "$(Build.SourcesDirectory)/ui"
+          projectDirectory: "$(Build.SourcesDirectory)"
           arguments: test
-
-        
-      - task: Bash@3
-        displayName: Check package version
-        inputs:
-          filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/check-npm-version.sh"
-          arguments: "@djeka07/ui"
-          workingDirectory: "$(Build.SourcesDirectory)/ui"
-      - task: Bash@3
-        inputs:
-          targetType: 'inline'
-          script: |
-            # Write your commands here
-            echo "variables: $(SHOULD_PUBLISH) $(IS_RC)"
-      - task: Bash@3
-        displayName: 'Publish package to NPM'
-        condition: eq(variables['SHOULD_PUBLISH'], true)
-        inputs:
-          filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/publish.sh"
-          arguments: "$(IS_RC) $(npmToken)"
-          workingDirectory: "$(Build.SourcesDirectory)/ui"
-      - task: Yarn@3
-        displayName: Build for storybook
-        condition: eq(variables['SHOULD_PUBLISH'], false)
-        inputs:
-          projectDirectory: "$(Build.SourcesDirectory)/ui"
-          arguments: 'build'
-      - task: AzureStaticWebApp@0
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
-        inputs:
-          workingDirectory: "$(Build.SourcesDirectory)/ui"
-          app_build_command: 'yarn build:storybook'
-          output_location: '/storybook-static'
-          skip_app_build: false
-          is_static_export: true
-          azure_static_web_apps_api_token: '$(appToken)'
+  - stage: SetVariables
+    displayName: Set publish variables
+    dependsOn: RunTest
+    pool:
+      name: Macbook pool
+    jobs:
+    - job: SetVariables
+      steps:
+        - checkout: self
+        - checkout: Infrastructure
+        - task: Bash@3
+          displayName: Check package version
+          inputs:
+            filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/check-npm-version.sh"
+            arguments: "@djeka07/ui"
+            workingDirectory: "$(Build.SourcesDirectory)/ui"
+          name: OutputVar
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              # Write your commands here
+              echo "variables: $(OutputVar.SHOULD_PUBLISH) $(OutputVar.IS_RC)"
+  - stage: Publish
+    displayName: Publish to NPM
+    dependsOn: SetVariables
+    condition: eq(dependencies.SetVariables.outputs['SetVariables.OutputVar.SHOULD_PUBLISH'], true)
+    pool:
+      name: Macbook pool
+    jobs:
+      - job: Publish
+        variables:
+          isRc: $[stageDependencies.SetVariables.SetVariables.outputs['OutputVar.IS_RC']]
+        steps:
+          - checkout: self
+          - checkout: Infrastructure
+          - task: Yarn@3
+            displayName: Install Packages
+            inputs:
+              projectDirectory: "$(Build.SourcesDirectory)"
+              arguments: 'install --frozen-lockfile'
+          - task: Bash@3
+            displayName: 'Publish package to NPM'
+            inputs:
+              filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/publish.sh"
+              arguments: "$(isRc) $(npmToken)"
+              workingDirectory: "$(Build.SourcesDirectory)/ui"
+  - stage: PublishStorybook
+    displayName: Publish to storybook
+    dependsOn: SetVariables
+    condition: and(eq(variables['Build.SourceBranch'], 'refs/heads/main'), succeeded())
+    pool:
+      vmImage: ubuntu-latest
+    jobs:
+      - job: PublishToStorybook
+        displayName: Publish to storybook 
+        steps:
+          - checkout: self
+          - task: Yarn@3
+            displayName: Install Packages
+            inputs:
+              projectDirectory: "$(Build.SourcesDirectory)"
+              arguments: 'install --frozen-lockfile'
+          - task: Yarn@3
+            displayName: Build for storybook
+            inputs:
+              projectDirectory: "$(Build.SourcesDirectory)"
+              arguments: 'build'
+          - task: AzureStaticWebApp@0
+            displayName: Publish to static webapp
+            condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+            inputs:
+              workingDirectory: "$(Build.SourcesDirectory)"
+              app_build_command: 'yarn build:storybook'
+              output_location: '/storybook-static'
+              skip_app_build: false
+              is_static_export: true
+              azure_static_web_apps_api_token: '$(appToken)'
