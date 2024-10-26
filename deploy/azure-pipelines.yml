@@ -74,7 +74,7 @@ stages:
           projectDirectory: "$(Build.SourcesDirectory)/ui"
           arguments: 'build'
       - task: AzureStaticWebApp@0
-        condition: always()
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
         inputs:
           workingDirectory: "$(Build.SourcesDirectory)/ui"
           app_build_command: 'yarn build:storybook'
