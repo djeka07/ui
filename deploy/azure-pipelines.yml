@@ -81,6 +81,11 @@ stages:
             inputs:
               projectDirectory: "$(Build.SourcesDirectory)"
               arguments: 'install --frozen-lockfile'
+          - task: Yarn@3
+            displayName: Build for NPM
+            inputs:
+              projectDirectory: "$(Build.SourcesDirectory)"
+              arguments: 'build'
           - task: Bash@3
             displayName: 'Publish package to NPM'
             inputs:
