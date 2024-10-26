@@ -32,6 +32,7 @@
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build",
     "start:storybook": "npx http-server ./storybook-static",
+    "publish:rc": "npm run publish --tag rc",
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
