@@ -44,6 +44,7 @@ stages:
         inputs:
           filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/check-npm-version.sh"
           arguments: "@djeka07/ui"
+          workingDirectory: "$(Build.SourcesDirectory)/ui"
       - task: Bash@3
         inputs:
           targetType: 'inline'
