@@ -49,7 +49,7 @@ stages:
           targetType: 'inline'
           script: |
             # Write your commands here
-            echo "variables: $(SHOULD_PUBLISH)"
+            echo "variables: $(SHOULD_PUBLISH) $(IS_RC)"
       - task: Npm@1
         displayName: 'Publish package to NPM'
         condition: and(eq(variables['SHOULD_PUBLISH'], true), eq(variables['IS_RC'], false))
