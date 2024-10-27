@@ -94,10 +94,13 @@ stages:
         displayName: Publish to storybook 
         steps:
           - checkout: self
-          - task: YarnInstaller@3
-            displayName: Install Yarn 1.22
+          - task: Bash@3
             inputs:
-              versionSpec: '4.5.1'
+              targetType: 'inline'
+              script: |
+                # Write your commands here
+                corepack enable
+                yarn set version berry
           - task: Yarn@3
             displayName: Install Packages
             inputs:
