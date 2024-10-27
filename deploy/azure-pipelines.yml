@@ -94,6 +94,10 @@ stages:
         displayName: Publish to storybook 
         steps:
           - checkout: self
+          - task: YarnInstaller@3
+            displayName: Install Yarn 1.22
+            inputs:
+              versionSpec: '4.5.1'
           - task: Yarn@3
             displayName: Install Packages
             inputs:
