@@ -105,7 +105,7 @@ stages:
             displayName: Install Packages
             inputs:
               projectDirectory: "$(Build.SourcesDirectory)"
-              arguments: 'install --frozen-lockfile'
+              arguments: 'install --immutable'
           - task: Yarn@3
             displayName: Build for storybook
             inputs:
