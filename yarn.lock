@@ -652,10 +652,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@djeka07/utils@npm:1.0.10, @djeka07/utils@npm:^1.0.9":
+"@djeka07/utils@npm:1.0.10":
   version: 1.0.10
   resolution: "@djeka07/utils@npm:1.0.10"
   checksum: 10c0/524747880598937c549e9e2824a8b4ea397ef923503d6091eb6fb85dac1ba8888ec172d6ac570db9ff213fc87b57ba8f68fad379084ef5301fe15f2b6cb3d288
+  languageName: node
+  linkType: hard
+
+"@djeka07/utils@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "@djeka07/utils@npm:1.0.9"
+  checksum: 10c0/5e7c46bc57d74b7b2fa7988ecf020cccf98db8912068ff1f43ff98ef33d721232a4cbbd2afa396d049487a641446da15892a80d97749574049ff721b991fdabb
   languageName: node
   linkType: hard
 
