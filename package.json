@@ -1,7 +1,6 @@
 {
   "name": "@djeka07/ui",
   "version": "0.2.18",
-  "private": false,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -88,5 +87,6 @@
     "framer-motion": "11.11.9",
     "react": "18.3.1",
     "react-dom": "18.3.1"
-  }
+  },
+  "packageManager": "yarn@4.5.1"
 }
