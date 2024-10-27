@@ -1,11 +1,10 @@
 {
   "name": "@djeka07/ui",
   "version": "1.0.0-rc-0.21",
-  "private": false,
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.cts",
-  "exports":{
+  "exports": {
     "import": {
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
@@ -99,5 +98,6 @@
     "framer-motion": "12.0.0-alpha.0",
     "react": "19.0.0-rc-fb9a90fa48-20240614",
     "react-dom": "19.0.0-rc-fb9a90fa48-20240614"
-  }
+  },
+  "packageManager": "yarn@4.5.1"
 }
