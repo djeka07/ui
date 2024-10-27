@@ -26,10 +26,6 @@ stages:
       - checkout: self
         clean: false
         submodules: true
-      - task: YarnInstaller@3
-        displayName: Install Yarn 1.22
-        inputs:
-          versionSpec: '1.22'
       - task: Yarn@3
         displayName: Install Packages
         inputs:
