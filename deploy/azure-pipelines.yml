@@ -26,10 +26,6 @@ stages:
       - checkout: self
         clean: false
         submodules: true
-      - task: YarnInstaller@3
-        displayName: Install Yarn 1.22
-        inputs:
-          versionSpec: '1.22'
       - task: Yarn@3
         displayName: Install Packages
         inputs:
@@ -98,11 +94,18 @@ stages:
         displayName: Publish to storybook 
         steps:
           - checkout: self
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Write your commands here
+                corepack enable
+                yarn set version berry
           - task: Yarn@3
             displayName: Install Packages
             inputs:
               projectDirectory: "$(Build.SourcesDirectory)"
-              arguments: 'install --frozen-lockfile'
+              arguments: 'install --immutable'
           - task: Yarn@3
             displayName: Build for storybook
             inputs:
