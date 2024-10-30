@@ -39,9 +39,9 @@ export default defineConfig({
       exclude: ['**/*.stories.tsx'],
       insertTypesEntry: true,
       rollupTypes: true,
-      afterBuild: () => {
-        copyFileSync('dist/index.d.cts', 'dist/index.d.mts');
-      },
+      // afterBuild: () => {
+      //   copyFileSync('dist/index.d.cts', 'dist/index.d.mts');
+      // },
     }),
     tsconfigPaths(),
     vanillaExtractPlugin({ unstable_mode: 'emitCss' }),
