@@ -18,6 +18,8 @@ variables:
     value: $(ACCOUNT_NAME)
   - name: accountKey
     value: $(ACCOUNT_KEY)
+  - name: containerName
+    value: $(CONTAINER_NAME)
 
 stages:
   - stage: RunTest
@@ -104,7 +106,7 @@ stages:
               azureSubscription: 'PremiumConnection'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
-              inlineScript: 'az storage blob directory upload -c static -s "dist/style.css" -d /$(packageVersion)/style.css  --recursive --account-name $(accountName) --account-key $(accountKey)'
+              inlineScript: 'az storage fs directory upload --source ./dist/style.css -d /$(packageName)/style.css -f $(containerName) --account-name $(accountName) --account-key $(accountKey)'
               visibleAzLogin: false
   - stage: PublishStorybook
     displayName: Publish to storybook
