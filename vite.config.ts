@@ -5,13 +5,33 @@ import { resolve } from 'path';
 import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig, Plugin } from 'vite';
 import dts from 'vite-plugin-dts';
+import { sync } from 'glob';
 // import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
+const input = Object.fromEntries([
+  ['index', 'src/index.ts'],
+  ...sync('src/components/*/*/index.ts').map((componentPath) => {
+    const [, componentName, component] = componentPath.match(/.*components\/(.*)\/.*?/) || [];
+    console.log(componentName, component, componentPath);
+    return [componentName, componentPath];
+  }),
+]);
+
+console.log(input);
+
+const renameFile = (info) => {
+  let name = info.name;
+  if (name !== 'index') {
+    name = `_internal/${name}`;
+  }
+  return `${name}.mjs`;
+};
+
 export default defineConfig({
   plugins: [
-    preserveDirectives() as Plugin,
+    // preserveDirectives() as Plugin,
     react(),
     // libInjectCss(),
     svgr({ include: '**/*.svg' }),
@@ -23,8 +43,8 @@ export default defineConfig({
     copyPublicDir: false,
     minify: true,
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['es', 'cjs'],
+      entry: input,
+      formats: ['es'],
       fileName: '[name]',
     },
     rollupOptions: {
@@ -40,6 +60,8 @@ export default defineConfig({
       ],
       output: {
         preserveModules: false,
+        chunkFileNames: renameFile,
+        entryFileNames: renameFile,
         inlineDynamicImports: false,
         globals: {
           react: 'React',
