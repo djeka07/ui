@@ -1,17 +1,23 @@
 {
   "name": "@djeka07/ui",
-  "version": "1.0.0-rc-0.21",
+  "version": "1.0.0-rc-0.22",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.cts",
   "exports": {
-    "import": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
-    "require": {
-      "types": "./dist/index.d.cts",
-      "default": "./dist/index.cjs"
+    "./style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "license": "MIT",
@@ -23,6 +29,7 @@
   ],
   "scripts": {
     "build": "yarn clean && tsc && vite build",
+    "check:exports": "attw --pack .",
     "copy:svgs": "cp ./src/components/atoms/icons/svgs/*.svg ./dist/components/atoms/icons/svgs",
     "clean": "rm -rf ./dist",
     "dev": "yarn storybook",
@@ -46,6 +53,7 @@
     "react-dom": "19.0.0-rc-fb9a90fa48-20240614"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.16.4",
     "@eslint/compat": "^1.2.1",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.13.0",
