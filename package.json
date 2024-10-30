@@ -1,26 +1,19 @@
 {
   "name": "@djeka07/ui",
   "version": "1.0.0-rc-0.22",
-  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.cts",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
     },
     "./style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }
   },
-  "license": "MIT",
   "files": [
     "./dist/**/*"
   ],
