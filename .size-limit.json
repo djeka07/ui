@@ -1,0 +1,10 @@
+[
+  {
+    "path": "dist/index.mjs",
+    "import": "{ PanelContainer }"
+  },
+  {
+    "path": "dist/index.cjs",
+    "import": "{ PanelContainer }"
+  }
+]
