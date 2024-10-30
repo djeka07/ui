@@ -1,12 +1,10 @@
 /// <reference types="vite/client" />
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import react from '@vitejs/plugin-react';
-import { copyFileSync } from 'node:fs';
-import { resolve } from 'path';
-import preserveDirectives from 'rollup-preserve-directives';
-import { defineConfig, Plugin } from 'vite';
-import dts from 'vite-plugin-dts';
 import { sync } from 'glob';
+import { copyFileSync } from 'node:fs';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 // import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -52,7 +50,7 @@ export default defineConfig({
     copyPublicDir: false,
     minify: true,
     lib: {
-      entry: input,7
+      entry: input,
       formats: ['es'],
       fileName: '[name]',
     },
