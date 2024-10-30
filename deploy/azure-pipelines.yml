@@ -89,6 +89,17 @@ stages:
               arguments: "$(isRc) $(npmToken)"
               workingDirectory: "$(Build.SourcesDirectory)/ui"
           - task: AzureCLI@2
+            name: useDynamicInstall
+            displayName: Use dynamic install
+            inputs:
+              azureSubscription: 'PremiumConnection'
+              scriptType: 'bash'
+              scriptLocation: inlineScript
+              inlineScript: 'az config set extension.use_dynamic_install=yes_without_prompt'
+              visibleAzLogin: false
+          - task: AzureCLI@2
+            name: UploadBlobs
+            displayName: Upload style.css to blob storage
             inputs:
               azureSubscription: 'PremiumConnection'
               scriptType: 'bash'
