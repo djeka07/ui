@@ -14,6 +14,10 @@ variables:
     value: $(token)
   - name: npmToken
     value: $(NPM_TOKEN)
+  - name: accountName
+    value: $(ACCOUNT_NAME)
+  - name: accountKey
+    value: $(ACCOUNT_KEY)
 
 stages:
   - stage: RunTest
@@ -58,7 +62,7 @@ stages:
             targetType: 'inline'
             script: |
               # Write your commands here
-              echo "variables: $(OutputVar.SHOULD_PUBLISH) $(OutputVar.IS_RC)"
+              echo "variables: $(OutputVar.SHOULD_PUBLISH) $(OutputVar.IS_RC) $(OutputVar.PACKAGE_VERSION)"
   - stage: Publish
     displayName: Publish to NPM
     dependsOn: SetVariables
@@ -69,6 +73,7 @@ stages:
       - job: Publish
         variables:
           isRc: $[stageDependencies.SetVariables.SetVariables.outputs['OutputVar.IS_RC']]
+          packageVersion:  $[stageDependencies.SetVariables.SetVariables.outputs['OutputVar.PACKAGE_VERSION']]
         steps:
           - checkout: self
           - checkout: Infrastructure
@@ -83,6 +88,13 @@ stages:
               filePath: "$(Build.SourcesDirectory)/Infrastructure/scripts/publish.sh"
               arguments: "$(isRc) $(npmToken)"
               workingDirectory: "$(Build.SourcesDirectory)/ui"
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: 'PremiumConnection'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: 'az storage blob directory upload -c static -s "dist/style.css" -d /$(packageVersion)/style.css  --recursive --account-name $(accountName) --account-key $(accountKey)'
+              visibleAzLogin: false
   - stage: PublishStorybook
     displayName: Publish to storybook
     dependsOn: SetVariables
