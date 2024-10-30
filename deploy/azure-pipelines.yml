@@ -106,7 +106,7 @@ stages:
               azureSubscription: 'PremiumConnection'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
-              inlineScript: 'az storage fs directory upload --source ./dist/style.css -d /$(packageName)/style.css -f $(containerName) --account-name $(accountName) --account-key $(accountKey)'
+              inlineScript: 'az storage fs directory upload --source $(Build.SourcesDirectory)/ui/dist/style.css -d /$(packageVersion)/style.css -f $(containerName) --account-name $(accountName) --account-key $(accountKey)'
               visibleAzLogin: false
   - stage: PublishStorybook
     displayName: Publish to storybook
