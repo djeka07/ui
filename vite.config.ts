@@ -8,6 +8,7 @@ import dts from 'vite-plugin-dts';
 // import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import preserveDirectives from 'rollup-preserve-directives';
 
 const input = Object.fromEntries([
   ['index', 'src/index.ts'],
@@ -30,7 +31,7 @@ const renameFile = (info) => {
 
 export default defineConfig({
   plugins: [
-    // preserveDirectives() as Plugin,
+    preserveDirectives() as Plugin,
     react(),
     // libInjectCss(),
     svgr({ include: '**/*.svg' }),
