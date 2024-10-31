@@ -11,6 +11,7 @@ import preserveDirectives from 'rollup-preserve-directives';
 
 const input = Object.fromEntries([
   ['index', 'src/index.ts'],
+  ['styles', 'src/styles/index.ts'],
   ...sync('src/components/*/*/index.ts').map((componentPath) => {
     const [, componentName] = componentPath.match(/.*components\/(.*)\/.*?/) || [];
     return [componentName, componentPath];
