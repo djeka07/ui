@@ -8,12 +8,11 @@ export default (theme: Theme, extraVars?: Variables) => {
         return `${amt}\n${curr}: ${extraVars[curr]};`;
       }, '')
     : null;
-  console.log(vars);
+
   return (
     <style>
       {`
   :root {
-    ${vars}
     --white-common-color: ${theme.palette.common.white};
     --black-common-color: ${theme.palette.common.black};
 
@@ -119,6 +118,7 @@ export default (theme: Theme, extraVars?: Variables) => {
     --xlarge-border-radius:  ${theme.border.radius.xlarge};
     --xxlarge-border-radius:  ${theme.border.radius.xxlarge};
     --round-border-radius:  ${theme.border.radius.round};
+    ${vars}
   }
 
   html {
