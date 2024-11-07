@@ -1,10 +1,19 @@
 import Theme from './theme';
 
-export default (theme: Theme) => {
+export type Variables = { [key: string]: string };
+
+export default (theme: Theme, extraVars?: Variables) => {
+  const vars = extraVars
+    ? Object.keys(extraVars).reduce((amt, curr) => {
+        return `${amt}\n${curr}: ${extraVars[curr]};`;
+      }, '')
+    : null;
+  console.log(vars);
   return (
     <style>
       {`
   :root {
+    ${vars}
     --white-common-color: ${theme.palette.common.white};
     --black-common-color: ${theme.palette.common.black};
 

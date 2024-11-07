@@ -10,7 +10,7 @@ const preview: Preview = {
       const theme = context.parameters.theme || context.globals.theme;
       return (
         <>
-          {createVariables(createDefaultTheme(theme))}
+          {createVariables(createDefaultTheme(theme), { '--hejsan': 'ksmkdms', '--dsa': 'smskmsk' })}
           <Story />
         </>
       );
