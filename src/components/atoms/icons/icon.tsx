@@ -3,7 +3,7 @@ import { svg, wrapper, WrapperStyleVariants } from './icon.css';
 import { IconProps } from './icon.props';
 import * as Svgs from './svgs';
 
-const IconSvg = ({ name, onClick, color, size, className }: IconProps) => {
+const IconSvg = ({ name, onClick, color, size = 'small', className }: IconProps) => {
   const Svg = Svgs[name];
   return (
     <Svg onClick={onClick} className={css(svg({ size, color, cursor: onClick ? 'pointer' : undefined }), className)} />
