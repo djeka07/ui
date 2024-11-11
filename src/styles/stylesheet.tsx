@@ -150,6 +150,10 @@ export default (theme: Theme, extraVars?: Variables) => {
         padding: 0px;
         margin: 0px;
       }
+      p {
+          margin-block-start: 0px;
+          margin-block-end: 0px;
+      }
       ${theme.typography.fontFace.map(
         (fontFace) => `
           @font-face {
