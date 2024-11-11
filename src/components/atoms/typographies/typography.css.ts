@@ -3,7 +3,6 @@ import media from '../../../styles/media.css';
 
 export const typography = recipe({
   base: {
-    fontFamily: 'Campton, arial',
     marginBlockStart: 0,
     marginBlockEnd: 0,
   },
