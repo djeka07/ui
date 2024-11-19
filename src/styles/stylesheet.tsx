@@ -1,4 +1,22 @@
 import Theme from './theme';
+import { Tag } from './typography';
+
+const createTags = (tag: Tag): string => {
+  if (Array.isArray(tag.input)) {
+    return tag.input
+      .map(
+        (input) => `
+      --${input}-font-family: ${tag.family};
+      --${input}-font-weight: ${tag.weight};
+    `,
+      )
+      .join('');
+  }
+  return `
+      --${tag.input}-font-family: ${tag.family};
+      --${tag.input}-font-weight: ${tag.weight};
+  `;
+};
 
 export default (theme: Theme) => {
   return (
@@ -70,8 +88,7 @@ export default (theme: Theme) => {
     --main-link-color: ${theme.palette.link.main};
     --dark-link-color: ${theme.palette.link.dark};
 
-    --base-font-family: ${theme.typography.family.body};
-    --heading-font-family: ${theme.typography.family.heading};
+    ${theme.typography.tags?.map((tag) => createTags(tag))}
 
     --xxsmall-font-size: ${theme.typography.size.xxsmall};
     --xsmall-font-size: ${theme.typography.size.xsmall};
@@ -127,10 +144,8 @@ export default (theme: Theme) => {
   }
 
       h1, h2,h3,h4, h5, h6 {
-        font-family: ${theme.typography.family.heading};
       }
       body {
-        font-family: ${theme.typography.family.body};
         font-weight: ${theme.typography.weight.regular};
         font-size: ${theme.typography.size.normal};
         width: 100%;

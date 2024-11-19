@@ -38,7 +38,7 @@ export const typography = recipe({
       inherit: { color: 'inherit' },
     },
     element: {
-      h1: { color: 'var(--main-heading-color)' },
+      h1: { color: 'var(--main-heading-color)', fontSize: 'var(--h1-font-size)' },
       h2: { color: 'var(--main-heading-color)' },
       h3: { color: 'var(--main-heading-color)' },
       h4: { color: 'var(--main-heading-color)' },
