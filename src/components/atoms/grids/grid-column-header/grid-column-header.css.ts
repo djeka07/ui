@@ -15,7 +15,7 @@ export const root = recipe({
     borderStyle: 'dashed',
     borderColor: 'transparent',
     [media.base]: {
-      [media.small.up]: {
+      [media.sm.up]: {
         padding: '20px 0px',
       },
     },
@@ -29,7 +29,7 @@ export const root = recipe({
         backgroundColor: 'color-mix(in srgb, var(--grid-header-bg-color), grey 25%)',
         borderRadius: 6,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             padding: '20px 20px',
           },
         },

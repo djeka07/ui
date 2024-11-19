@@ -19,7 +19,7 @@ export const button = recipe({
     backgroundColor: 'var(--primary-main-color)',
     width: '100%',
     [media.base]: {
-      [media.small.up]: {
+      [media.sm.up]: {
         width: 'auto',
       },
     },
@@ -162,7 +162,7 @@ export const button = recipe({
         height: '40px',
         overflow: 'hidden',
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             width: '40px',
             height: '40px',
           },
@@ -173,7 +173,7 @@ export const button = recipe({
       true: {
         width: '100%',
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             width: '100%',
           },
         },

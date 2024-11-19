@@ -293,7 +293,7 @@ export const input = recipe({
     outline: 'none',
     ['-webkit-text-fill-color' as string]: 'var(--input-fg-color) !important',
     [media.base]: {
-      [media.small.up]: {
+      [media.sm.up]: {
         fontSize: 14,
       },
     },

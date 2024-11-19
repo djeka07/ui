@@ -88,7 +88,7 @@ export const input = style({
   appearance: 'none',
   outline: 'none',
   [media.base]: {
-    [media.small.up]: {
+    [media.sm.up]: {
       fontSize: 14,
     },
   },

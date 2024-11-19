@@ -1,5 +1,5 @@
 import { Element } from '../components/atoms/typographies/typography.props';
-import { BreakPoint, BreakPointEnumKeys } from './breakpoint';
+import { BreakPointEnumKeys } from './media.css';
 
 export type Size = {
   xxxsmall: string;
@@ -37,10 +37,12 @@ export type FontFace = {
   display: string;
 };
 
+export type FontSize = { [key in BreakPointEnumKeys]?: string };
+
 export type Tag = {
   input: Element | Element[];
   weight?: WeightKeys;
-  fontSize: [{ [key in BreakPointEnumKeys]: string }];
+  fontSize: FontSize;
   family?: string;
 };
 
@@ -53,11 +55,32 @@ export type TypographyProps = {
 
 export default {
   tags: [
-    { input: 'h1', weight: 'regular', family: 'Campton, Helvetica, sans-serif', fontSize: {[]} },
+    { input: 'h1', weight: 'regular', family: 'Campton, Helvetica, sans-serif', fontSize: { xs: '2rem', sm: '4rem' } },
+    {
+      input: 'h2',
+      weight: 'regular',
+      family: 'Campton, Helvetica, sans-serif',
+      fontSize: { xs: '1.5rem', sm: '3rem' },
+    },
+    {
+      input: 'h3',
+      weight: 'regular',
+      family: 'Campton, Helvetica, sans-serif',
+      fontSize: { xs: '1.3rem', sm: '2.5rem' },
+    },
+    {
+      input: 'h4',
+      weight: 'regular',
+      family: 'Campton, Helvetica, sans-serif',
+      fontSize: { xs: '1.2rem', sm: '2rem' },
+    },
+    { input: 'h5', weight: 'regular', family: 'Campton, Helvetica, sans-serif', fontSize: { xs: '1.125rem' } },
+    { input: 'h6', weight: 'regular', family: 'Campton, Helvetica, sans-serif', fontSize: { xs: '1rem' } },
     {
       input: ['body', 'caption', 'div', 'label', 'p', 'span'],
       weight: 'regular',
       family: 'Campton, Helvetica, sans-serif;',
+      fontSize: { xs: '1rem' },
     },
   ],
   weight: {

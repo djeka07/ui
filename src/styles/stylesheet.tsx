@@ -1,21 +1,59 @@
+import { unique } from '@djeka07/utils';
+import { Element } from '../components/atoms/typographies/typography.props';
+import media, { Media } from './media.css';
 import Theme from './theme';
-import { Tag } from './typography';
+import { FontSize, Tag } from './typography';
+
+const createMediaQueryFromInput = (input: Element, hej: string): string => {
+  return `
+    --${input}-font-size: ${hej};
+  `;
+};
+
+const createMediaQueryFromInputs = (inputs: Element[], hej: string): string => {
+  return `
+    ${inputs.map((input) => createMediaQueryFromInput(input, hej)).join('')}
+  `;
+};
+
+const createMediaQueryFromTags = (mediaQuery: keyof FontSize, tags: Tag[]): string => {
+  return `
+    ${media.base} ${(media[mediaQuery] as Media)?.up} {
+    :root {
+      ${tags
+        .map((tag) =>
+          Array.isArray(tag.input)
+            ? createMediaQueryFromInputs(tag.input, tag.fontSize[mediaQuery] as string)
+            : createMediaQueryFromInput(tag.input, tag.fontSize[mediaQuery] as string),
+        )
+        .join('')}
+      }
+    }
+  `;
+};
+
+const createFontSizes = (tags: Tag[]): string => {
+  const breakpoints = unique(tags.map((tag) => Object.keys(tag.fontSize || {})).flat(1));
+  return breakpoints
+    ?.map((breakpoint) => {
+      const tagsWithBreakpoint = tags?.filter((t) => !!t.fontSize?.[breakpoint as keyof FontSize]);
+      return createMediaQueryFromTags(breakpoint as keyof FontSize, tagsWithBreakpoint);
+    })
+    .join('');
+};
+
+const createFamilyWeight = (input: Element, tag: Tag): string => {
+  return `
+      --${input}-font-family: ${tag.family};
+      --${input}-font-weight: ${tag.weight};
+  `;
+};
 
 const createTags = (tag: Tag): string => {
   if (Array.isArray(tag.input)) {
-    return tag.input
-      .map(
-        (input) => `
-      --${input}-font-family: ${tag.family};
-      --${input}-font-weight: ${tag.weight};
-    `,
-      )
-      .join('');
+    return tag.input.map((input) => createFamilyWeight(input, tag)).join('');
   }
-  return `
-      --${tag.input}-font-family: ${tag.family};
-      --${tag.input}-font-weight: ${tag.weight};
-  `;
+  return createFamilyWeight(tag.input, tag);
 };
 
 export default (theme: Theme) => {
@@ -88,7 +126,7 @@ export default (theme: Theme) => {
     --main-link-color: ${theme.palette.link.main};
     --dark-link-color: ${theme.palette.link.dark};
 
-    ${theme.typography.tags?.map((tag) => createTags(tag))}
+    ${theme.typography.tags?.map((tag) => createTags(tag)).join('')}
 
     --xxsmall-font-size: ${theme.typography.size.xxsmall};
     --xsmall-font-size: ${theme.typography.size.xsmall};
@@ -129,6 +167,8 @@ export default (theme: Theme) => {
     --round-border-radius:  ${theme.border.radius.round};
   }
 
+  ${createFontSizes(theme.typography.tags)}
+
   html {
       background-color: var(--dark-background-color);
       width: 100%;
@@ -143,8 +183,6 @@ export default (theme: Theme) => {
     box-sizing: border-box;
   }
 
-      h1, h2,h3,h4, h5, h6 {
-      }
       body {
         font-weight: ${theme.typography.weight.regular};
         font-size: ${theme.typography.size.normal};
