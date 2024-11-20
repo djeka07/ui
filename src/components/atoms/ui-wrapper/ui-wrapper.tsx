@@ -1,3 +1,5 @@
+'use client';
+
 import { FeatureBundle, LazyFeatureBundle, LazyMotion } from 'framer-motion';
 import { ReactNode } from 'react';
 
