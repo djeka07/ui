@@ -25,7 +25,7 @@ stages:
   - stage: RunTest
     displayName: Run tests
     pool:
-      name: Macbook pool
+      name: Ubuntu WSL
     jobs:
     - job: Test
       steps:
@@ -46,7 +46,7 @@ stages:
     displayName: Set publish variables
     dependsOn: RunTest
     pool:
-      name: Macbook pool
+      name: Ubuntu WSL
     jobs:
     - job: SetVariables
       steps:
@@ -70,7 +70,7 @@ stages:
     dependsOn: SetVariables
     condition: eq(dependencies.SetVariables.outputs['SetVariables.OutputVar.SHOULD_PUBLISH'], true)
     pool:
-      name: Macbook pool
+      name: Ubuntu WSL
     jobs:
       - job: Publish
         variables:
