@@ -149,7 +149,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             </legend>
           </fieldset>
         </div>
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {!!error && (
             <m.div
               initial={{ opacity: 0, height: '0px', overflow: 'hidden' }}

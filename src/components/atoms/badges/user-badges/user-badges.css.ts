@@ -21,7 +21,7 @@ export const badge = recipe({
     selectors: {
       '&&': {
         position: 'relative',
-        border: '2px solid var(--dark-background-color)',
+        border: '2px solid color-mix(in srgb, var(--background-color), black 50%)',
       },
     },
   },

@@ -68,7 +68,7 @@ export const label = recipe({
     },
     focus: {
       true: {
-        color: 'var(--main-focus-color)',
+        color: 'var(--input-focus-color)',
       },
     },
     hide: {
@@ -78,7 +78,7 @@ export const label = recipe({
     },
     errored: {
       true: {
-        color: 'var(--light-error-color)',
+        color: 'var(--panel-error-bg-color)',
         fontSize: '0.925rem',
       },
     },
@@ -109,13 +109,13 @@ export const fieldset = recipe({
     focus: {
       true: {
         borderWidth: '2px',
-        borderColor: 'var(--main-focus-color)',
+        borderColor: 'var(--input-focus-color)',
       },
     },
     errorFocus: {
       true: {
         borderWidth: '2px',
-        borderColor: 'var(--light-error-color)',
+        borderColor: 'var(--panel-error-bg-color)',
       },
     },
     radius: {
@@ -227,8 +227,8 @@ export const error = recipe({
   base: {
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: 'rgb(248, 215, 218)',
-    color: 'var(--dark-error-color)',
+    backgroundColor: 'var(--panel-error-bg-color)',
+    color: 'var(--panel-error-fg-color)',
     overflow: 'hidden',
     fontSize: '0.875rem',
     padding: '8px',
@@ -271,7 +271,7 @@ export const error = recipe({
 });
 
 export const errorSvg = style({
-  fill: 'var(--dark-error-color)',
+  fill: 'var(--panel-error-fg-color)',
   marginRight: 5,
   flexShrink: 0,
 });
@@ -323,18 +323,19 @@ export const input = recipe({
     },
     focus: {
       true: {
-        color: 'var(--main-focus-color)',
-        ['-webkit-text-fill-color' as string]: 'var(--main-focus-color) !important',
+        color: 'var(--input-focus-color)',
+        ['-webkit-text-fill-color' as string]: 'var(--input-focus-color) !important',
         selectors: {
           '&:-webkit-autofill': {
-            ['-webkit-text-fill-color' as string]: 'var(--main-focus-color) !important',
+            ['-webkit-text-fill-color' as string]: 'var(--input-focus-color) !important',
           },
         },
       },
     },
     errorFocus: {
       true: {
-        color: 'var(--main-error-color)',
+        color: 'var(--error-text-color)',
+        ['-webkit-text-fill-color' as string]: 'var(--error-text-color) !important',
       },
     },
   },

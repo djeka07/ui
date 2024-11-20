@@ -20,18 +20,19 @@ export const wrapper = recipe({
     },
     boxShadow: {
       true: {
-        boxShadow: 'var(--main-box-shadow)',
+        boxShadow: 'var(--box-shadow)',
       },
     },
     background: {
       light: {
-        backgroundColor: 'var(--light-background-color)',
+        backgroundColor: 'color-mix(in srgb, var(--background-color), white 50%)',
       },
       main: {
-        backgroundColor: 'var(--main-background-color)',
+        backgroundColor: 'var(--background-color)',
       },
       dark: {
-        backgroundColor: 'var(--dark-background-color)',
+        backgroundColor: 'color-mix(in srgb, var(--background-color), black 50%)',
+        fill: 'var(--white-common-color)',
       },
     },
     radius: {

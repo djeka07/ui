@@ -7,7 +7,7 @@ export const actionButton = recipe({
     selectors: {
       '&&&': {
         fontWeight: 'normal',
-        border: `2px dashed var(--main-text-color)`,
+        border: `2px dashed var(--text-color)`,
         minHeight: 90,
       },
       '&&&:hover': {
@@ -20,17 +20,101 @@ export const actionButton = recipe({
   variants: {
     color: {
       transparent: {
-        backgroundColor: 'transparent',
+        selectors: {
+          '&&&': {
+            backgroundColor: 'transparent',
+          },
+        },
       },
-      light: { backgroundColor: 'var(--light-background-color)' },
-      main: { backgroundColor: 'var(--main-background-color)' },
-      dark: { backgroundColor: 'var(--dark-background-color)' },
+      light: {
+        selectors: {
+          '&&&': {
+            backgroundColor: 'color-mix(in srgb, var(--background-color), white 50%)',
+          },
+        },
+      },
+      main: {
+        selectors: {
+          '&&&': { backgroundColor: 'var(--background-color)' },
+        },
+      },
+      dark: {
+        selectors: {
+          '&&&': { backgroundColor: 'color-mix(in srgb, var(--background-color), black 50%)' },
+        },
+      },
     },
   },
 });
 
-export const typography = style({
-  display: 'block',
+export const typography = recipe({
+  base: { display: 'block' },
+  variants: {
+    color: {
+      transparent: {},
+      light: {},
+      main: {},
+      dark: {},
+    },
+    variant: {
+      heading: {},
+      body: {},
+    },
+  },
+  compoundVariants: [
+    {
+      variants: {
+        color: 'light',
+        variant: 'heading',
+      },
+      style: {
+        selectors: {
+          '&&&': {
+            color: 'color-mix(in srgb, var(--heading-text-color), black 100%)',
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        color: 'light',
+        variant: 'body',
+      },
+      style: {
+        selectors: {
+          '&&&': {
+            color: 'color-mix(in srgb, var(--body-text-color), black 100%)',
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        color: 'main',
+        variant: 'heading',
+      },
+      style: {
+        selectors: {
+          '&&&': {
+            color: 'var(--heading-text-color)',
+          },
+        },
+      },
+    },
+    {
+      variants: {
+        color: 'main',
+        variant: 'body',
+      },
+      style: {
+        selectors: {
+          '&&&': {
+            color: 'var(--body-text-color)',
+          },
+        },
+      },
+    },
+  ],
 });
 
 export const root = style({

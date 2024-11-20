@@ -46,7 +46,7 @@ export const inputWrapper = recipe({
     alignItems: 'center',
     gap: 4,
     flexWrap: 'wrap',
-    backgroundColor: 'transparent',
+    backgroundColor: 'var(--input-bg-color)',
     width: '100%',
     padding: 8,
     minHeight: 48,
@@ -71,6 +71,7 @@ export const pill = style({
   gap: 2,
   cursor: 'pointer',
   backgroundColor: 'var(--300-grey-color)',
+  color: 'var(--700-grey-color)',
   borderRadius: 20,
   padding: '4px 8px',
 });

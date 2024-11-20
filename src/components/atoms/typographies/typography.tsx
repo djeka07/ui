@@ -30,7 +30,7 @@ const Typography = ({
       typography({
         align,
         color,
-        element: !color ? element : undefined,
+        variant: !color ? variant : undefined,
         cursor: onClick ? 'pointer' : undefined,
         fontStyle,
         marginBottom,

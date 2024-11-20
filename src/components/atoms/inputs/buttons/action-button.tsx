@@ -28,11 +28,17 @@ const ActionButton = ({
   >
     <span className={root}>
       {!!iconName && <Icon name={iconName!} color="heading" background="main" padding="medium" radius="round" />}
-      <Typography color="heading-dark" weight="bold" as="span">
+      <Typography variant="h4" className={typography({ variant: 'heading', color })} weight="bold" as="span">
         {children}
       </Typography>
       {!!description && (
-        <Typography color="text-dark" className={typography} fontStyle="italic" size="small" as="span">
+        <Typography
+          variant="body"
+          className={typography({ variant: 'body', color })}
+          fontStyle="italic"
+          size="small"
+          as="span"
+        >
           {description}
         </Typography>
       )}
