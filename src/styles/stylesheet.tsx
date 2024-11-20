@@ -18,7 +18,7 @@ const createMediaQueryFromInputs = (inputs: Variant[], hej: string): string => {
 
 const createMediaQueryFromTags = (mediaQuery: keyof FontSize, tags: (Tag & { fontSize: FontSize })[]): string => {
   return `
-    ${media.base} ${(media[mediaQuery] as Media)?.up} {
+    ${media.base} ${(media[mediaQuery] as Media)?.up.query} {
     :root {
       ${tags
         .map((tag) =>
