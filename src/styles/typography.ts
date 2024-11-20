@@ -44,7 +44,7 @@ export type Tag = {
   fontSize?: FontSize;
 };
 
-export type Family = { heading: string; body: string };
+export type Family = { heading: { family: string; weight: string }; body: { family: string; weight: string } };
 
 export type TypographyProps = {
   weight: Weight;
@@ -56,8 +56,8 @@ export type TypographyProps = {
 
 export default {
   family: {
-    body: 'Campton, Helvetica, sans-serif;',
-    heading: 'Campton, Helvetica, sans-serif;',
+    body: { family: 'Campton, Helvetica, sans-serif;', weight: '400' },
+    heading: { family: 'Campton, Helvetica, sans-serif;', weight: '400' },
   },
   weight: {
     light: '100',

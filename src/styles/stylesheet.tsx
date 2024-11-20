@@ -151,9 +151,11 @@ export default (theme: Theme, extraVars?: Variables) => {
     --xlarge-border-radius:  ${theme.border.radius.xlarge};
     --xxlarge-border-radius:  ${theme.border.radius.xxlarge};
     --round-border-radius:  ${theme.border.radius.round};
-    
-    --base-font-family: ${theme.typography.family.body};
-    --heading-font-family: ${theme.typography.family.heading};
+
+    --base-font-family: ${theme.typography.family.body.family};
+    --base-font-weight: ${theme.typography.family.body.weight}
+    --heading-font-family: ${theme.typography.family.heading.family};
+    --heading-font-weight: ${theme.typography.family.heading.weight};
     ${vars}
   }
 
@@ -174,13 +176,14 @@ export default (theme: Theme, extraVars?: Variables) => {
       }
 
       h1,h2,h3,h4,h5,h6 {
-        font-family: ${theme.typography.family.heading};
+        font-family: var(--heading-font-family);
+        font-weight: var(--heading-font-weight);
         color: var(--heading-text-color);
       }
 
       body {
-        font-family: ${theme.typography.family.body};
-        font-weight: ${theme.typography.weight.regular};
+        font-family: var(--base-font-family);
+        font-weight: var(--base-font-weight);
         font-size: ${theme.typography.size.normal};
         color: var(--body-text-color);
         width: 100%;
