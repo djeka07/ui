@@ -50,7 +50,15 @@ export default defineConfig({
       fileName: '[name]',
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime', '@djeka07/utils', '@djeka07/hooks', '@djeka07/dates'],
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'framer-motion',
+        '@djeka07/utils',
+        '@djeka07/hooks',
+        '@djeka07/dates',
+      ],
       output: {
         preserveModules: false,
         chunkFileNames: renameFile,
@@ -60,6 +68,7 @@ export default defineConfig({
           react: 'React',
           'react-dom': 'ReactDOM',
           'react/jsx-runtime': 'react/jsx-runtime',
+          'framer-motion': 'framer-motion',
           '@djeka07/utils': '@djeka07/utils',
           '@djeka07/hooks': '@djeka07/hooks',
           '@djeka07/dates': '@djeka07/dates',
