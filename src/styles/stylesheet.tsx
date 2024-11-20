@@ -153,7 +153,7 @@ export default (theme: Theme, extraVars?: Variables) => {
     --round-border-radius:  ${theme.border.radius.round};
 
     --base-font-family: ${theme.typography.family.body.family};
-    --base-font-weight: ${theme.typography.family.body.weight}
+    --base-font-weight: ${theme.typography.family.body.weight};
     --heading-font-family: ${theme.typography.family.heading.family};
     --heading-font-weight: ${theme.typography.family.heading.weight};
     ${vars}
