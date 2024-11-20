@@ -1,4 +1,4 @@
-import { Ref, JSX } from 'react';
+import { Ref, ReactNode } from 'react';
 
 export type PanelElementProps = {
   maxWidth?: PanelSize;
@@ -18,7 +18,7 @@ export type PanelChildrenReturn = {
 
 export type PanelProps = {
   id: string;
-  children: ((params: PanelChildrenReturn) => JSX.Element) | JSX.Element;
+  children: ((params: PanelChildrenReturn) => ReactNode) | ReactNode;
   putFocusOnCloseRef?: Ref<undefined>;
   initialFocusOnElement?: HTMLElement | null;
   panelElementProps?: PanelElementProps;

@@ -3,7 +3,7 @@
 import { useDidUpdate } from '@djeka07/hooks';
 import { css, isObjectEmpty } from '@djeka07/utils';
 import { AnimatePresence, m } from 'framer-motion';
-import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, JSX, useState } from 'react';
+import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'react';
 import { RadiusKeys } from '../../../../styles/border';
 import { Icon } from '../../icons';
 import {
@@ -72,7 +72,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
       ...rest
     }: SelectProps,
     ref,
-  ): JSX.Element => {
+  ) => {
     const selectedItem = items?.find((val) => val.isSelected);
     const [focus, setFocus] = useState(false);
 

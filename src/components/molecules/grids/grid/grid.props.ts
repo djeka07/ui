@@ -56,7 +56,7 @@ export type ServerGridProps<T> = Omit<
   Omit<GridServerSideProps<T>, 'rowModelType'> & {
     columnDefinition: ColumnDefinitionState[];
     defaultColumnDefinition: DefaultColumnDefinitionType;
-    wrapperRef: RefObject<HTMLElement>;
+    wrapperRef: RefObject<HTMLElement | null>;
     onGridColumnResize?: (column: ColumnDefinitionType, newSize: number) => void;
     onGridColumnToggle?: (column: ColumnDefinitionState) => void;
     onGridColumnReorder?: (newOrder: ColumnDefinitionState[]) => void;

@@ -130,7 +130,9 @@ const GridColumnsSidebar = ({
               top: columnDef.field === draggingOverColumn?.field && (draggingOverColumn?.y || 0) < 10,
               bottom: columnDef.field === draggingOverColumn?.field && (draggingOverColumn?.y || 0) > 10,
             })}
-            ref={(element: HTMLDivElement) => gridColumnHeaderRefs.current.push({ element, def: columnDef })}
+            ref={(element: HTMLDivElement) => {
+              gridColumnHeaderRefs.current.push({ element, def: columnDef });
+            }}
             key={`columndefinition-sidebar-${columnDef.field}-${index}`}
           >
             {!!onColumnToggle && <Checkbox checked={!columnDef.hide} onChange={() => onColumnToggle(columnDef)} />}

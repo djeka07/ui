@@ -140,7 +140,9 @@ const GridHeader = ({
           className={gridColumnHeaderWrapper}
           key={`column-${columnIndex}-${colDef.field}`}
           draggable
-          ref={(element: HTMLDivElement) => gridColumnHeaderRefs.current.push({ element, def: colDef })}
+          ref={(element: HTMLDivElement) => {
+            gridColumnHeaderRefs.current.push({ element, def: colDef });
+          }}
         >
           <GridColumnHeader
             draggingDefinition={draggingColumn}

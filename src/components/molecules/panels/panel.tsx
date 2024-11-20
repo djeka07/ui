@@ -1,7 +1,7 @@
 'use client';
 import { isEscape } from '@djeka07/utils';
 import { AnimatePresence, m } from 'framer-motion';
-import { JSX, useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Icon } from '../../atoms';
 import { getPanelHiddenVariants, getPanelVisibleVariants } from './get-panel-variants';
 import { clickOutside as clickOutsideClass, closeButton, overlay, panelElement } from './panel.css';
@@ -27,13 +27,13 @@ const Panel = ({
     showCloseButton: false,
     closeOnEscape: true,
   },
-}: ExtendedPanelProps): JSX.Element => {
+}: ExtendedPanelProps) => {
   const animationDuration = PANEL_ANIMATION_DURATION.DEFAULT;
   const [isActive, setIsActive] = useState<boolean>(true);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
   const { shouldCloseOnClick } = overlayElementProps as OverlayElementProps;
-  const controller = useRef<AbortController>();
+  const controller = useRef<AbortController>(null);
 
   const closePanel = () => {
     setIsActive(false);

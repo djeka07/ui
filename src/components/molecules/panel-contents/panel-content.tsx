@@ -1,5 +1,4 @@
 import { css } from '@djeka07/utils';
-import { JSX } from 'react';
 import { Typography } from '../../atoms/typographies';
 import { content, root, titleWrapper } from './panel-content.css';
 import { PanelContentProps } from './panel-content.props';
@@ -13,7 +12,7 @@ const PanelContent = ({
   centerTitle = false,
   centerContent = false,
   className,
-}: PanelContentProps): JSX.Element => {
+}: PanelContentProps) => {
   return (
     <div
       className={css(

@@ -7,7 +7,7 @@ import { ColumnDefinitionType, DefaultColumnDefinitionType } from '../../../mole
 type GridItemProps = {
   width?: number;
   row: number;
-  renderer?: (() => JSX.Element) | ReactNode;
+  renderer?: (() => ReactNode) | ReactNode;
   minWidth?: number;
   tabIndex: number;
   onClick?: () => void;
