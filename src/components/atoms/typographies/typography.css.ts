@@ -81,7 +81,7 @@ export const typography = recipe({
       small: {
         marginTop: 5,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginTop: 10,
           },
         },
@@ -89,7 +89,7 @@ export const typography = recipe({
       medium: {
         marginTop: 10,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginTop: 20,
           },
         },
@@ -97,7 +97,7 @@ export const typography = recipe({
       large: {
         marginTop: 20,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginTop: 40,
           },
         },
@@ -107,7 +107,7 @@ export const typography = recipe({
       small: {
         marginRight: 5,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginRight: 10,
           },
         },
@@ -115,7 +115,7 @@ export const typography = recipe({
       medium: {
         marginRight: 10,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginRight: 20,
           },
         },
@@ -123,7 +123,7 @@ export const typography = recipe({
       large: {
         marginRight: 20,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginRight: 40,
           },
         },
@@ -133,7 +133,7 @@ export const typography = recipe({
       small: {
         marginBottom: 5,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginBottom: 10,
           },
         },
@@ -141,7 +141,7 @@ export const typography = recipe({
       medium: {
         marginBottom: 10,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginBottom: 20,
           },
         },
@@ -149,7 +149,7 @@ export const typography = recipe({
       large: {
         marginBottom: 20,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginBottom: 40,
           },
         },
@@ -159,7 +159,7 @@ export const typography = recipe({
       small: {
         marginLeft: 5,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginLeft: 10,
           },
         },
@@ -167,7 +167,7 @@ export const typography = recipe({
       medium: {
         marginLeft: 10,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginLeft: 20,
           },
         },
@@ -175,7 +175,7 @@ export const typography = recipe({
       large: {
         marginLeft: 20,
         [media.base]: {
-          [media.sm.up]: {
+          [media.sm.up.query]: {
             marginLeft: 40,
           },
         },

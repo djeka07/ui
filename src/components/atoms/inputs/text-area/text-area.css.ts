@@ -56,7 +56,7 @@ export const input = recipe({
     appearance: 'none',
     outline: 'none',
     [media.base]: {
-      [media.sm.up]: {
+      [media.sm.up.query]: {
         fontSize: 14,
       },
     },

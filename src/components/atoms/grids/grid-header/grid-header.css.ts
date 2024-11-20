@@ -17,7 +17,7 @@ export const root = style({
     },
   },
   [media.base]: {
-    [media.sm.up]: {
+    [media.sm.up.query]: {
       padding: '0px 20px',
     },
   },

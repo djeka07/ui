@@ -9,7 +9,7 @@ export const badgeWrapper = style({
   width: '100%',
   height: '100%',
   [media.base]: {
-    [media.sm.up]: {
+    [media.sm.up.query]: {
       minWidth: '52.5px',
       width: '52.5px',
     },

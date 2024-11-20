@@ -13,7 +13,7 @@ export const root = recipe({
     justifyItems: 'start',
     height: '100%',
     [media.base]: {
-      [media.sm.up]: {
+      [media.sm.up.query]: {
         padding: '0px 0px',
       },
     },

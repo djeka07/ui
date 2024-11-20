@@ -11,7 +11,7 @@ export const wrapper = recipe({
     padding: '0px 10px',
     borderBottom: '1px solid var(--grid-border-fg-color)',
     [media.base]: {
-      [media.sm.up]: {
+      [media.sm.up.query]: {
         padding: '0px 20px',
       },
     },
