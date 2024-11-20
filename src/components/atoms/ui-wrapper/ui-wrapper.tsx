@@ -6,7 +6,13 @@ import { ReactNode } from 'react';
 export const UiWrapper = ({
   children,
   features,
+  strict = true,
 }: {
   children: ReactNode | ReactNode[];
   features: FeatureBundle | LazyFeatureBundle;
-}) => <LazyMotion features={features}>{children}</LazyMotion>;
+  strict?: boolean;
+}) => (
+  <LazyMotion strict={strict} features={features}>
+    {children}
+  </LazyMotion>
+);

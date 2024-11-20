@@ -430,8 +430,8 @@ __metadata:
     "@testing-library/react": "npm:^16.0.1"
     "@types/eslint__js": "npm:^8.42.3"
     "@types/node": "npm:22.7.7"
-    "@types/react": "npm:18.3.11"
-    "@types/react-dom": "npm:18.3.1"
+    "@types/react": "npm:types-react@rc"
+    "@types/react-dom": "npm:types-react-dom@rc"
     "@vanilla-extract/css": "npm:1.15.5"
     "@vanilla-extract/esbuild-plugin": "npm:^2.3.11"
     "@vanilla-extract/recipes": "npm:0.5.5"
@@ -450,8 +450,8 @@ __metadata:
     fuse.js: "npm:^7.0.0"
     jsdom: "npm:^25.0.1"
     prettier-eslint: "npm:^16.3.0"
-    react: "npm:19.0.0-rc-fb9a90fa48-20240614"
-    react-dom: "npm:19.0.0-rc-fb9a90fa48-20240614"
+    react: "npm:19.0.0-rc.1"
+    react-dom: "npm:19.0.0-rc.1"
     rollup-plugin-peer-deps-external: "npm:^2.2.4"
     rollup-preserve-directives: "npm:^1.1.2"
     size-limit: "npm:^11.1.6"
@@ -471,8 +471,9 @@ __metadata:
     "@djeka07/hooks": ^1.0.0-rc-0.14
     "@djeka07/utils": 1.0.10
     framer-motion: 12.0.0-alpha.1
-    react: 19.0.0-rc-fb9a90fa48-20240614
-    react-dom: 19.0.0-rc-fb9a90fa48-20240614
+    fuse.js: ^7.0.0
+    react: 19.0.0-rc.1
+    react-dom: 19.0.0-rc.1
   languageName: unknown
   linkType: soft
 
@@ -2651,12 +2652,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:18.3.1":
-  version: 18.3.1
-  resolution: "@types/react-dom@npm:18.3.1"
+"@types/react-dom@npm:types-react-dom@rc":
+  version: 19.0.0-rc.1
+  resolution: "types-react-dom@npm:19.0.0-rc.1"
   dependencies:
     "@types/react": "npm:*"
-  checksum: 10c0/8b416551c60bb6bd8ec10e198c957910cfb271bc3922463040b0d57cf4739cdcd24b13224f8d68f10318926e1ec3cd69af0af79f0291b599a992f8c80d47f1eb
+  checksum: 10c0/a6b3aea0ad4cd3b08afde28e869b30f4759a84ea8edf549c2e99d38328f07697f21b792842ef352e086e964b3fb947a54746390ae76ca586ae1a913338f94c1e
   languageName: node
   linkType: hard
 
@@ -2670,13 +2671,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.3.11":
-  version: 18.3.11
-  resolution: "@types/react@npm:18.3.11"
+"@types/react@npm:types-react@rc":
+  version: 19.0.0-rc.1
+  resolution: "types-react@npm:19.0.0-rc.1"
   dependencies:
-    "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10c0/ce80512246ca5bda69db85b9f4f1835189334acfb6b2c4f3eda8cabff1ff1a3ea9ce4f3b895bdbc18c94140aa45592331aa3fdeb557f525c1b048de7ce84fc0e
+  checksum: 10c0/408cd9f3f960e806d510f7a9a3569f92a7f1cff3c57f5465fab4c139f0020c88dc7a08e6f357d2a116bd2c76e641851ce84527cb765f36824a6e818e0d477bbc
   languageName: node
   linkType: hard
 
@@ -8487,14 +8487,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:19.0.0-rc-fb9a90fa48-20240614":
-  version: 19.0.0-rc-fb9a90fa48-20240614
-  resolution: "react-dom@npm:19.0.0-rc-fb9a90fa48-20240614"
+"react-dom@npm:19.0.0-rc.1":
+  version: 19.0.0-rc.1
+  resolution: "react-dom@npm:19.0.0-rc.1"
   dependencies:
-    scheduler: "npm:0.25.0-rc-fb9a90fa48-20240614"
+    scheduler: "npm:0.25.0-rc.1"
   peerDependencies:
-    react: 19.0.0-rc-fb9a90fa48-20240614
-  checksum: 10c0/ab4f49752f71fcf3de910af463d3ec4f2ea17777dbd854df7f08987b1ae4d91e5b59a1f5998063f68c7db3af06e9cb67f26a57f0e78bb71c28884ef5029edf0d
+    react: 19.0.0-rc.1
+  checksum: 10c0/26fba423f41c8b3c7a47278ea490146506333175028e111e49eb39310110b6bda956cc772c77412abc8a7f28244eea80ebade15ec5b4382d79e2ac1b39bd2d0c
   languageName: node
   linkType: hard
 
@@ -8542,6 +8542,13 @@ __metadata:
   version: 19.0.0-rc-fb9a90fa48-20240614
   resolution: "react@npm:19.0.0-rc-fb9a90fa48-20240614"
   checksum: 10c0/99c3d3398d46c8c704c0deb04160f5a7c9cf2ff785a777fb0f1a4d0c91ade044c4d50cd52e008b4c45623eaa8f4d18a80272444df4972a2cc696bf35ef3e59b0
+  languageName: node
+  linkType: hard
+
+"react@npm:19.0.0-rc.1":
+  version: 19.0.0-rc.1
+  resolution: "react@npm:19.0.0-rc.1"
+  checksum: 10c0/8f453ee0ff05ec4b11701cf4240fb0039217e73f576d2a9b871a91e34ff17d66e16294ebd0fc72c237918a3a997cc42f0328c860bc0a2cfa18e6a41f49a1c871
   languageName: node
   linkType: hard
 
@@ -8916,10 +8923,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:0.25.0-rc-fb9a90fa48-20240614":
-  version: 0.25.0-rc-fb9a90fa48-20240614
-  resolution: "scheduler@npm:0.25.0-rc-fb9a90fa48-20240614"
-  checksum: 10c0/efd80573e35479d0e47e864ba5747579be2a8b20cfb61f32bcb17a8b945711d2337dd7f92ac6373f3128ed20a8915624dc82fda6b7f761aab352692a6445d411
+"scheduler@npm:0.25.0-rc.1":
+  version: 0.25.0-rc.1
+  resolution: "scheduler@npm:0.25.0-rc.1"
+  checksum: 10c0/dd4549eeb54cf3019c04257c622c4bbee12ef99dc547c4a96e1d5da8985ae44534111275ebcc4fea84b0d1299197b69071f912928adc5da4cab1e8168d09a44d
   languageName: node
   linkType: hard
 
