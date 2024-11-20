@@ -20,6 +20,7 @@ const Typography = ({
   size,
   transform,
   variant = 'body',
+  style,
   weight,
   wordBreak,
 }: TypographyProps) => {
@@ -46,6 +47,7 @@ const Typography = ({
       }),
       className,
     ),
+    style,
     children,
   });
 };
