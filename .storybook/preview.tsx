@@ -2,6 +2,7 @@ import React from 'react';
 import type { Preview } from '@storybook/react';
 import createVariables from '../src/styles/stylesheet';
 import { createDefaultTheme } from '../src/styles/theme';
+import UiWrapper from '../src/components/index';
 
 const preview: Preview = {
   tags: ['autodocs'],
@@ -11,7 +12,9 @@ const preview: Preview = {
       return (
         <>
           {createVariables(createDefaultTheme(theme), { '--hejsan': 'ksmkdms', '--dsa': 'smskmsk' })}
-          <Story />
+          <UiWrapper>
+            <Story />
+          </UiWrapper>
         </>
       );
     },

@@ -13,7 +13,7 @@ export const wrapper = recipe({
     gap: 4,
     padding: '0px 10px',
     [media.base]: {
-      [media.small.up]: {
+      [media.sm.up]: {
         padding: '0px 20px',
       },
     },
@@ -37,7 +37,7 @@ export const item = style({
   display: 'grid',
   alignItems: 'center',
   [media.base]: {
-    [media.small.up]: {
+    [media.sm.up]: {
       padding: '0px 0px',
     },
   },

@@ -10,6 +10,7 @@
   "editor.tabSize": 2,
   "svg.preview.background": "transparent",
   "eslint.format.enable": true,
+  "prettier.prettierPath": "",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[typescript]": {
     "editor.formatOnSave": true,

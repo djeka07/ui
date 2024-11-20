@@ -1,6 +1,5 @@
 export type ColorVariants = { light: string; main: string; dark: string };
 export type ColorVariantsKeys = keyof ColorVariants;
-type ColorMain = Pick<ColorVariants, 'main'>;
 
 export type GreyKeys = keyof Grey;
 
@@ -46,14 +45,19 @@ export type Palette = {
     info: BackgroundForeground;
     warning: BackgroundForeground;
   };
-  input: BackgroundForeground;
-  focus: ColorVariants;
-  heading: ColorVariants;
-  text: ColorVariants;
-  link: ColorVariants;
-  background: ColorVariants;
-  notification: ColorMain;
-  boxShadow: ColorMain;
+  text: {
+    heading: string;
+    body: string;
+    link: string;
+    success: string;
+    warning: string;
+    error: string;
+    info: string;
+  };
+  input: BackgroundForeground & { focus: string };
+  background: string;
+  notification: string;
+  boxShadow: string;
   grid: GridPalette;
 };
 
@@ -93,33 +97,23 @@ const createDarkPalette = (): Palette => ({
     primary: { background: '#7aa2f4', foreground: '#11254e' },
     secondary: { background: '#616161', foreground: '#ffffff' },
     success: { background: '#d1e7dd', foreground: '#0f5132' },
-    error: { background: '#f8d7da', foreground: '#842029' },
+    error: { background: '#f8d7da', foreground: '#6d2e33' },
     info: { background: '#7aa2f4', foreground: '#11254e' },
     warning: { background: '#fff3cd', foreground: '#664d03' },
-  },
-  link: {
-    light: 'color-mix(in srgb, #cedff6, white 25%)',
-    main: '#cedff6',
-    dark: 'color-mix(in srgb, #cedff6, #000000 25%)',
   },
   input: {
     background: 'transparent',
     foreground: '#ffffff',
-  },
-  focus: {
-    light: 'color-mix(in srgb, #93b0ec, white 25%)',
-    main: '#93b0ec',
-    dark: 'color-mix(in srgb, #93b0ec, #000000 25%)',
-  },
-  heading: {
-    light: 'color-mix(in srgb, #bdc9e2, #000000 25%)',
-    main: '#bdc9e2',
-    dark: 'color-mix(in srgb, #bdc9e2, #000000 25%)',
+    focus: '#93b0ec',
   },
   text: {
-    light: '#ffffff',
-    main: '#ffffff',
-    dark: 'color-mix(in srgb, #ffffff, #000000 25%)',
+    heading: '#bdc9e2',
+    body: '#ffffff',
+    link: '#cedff6',
+    error: '#f0a8a3',
+    success: '#2e7d32',
+    info: '#2962ff',
+    warning: '#fdd835',
   },
   grid: {
     border: 'color-mix(in srgb, transparent, #fff 50%)',
@@ -140,16 +134,9 @@ const createDarkPalette = (): Palette => ({
       foreground: '#ffffff',
     },
   },
-
-  background: {
-    light: 'color-mix(in srgb, #354052, #ffffff 25%)',
-    main: '#354052',
-    dark: 'color-mix(in srgb, #354052, #000000 25%)',
-  },
-  notification: { main: '#4A699B' },
-  boxShadow: {
-    main: 'rgb(0 0 0 / 25%) 0px 1px 5px -1px',
-  },
+  background: '#354052',
+  notification: '#4A699B',
+  boxShadow: 'rgb(0 0 0 / 25%) 0px 1px 5px -1px',
 });
 
 const createLightPalette = (): Palette => ({
@@ -167,43 +154,27 @@ const createLightPalette = (): Palette => ({
     primary: { background: '#a98bc1', foreground: '#3b105e' },
     secondary: { background: '#616161', foreground: '#c4c4c4' },
     success: { background: '#d1e7dd', foreground: '#0f5132' },
-    error: { background: '#f8d7da', foreground: '#842029' },
+    error: { background: '#f7babf', foreground: '#4f0e13' },
     info: { background: '#7aa2f4', foreground: '#11254e' },
     warning: { background: '#fff3cd', foreground: '#664d03' },
   },
   input: {
     background: '#fff',
     foreground: '#616161',
-  },
-  focus: {
-    light: 'color-mix(in srgb, #491b6e, #ffffff 25%)',
-    main: '#491b6e',
-    dark: 'color-mix(in srgb, #491b6e, #000000 25%)',
-  },
-  heading: {
-    light: base.grey[500],
-    main: base.grey[700],
-    dark: base.grey[900],
+    focus: '#491b6e',
   },
   text: {
-    light: 'color-mix(in srgb, #616161, #ffffff 25%)',
-    main: '#616161',
-    dark: 'color-mix(in srgb, #616161, #000000 25%)',
+    heading: base.grey[700],
+    body: '#616161',
+    link: '#1e3c68',
+    error: '#c0564f',
+    success: '#2e7d32',
+    info: '#2962ff',
+    warning: '#f9a825',
   },
-  link: {
-    light: '#ffffff',
-    main: '#1e3c68',
-    dark: '#1e3c68',
-  },
-  background: {
-    light: 'color-mix(in srgb, #e1e0e3, #ffffff 25%)',
-    main: '#e1e0e3',
-    dark: 'color-mix(in srgb, #e1e0e3, #000000 25%)',
-  },
-  notification: { main: '#4A699B' },
-  boxShadow: {
-    main: 'rgb(0 0 0 / 25%) 0px 1px 5px -1px',
-  },
+  background: '#e1e0e3',
+  notification: '#4A699B',
+  boxShadow: 'rgb(0 0 0 / 25%) 0px 1px 5px -1px',
   grid: {
     border: 'color-mix(in srgb, transparent, #181d1f 15%)',
     row: {

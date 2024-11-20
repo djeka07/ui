@@ -1,4 +1,51 @@
+import { isEmpty, unique } from '@djeka07/utils';
+import { Variant } from '../components/atoms/typographies/typography.props';
+import media, { Media } from './media.css';
 import Theme from './theme';
+import { FontSize, Tag } from './typography';
+
+const createMediaQueryFromInput = (input: Variant, hej: string): string => {
+  return `
+    --${input}-font-size: ${hej};
+  `;
+};
+
+const createMediaQueryFromInputs = (inputs: Variant[], hej: string): string => {
+  return `
+    ${inputs.map((input) => createMediaQueryFromInput(input, hej)).join('')}
+  `;
+};
+
+const createMediaQueryFromTags = (mediaQuery: keyof FontSize, tags: (Tag & { fontSize: FontSize })[]): string => {
+  return `
+    ${media.base} ${(media[mediaQuery] as Media)?.up} {
+    :root {
+      ${tags
+        .map((tag) =>
+          Array.isArray(tag.input)
+            ? createMediaQueryFromInputs(tag.input, tag.fontSize[mediaQuery] as string)
+            : createMediaQueryFromInput(tag.input, tag.fontSize[mediaQuery] as string),
+        )
+        .join('')}
+      }
+    }
+  `;
+};
+
+const createFontSizes = (tags?: Tag[]): string => {
+  if (isEmpty(tags)) {
+    return '';
+  }
+  const breakpoints = unique(tags.map((tag) => Object.keys(tag?.fontSize || {})).flat(1));
+  return breakpoints
+    ?.map((breakpoint) => {
+      const tagsWithBreakpoint = tags?.filter(
+        (t): t is Tag & { fontSize: FontSize } => !!t.fontSize?.[breakpoint as keyof FontSize],
+      );
+      return createMediaQueryFromTags(breakpoint as keyof FontSize, tagsWithBreakpoint);
+    })
+    .join('');
+};
 
 export type Variables = { [key: string]: string };
 
@@ -15,12 +62,9 @@ export default (theme: Theme, extraVars?: Variables) => {
   :root {
     --white-common-color: ${theme.palette.common.white};
     --black-common-color: ${theme.palette.common.black};
+    --background-color: ${theme.palette.background};
 
-    --light-background-color: ${theme.palette.background.light};
-    --main-background-color: ${theme.palette.background.main};
-    --dark-background-color: ${theme.palette.background.dark};
-
-    --main-box-shadow: ${theme.palette.boxShadow.main};
+    --box-shadow: ${theme.palette.boxShadow};
 
     --100-grey-color: ${theme.palette.grey[100]};
     --200-grey-color: ${theme.palette.grey[200]};
@@ -34,18 +78,14 @@ export default (theme: Theme, extraVars?: Variables) => {
 
     --input-bg-color: ${theme.palette.input.background};
     --input-fg-color: ${theme.palette.input.foreground};
-
-    --light-focus-color: ${theme.palette.focus.light};
-    --main-focus-color: ${theme.palette.focus.main};
-    --dark-focus-color: ${theme.palette.focus.dark};
-
-    --light-heading-color: ${theme.palette.heading.light};
-    --main-heading-color: ${theme.palette.heading.main};
-    --dark-heading-color: ${theme.palette.heading.dark};
-
-    --light-text-color: ${theme.palette.text.light};
-    --main-text-color: ${theme.palette.text.main};
-    --dark-text-color: ${theme.palette.text.dark};
+    --input-focus-color: ${theme.palette.input.focus};
+    --heading-text-color: ${theme.palette.text.heading};
+    --body-text-color: ${theme.palette.text.body};
+    --success-text-color: ${theme.palette.text.success};
+    --error-text-color: ${theme.palette.text.error};
+    --info-text-color: ${theme.palette.text.info};
+    --warning-text-color: ${theme.palette.text.warning};
+    --link-text-color: ${theme.palette.text.link};
 
     --button-primary-bg-color: ${theme.palette.button.primary.background};
     --button-primary-fg-color: ${theme.palette.button.primary.foreground};
@@ -73,13 +113,6 @@ export default (theme: Theme, extraVars?: Variables) => {
     --panel-info-fg-color: ${theme.palette.panel.info.foreground};
     --panel-warning-bg-color: ${theme.palette.panel.warning.background};
     --panel-warning-fg-color: ${theme.palette.panel.warning.foreground};
-
-    --light-link-color: ${theme.palette.link.light};
-    --main-link-color: ${theme.palette.link.main};
-    --dark-link-color: ${theme.palette.link.dark};
-
-    --base-font-family: ${theme.typography.family.body};
-    --heading-font-family: ${theme.typography.family.heading};
 
     --xxsmall-font-size: ${theme.typography.size.xxsmall};
     --xsmall-font-size: ${theme.typography.size.xsmall};
@@ -118,11 +151,16 @@ export default (theme: Theme, extraVars?: Variables) => {
     --xlarge-border-radius:  ${theme.border.radius.xlarge};
     --xxlarge-border-radius:  ${theme.border.radius.xxlarge};
     --round-border-radius:  ${theme.border.radius.round};
+    
+    --base-font-family: ${theme.typography.family.body};
+    --heading-font-family: ${theme.typography.family.heading};
     ${vars}
   }
 
+  ${createFontSizes(theme.typography.tagSizes)}
+
   html {
-      background-color: var(--dark-background-color);
+      background-color: var(--background-color);
       width: 100%;
       height: 100%;
       padding: 0px;
@@ -131,17 +169,20 @@ export default (theme: Theme, extraVars?: Variables) => {
       text-rendering: optimizeLegibility;
       text-size-adjust: 100%;
     }
-  * {
-    box-sizing: border-box;
-  }
+      * {
+        box-sizing: border-box;
+      }
 
       h1,h2,h3,h4,h5,h6 {
         font-family: ${theme.typography.family.heading};
+        color: var(--heading-text-color);
       }
+
       body {
         font-family: ${theme.typography.family.body};
         font-weight: ${theme.typography.weight.regular};
         font-size: ${theme.typography.size.normal};
+        color: var(--body-text-color);
         width: 100%;
         display: flex;
         min-height: 100vh;

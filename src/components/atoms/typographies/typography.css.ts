@@ -18,37 +18,53 @@ export const typography = recipe({
       grey700: { color: 'var(--700-grey-color)' },
       grey800: { color: 'var(--800-grey-color)' },
       grey900: { color: 'var(--900-grey-color)' },
-      'success-light': { color: 'var(--light-success-color)' },
-      success: { color: 'var(--main-success-color)' },
-      'success-dark': { color: 'var(--dark-success-color)' },
+      success: { color: 'var(--success-text-color)' },
       menu: { color: '#afafaf' },
-      'heading-light': { color: 'var(--light-heading-color)' },
-      heading: { color: 'var(--heading-color)' },
-      'heading-dark': { color: 'var(--dark-heading-color)' },
-      'error-light': { color: 'var(--light-error-color)' },
-      error: { color: 'var(--main-error-color)' },
-      'error-dark': { color: 'var(--dark-error-color)' },
-      'link-light': { color: 'var(--light-link-color)' },
-      link: { color: 'var(--main-link-color)' },
-      'link-dark': { color: 'var(--main-link-color)' },
-      'text-light': { color: 'var(--light-text-color)' },
-      text: { color: 'var(--main-text-color)' },
-      'text-dark': { color: 'var(--dark-text-color)' },
+      heading: { color: 'var(--heading-text-color)' },
+      info: { color: 'var(--info-text-color)' },
+      error: { color: 'var(--error-text-color)' },
+      warning: { color: 'var(--warning-text-color)' },
+      link: { color: 'var(--link-text-color)' },
+      body: { color: 'var(--body-text-color)' },
       inherit: { color: 'inherit' },
     },
-    element: {
-      h1: { color: 'var(--main-heading-color)' },
-      h2: { color: 'var(--main-heading-color)' },
-      h3: { color: 'var(--main-heading-color)' },
-      h4: { color: 'var(--main-heading-color)' },
-      h5: { color: 'var(--main-heading-color)' },
-      h6: { color: 'var(--main-heading-color)' },
-      body: { color: 'var(--main-text-color)' },
-      caption: { color: 'var(--main-text-color)' },
-      label: { color: 'var(--main-text-color)' },
-      p: { color: 'var(--main-text-color)' },
-      span: { color: 'var(--main-text-color)' },
-      div: { color: 'var(--main-text-color)' },
+    variant: {
+      hero: {
+        fontSize: 'var(--hero-font-size, 3rem)',
+      },
+      h1: {
+        fontSize: 'var(--h1-font-size, 2rem)',
+      },
+      h2: {
+        fontSize: 'var(--h2-font-size, 1.5rem)',
+      },
+      h3: {
+        fontSize: 'var(--h3-font-size, 1.17rem)',
+      },
+      h4: {
+        fontSize: 'var(--h4-font-size, 1rem)',
+      },
+      h5: {
+        fontSize: 'var(--h5-font-size, 0.83rem)',
+      },
+      h6: {
+        fontSize: 'var(--h6-font-size, 0.67rem)',
+      },
+      body: {
+        fontSize: 'var(--body-font-size, 1rem)',
+      },
+      caption: {
+        fontSize: 'var(--caption-font-size, 1rem)',
+      },
+      label: {
+        fontSize: 'var(--label-font-size, 1rem)',
+      },
+      p: {
+        fontSize: 'var(--p-font-size, 1rem)',
+      },
+      span: {
+        fontSize: 'var(--span-font-size, 1rem)',
+      },
     },
     size: {
       xsmall: { fontSize: 'var(--xsmall-font-size)' },
@@ -65,7 +81,7 @@ export const typography = recipe({
       small: {
         marginTop: 5,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginTop: 10,
           },
         },
@@ -73,7 +89,7 @@ export const typography = recipe({
       medium: {
         marginTop: 10,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginTop: 20,
           },
         },
@@ -81,7 +97,7 @@ export const typography = recipe({
       large: {
         marginTop: 20,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginTop: 40,
           },
         },
@@ -91,7 +107,7 @@ export const typography = recipe({
       small: {
         marginRight: 5,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginRight: 10,
           },
         },
@@ -99,7 +115,7 @@ export const typography = recipe({
       medium: {
         marginRight: 10,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginRight: 20,
           },
         },
@@ -107,7 +123,7 @@ export const typography = recipe({
       large: {
         marginRight: 20,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginRight: 40,
           },
         },
@@ -117,7 +133,7 @@ export const typography = recipe({
       small: {
         marginBottom: 5,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginBottom: 10,
           },
         },
@@ -125,7 +141,7 @@ export const typography = recipe({
       medium: {
         marginBottom: 10,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginBottom: 20,
           },
         },
@@ -133,7 +149,7 @@ export const typography = recipe({
       large: {
         marginBottom: 20,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginBottom: 40,
           },
         },
@@ -143,7 +159,7 @@ export const typography = recipe({
       small: {
         marginLeft: 5,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginLeft: 10,
           },
         },
@@ -151,7 +167,7 @@ export const typography = recipe({
       medium: {
         marginLeft: 10,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginLeft: 20,
           },
         },
@@ -159,7 +175,7 @@ export const typography = recipe({
       large: {
         marginLeft: 20,
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up]: {
             marginLeft: 40,
           },
         },
@@ -210,7 +226,7 @@ export const typography = recipe({
     marginBottom: undefined,
     marginLeft: undefined,
     color: undefined,
-    element: undefined,
+    variant: undefined,
     align: undefined,
     size: undefined,
     weight: undefined,

@@ -23,7 +23,7 @@ export const wrapper = recipe({
     padding: '0px 10px',
     borderBottom: '1px solid var(--grid-border-fg-color)',
     [media.base]: {
-      [media.small.up]: {
+      [media.sm.up]: {
         padding: '0px 20px',
       },
     },

@@ -45,13 +45,14 @@ type Pill = {
   label: string;
 };
 
-type TextInputProps = ComponentPropsWithoutRef<'input'> &
+type TextInputProps = Omit<ComponentPropsWithoutRef<'input'>, 'size' | 'name'> &
   WrapperVariants &
   InputVariants & {
     pills?: Pill[];
     type: string;
     name: string;
     value?: string;
+    size?: 'small' | 'normal';
     id?: string;
     autoComplete?: string;
     onClick?: (event: MouseEvent<HTMLInputElement, globalThis.MouseEvent>) => void;
@@ -86,6 +87,7 @@ const PillInput = forwardRef<HTMLInputElement, TextInputProps>(
       radius,
       value: initialValue,
       width,
+      size = 'normal',
       wrapperClass,
       ...rest
     },
@@ -134,6 +136,7 @@ const PillInput = forwardRef<HTMLInputElement, TextInputProps>(
               errored: focus && !!error,
               float: focus || !!value || hasPills,
               focus: focus && !error,
+              size,
             })}
             htmlFor={id || name}
           >

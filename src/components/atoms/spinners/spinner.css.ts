@@ -95,19 +95,19 @@ export const rotate = recipe({
         borderColor: 'var(--white-common-color) transparent transparent transparent',
       },
       light: {
-        borderColor: 'var(--light-text-color) transparent transparent transparent',
+        borderColor: 'color-mix(in srgb, var(--body-text-color), white 50%) transparent transparent transparent',
       },
       main: {
-        borderColor: 'var(--main-text-color) transparent transparent transparent',
+        borderColor: 'var(--body-text-color) transparent transparent transparent',
       },
       dark: {
-        borderColor: `var(--dark-text-color) transparent transparent transparent`,
+        borderColor: `var(--body-text-color) transparent transparent transparent`,
       },
       success: {
-        borderColor: `var(--dark-success-color) transparent transparent transparent`,
+        borderColor: `var(--success-text-color) transparent transparent transparent`,
       },
       error: {
-        borderColor: `var(--dark-error-color) transparent transparent transparent`,
+        borderColor: `var(--error-text-color) transparent transparent transparent`,
       },
     },
   },
