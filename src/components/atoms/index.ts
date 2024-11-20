@@ -8,3 +8,4 @@ export * from './typographies';
 export * from './badges';
 export * from './skeletons';
 export * from './popups';
+export * from './ui-wrapper';
