@@ -3,6 +3,7 @@ import type { Preview } from '@storybook/react';
 import createVariables from '../src/styles/stylesheet';
 import { createDefaultTheme } from '../src/styles/theme';
 import { UiWrapper } from '../src/components/atoms/ui-wrapper/ui-wrapper';
+import { domAnimation } from 'framer-motion';
 
 const preview: Preview = {
   tags: ['autodocs'],
@@ -12,7 +13,7 @@ const preview: Preview = {
       return (
         <>
           {createVariables(createDefaultTheme(theme), { '--hejsan': 'ksmkdms', '--dsa': 'smskmsk' })}
-          <UiWrapper>
+          <UiWrapper features={domAnimation}>
             <Story />
           </UiWrapper>
         </>
