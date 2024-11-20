@@ -1,6 +1,6 @@
 {
   "name": "@djeka07/ui",
-  "version": "1.0.0-rc-0.37",
+  "version": "1.0.0-rc-0.38",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "license": "MIT",
@@ -99,7 +99,6 @@
   "peerDependencies": {
     "@djeka07/hooks": "^1.0.0-rc-0.14",
     "@djeka07/utils": "1.0.10",
-    "framer-motion": "12.0.0-alpha.0",
     "react": "19.0.0-rc-fb9a90fa48-20240614",
     "react-dom": "19.0.0-rc-fb9a90fa48-20240614"
   },

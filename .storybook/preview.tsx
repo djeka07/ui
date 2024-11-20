@@ -2,7 +2,7 @@ import React from 'react';
 import type { Preview } from '@storybook/react';
 import createVariables from '../src/styles/stylesheet';
 import { createDefaultTheme } from '../src/styles/theme';
-import UiWrapper from '../src/components/index';
+import { UiWrapper } from '../src/components';
 
 const preview: Preview = {
   tags: ['autodocs'],
