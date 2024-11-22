@@ -392,16 +392,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@djeka07/hooks@npm:^1.0.0-rc-0.18":
-  version: 1.0.0-rc-0.18
-  resolution: "@djeka07/hooks@npm:1.0.0-rc-0.18"
+"@djeka07/hooks@npm:^1.0.0-rc-0.20":
+  version: 1.0.0-rc-0.20
+  resolution: "@djeka07/hooks@npm:1.0.0-rc-0.20"
   dependencies:
     "@djeka07/utils": "npm:^1.0.11"
     react: "npm:19.0.0-rc.1"
   peerDependencies:
     "@djeka07/utils": ^1.0.11
     react: 19.0.0-rc.1
-  checksum: 10c0/aee512ff163ae4ce03ab0ad8ff4b76032a2871c53930dcf9cfa5999935d91ee02a042ad4a653c698672187450104cfadbb1c37a2bae8aab1e2406e586a46d7ee
+  checksum: 10c0/ff06f3a0a2661312249ae852b8660f91afe794fcfc2d0e1662a4b3041bf35c7053805af1e72033977f928a35dee1b0f5b8ae540ccf26bd32dd4572b04c5d3e59
   languageName: node
   linkType: hard
 
@@ -411,7 +411,7 @@ __metadata:
   dependencies:
     "@arethetypeswrong/cli": "npm:^0.17.0"
     "@djeka07/dates": "npm:^0.0.4"
-    "@djeka07/hooks": "npm:^1.0.0-rc-0.18"
+    "@djeka07/hooks": "npm:^1.0.0-rc-0.20"
     "@djeka07/utils": "npm:1.0.12"
     "@eslint/compat": "npm:^1.2.3"
     "@eslint/eslintrc": "npm:^3.2.0"
@@ -467,7 +467,7 @@ __metadata:
     vite-tsconfig-paths: "npm:4.3.2"
     vitest: "npm:^2.1.5"
   peerDependencies:
-    "@djeka07/hooks": ^1.0.0-rc-0.18
+    "@djeka07/hooks": ^1.0.0-rc-0.19
     "@djeka07/utils": 1.0.12
     framer-motion: 12.0.0-alpha.1
     fuse.js: ^7.0.0

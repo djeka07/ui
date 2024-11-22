@@ -1,40 +1,8 @@
 'use client';
 
-import { ReactNode, RefObject, Suspense, useEffect, useRef, useState } from 'react';
+import { useFirstInViewport } from '@djeka07/hooks';
 import { m } from 'framer-motion';
-
-const useFirstInViewport = (
-  ref: RefObject<HTMLElement | null>,
-  { triggerOnce, ...rest }: IntersectionObserverInit & { triggerOnce?: boolean } = { triggerOnce: true },
-) => {
-  const [entered, setEntered] = useState(false);
-  const observerRef = useRef(
-    new IntersectionObserver(([entry]) => {
-      if (entry) {
-        console.log(entry);
-        setEntered(entry.isIntersecting);
-      }
-    }, rest),
-  );
-
-  useEffect(() => {
-    const currentRef = ref.current;
-    const currentObserver = observerRef.current;
-
-    if (entered && triggerOnce) {
-      currentObserver.disconnect();
-      return;
-    }
-    if (currentRef && !entered) {
-      currentObserver.observe(currentRef);
-      return;
-    }
-
-    return () => currentObserver.disconnect();
-  }, [entered, triggerOnce, ref]);
-
-  return entered;
-};
+import { ReactNode, Suspense, useRef } from 'react';
 
 type LazyLoadProps = {
   children: ReactNode;
