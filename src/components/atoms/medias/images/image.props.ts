@@ -11,23 +11,26 @@ export type SrcSet = {
 
 export type Orientation = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
-export type ImageProps = {
+export type ImageType = {
   src: string;
-  style?: CSSProperties;
-  srcSet?: SrcSet[];
-  placeholder?: string;
   alt?: string;
+  width: number;
+  height: number;
+  lazy?: boolean;
+  rect?: string;
+  srcSet?: SrcSet[];
+};
+
+export type ImageProps = ImageType & {
+  style?: CSSProperties;
+  placeholder?: string;
   className?: string;
   onClick?: () => void;
-  width: number;
-  ratio: number;
   focalPointX?: number;
   focalPointY?: number;
   modify?: boolean;
   fit?: string;
   quality?: number;
-  rect?: string;
   orientation?: Orientation;
-  lazy?: boolean;
   pdis?: number[];
 };

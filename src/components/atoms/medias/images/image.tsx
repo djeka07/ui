@@ -10,7 +10,7 @@ const Image = ({
   fit = 'crop',
   lazy = true,
   width,
-  ratio,
+  height,
   quality = 80,
   modify = true,
   ...rest
@@ -20,7 +20,7 @@ const Image = ({
 
   if (lazy) {
     return (
-      <LazyLoad triggerOnce height={width / ratio}>
+      <LazyLoad triggerOnce height={width / height}>
         <InternalImage
           {...rest}
           loaded={loaded}
@@ -29,7 +29,7 @@ const Image = ({
           fit={fit}
           modify={modify}
           width={width}
-          ratio={ratio}
+          height={height}
           quality={quality}
         />
       </LazyLoad>
@@ -44,7 +44,7 @@ const Image = ({
       fit={fit}
       modify={modify}
       width={width}
-      ratio={ratio}
+      height={height}
       quality={quality}
     />
   );

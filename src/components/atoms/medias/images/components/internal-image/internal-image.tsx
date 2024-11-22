@@ -10,7 +10,7 @@ type InteralImageProps = Pick<
   ImageProps,
   | 'src'
   | 'width'
-  | 'ratio'
+  | 'height'
   | 'focalPointX'
   | 'focalPointY'
   | 'pdis'
@@ -31,7 +31,7 @@ type InteralImageProps = Pick<
 
 const InternalImage = ({
   src: source,
-  ratio,
+  height,
   width,
   fit,
   focalPointX,
@@ -57,7 +57,7 @@ const InternalImage = ({
   const newSource = createSource({
     source,
     width,
-    height: width / ratio,
+    height,
     fit,
     quality,
     modify,
@@ -71,7 +71,7 @@ const InternalImage = ({
   if (pdis && process) {
     const pdisSources = pdis.map(
       (pdi) =>
-        `${createSource({ source, width: width * pdi, height: (width / ratio) * pdi, fit, quality, modify, rect, orientation, focalPointY, focalPointX })} ${pdi}x`,
+        `${createSource({ source, width: width * pdi, height: height * pdi, fit, quality, modify, rect, orientation, focalPointY, focalPointX })} ${pdi}x`,
     );
     pdisSource = `, ${pdisSources.join(', ')}`;
   }
@@ -85,7 +85,7 @@ const InternalImage = ({
   return (
     <>
       <picture
-        style={{ ...(style || {}), paddingTop: `${100 / ratio}%` }}
+        style={{ ...(style || {}), paddingTop: `${100 / (width / height)}%` }}
         onClick={onClick}
         className={css(root, className)}
         onKeyDown={onClick ? onKeyDown : undefined}
@@ -95,7 +95,7 @@ const InternalImage = ({
           fit={fit}
           modify={modify}
           quality={quality}
-          ratio={ratio}
+          height={height}
           rect={rect}
           src={source}
           focalPointX={focalPointX}

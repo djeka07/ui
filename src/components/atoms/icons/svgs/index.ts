@@ -17,6 +17,7 @@ import Menu from './menu.svg';
 import Message from './message.svg';
 import Moon from './moon.svg';
 import Move from './move.svg';
+import Play from './play.svg';
 import Plus from './plus.svg';
 import Repeat from './repeat.svg';
 import Right from './chevron-right.svg';
@@ -56,6 +57,7 @@ export {
   Message,
   Moon,
   Move,
+  Play,
   Plus,
   Repeat,
   Right,
@@ -96,6 +98,7 @@ export type IconNames =
   | 'Message'
   | 'Moon'
   | 'Move'
+  | 'Play'
   | 'Plus'
   | 'Repeat'
   | 'Right'

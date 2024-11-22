@@ -2,11 +2,12 @@
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import react from '@vitejs/plugin-react';
 import { sync } from 'glob';
-import { defineConfig, Plugin } from 'vite';
+import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import preserveDirectives from 'rollup-preserve-directives';
+import { copyFileSync } from 'node:fs';
 
 const input = Object.fromEntries([
   ['index', 'src/index.ts'],
@@ -27,15 +28,17 @@ const renameFile = (info) => {
 
 export default defineConfig({
   plugins: [
-    preserveDirectives() as Plugin,
+    preserveDirectives(),
     react(),
-    // libInjectCss(),
     svgr({ include: '**/*.svg' }),
     dts({
       include: 'src',
       exclude: ['**/*.stories.tsx'],
       insertTypesEntry: true,
       rollupTypes: true,
+      afterBuild: () => {
+        copyFileSync('dist/index.d.ts', 'dist/index.d.mts');
+      },
     }),
     tsconfigPaths(),
     vanillaExtractPlugin(),

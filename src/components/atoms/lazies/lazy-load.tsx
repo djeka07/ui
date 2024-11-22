@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode, RefObject, Suspense, useEffect, useRef, useState } from 'react';
+import { m } from 'framer-motion';
 
 const useFirstInViewport = (
   ref: RefObject<HTMLElement | null>,
@@ -39,15 +40,29 @@ type LazyLoadProps = {
   children: ReactNode;
   placeholder?: ReactNode;
   root?: Element | null;
+  fadeIn?: boolean;
   rootMargin?: string;
   threshold?: number;
   triggerOnce?: boolean;
   height?: number | string;
 };
 
+const ChildrenWrapper = ({ children, fadeIn }: Pick<LazyLoadProps, 'children' | 'fadeIn'>) => {
+  if (!fadeIn) {
+    return children;
+  }
+
+  return (
+    <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      {children}
+    </m.div>
+  );
+};
+
 const LazyLoad = ({
   children,
   threshold = 0,
+  fadeIn = true,
   placeholder,
   root = null,
   rootMargin = '0px 0px 0px 0px',
@@ -58,7 +73,11 @@ const LazyLoad = ({
   const entered = useFirstInViewport(ref, { threshold, root, rootMargin, triggerOnce });
   return (
     <div style={{ height: !entered ? height : undefined }} ref={ref}>
-      {entered && <Suspense fallback={placeholder}>{children}</Suspense>}
+      {entered && (
+        <Suspense fallback={placeholder}>
+          <ChildrenWrapper fadeIn={fadeIn}>{children}</ChildrenWrapper>
+        </Suspense>
+      )}
     </div>
   );
 };

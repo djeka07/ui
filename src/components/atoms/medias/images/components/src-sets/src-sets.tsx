@@ -4,7 +4,7 @@ import createSource from '../../create-source';
 import sortSources from '../../sort-sources';
 import { ImageProps } from '../../image.props';
 
-type SrcSetsProps = Pick<ImageProps, 'src' | 'srcSet' | 'ratio' | 'focalPointY' | 'focalPointX' | 'pdis'> & {
+type SrcSetsProps = Pick<ImageProps, 'src' | 'srcSet' | 'height' | 'focalPointY' | 'focalPointX' | 'pdis'> & {
   fit: string;
   quality: number;
   modify: boolean;
@@ -17,7 +17,7 @@ const SrcSets = ({
   fit,
   modify,
   quality,
-  ratio,
+  height,
   rect,
   focalPointX,
   focalPointY,
@@ -36,7 +36,7 @@ const SrcSets = ({
         let newSource = createSource({
           source,
           width: set.width,
-          height: set.width / ratio,
+          height: height,
           fit,
           quality,
           modify,
@@ -48,7 +48,7 @@ const SrcSets = ({
         if (pdis) {
           const setPdisSources = pdis.map(
             (pdi) =>
-              `${createSource({ source, width: set.width * pdi, height: (set.width / ratio) * pdi, fit, quality, modify, rect: set.rect, orientation: set.orientation, focalPointY, focalPointX })} ${pdi}x`,
+              `${createSource({ source, width: set.width * pdi, height: height * pdi, fit, quality, modify, rect: set.rect, orientation: set.orientation, focalPointY, focalPointX })} ${pdi}x`,
           );
           newSource = `${source}, ${setPdisSources.join(', ')}`;
         }

@@ -15,7 +15,7 @@ export const Main: Story = {
     src: 'https://images.prismic.io/testrepoi/Zz8Vba8jQArT1HJD_markus-winkler-LZ8Q70HR6nw-unsplash.jpg',
     lazy: true,
     width: 1920,
-    ratio: 16 / 9,
+    height: 1080,
     srcSet: [
       { maxBreakPoint: BreakPoint.xsx, width: media[BreakPoint.xsx].up.value },
       { maxBreakPoint: BreakPoint.sm, width: media[BreakPoint.sm].up.value },
@@ -31,7 +31,7 @@ export const ModifyFalse: Story = {
     lazy: true,
     modify: false,
     width: 1920,
-    ratio: 16 / 9,
+    height: 1080,
     srcSet: [
       { maxBreakPoint: BreakPoint.xsx, width: media[BreakPoint.xsx].up.value },
       { maxBreakPoint: BreakPoint.sm, width: media[BreakPoint.sm].up.value },

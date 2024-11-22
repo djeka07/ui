@@ -30,7 +30,7 @@ export const wrapper = recipe({
     flexShrink: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    color: 'color-mix(in srgb, var(--link-color), white 100%)',
+    color: 'color-mix(in srgb, var(--link-text-color), white 100%)',
     border: '2px solid color-mix(in srgb, var(--background-color), black 50%)',
     background: 'var(--600-grey-color)',
     borderRadius: '50%',
