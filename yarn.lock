@@ -446,7 +446,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.37.2"
     eslint-plugin-react-hooks: "npm:^5.1.0-rc-3edc000d-20240926"
     eslint-plugin-storybook: "npm:^0.11.1"
-    framer-motion: "npm:12.0.0-alpha.1"
+    framer-motion: "npm:12.0.0-alpha.2"
     fuse.js: "npm:^7.0.0"
     jsdom: "npm:^25.0.1"
     prettier-eslint: "npm:^16.3.0"
@@ -5877,15 +5877,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:12.0.0-alpha.1":
-  version: 12.0.0-alpha.1
-  resolution: "framer-motion@npm:12.0.0-alpha.1"
+"framer-motion@npm:12.0.0-alpha.2":
+  version: 12.0.0-alpha.2
+  resolution: "framer-motion@npm:12.0.0-alpha.2"
   dependencies:
     tslib: "npm:^2.4.0"
   peerDependencies:
     "@emotion/is-prop-valid": "*"
-    react: ^18.0.0
-    react-dom: ^18.0.0
+    react: ^19.0.0-rc.1
+    react-dom: ^19.0.0-rc.1
   peerDependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
@@ -5893,7 +5893,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/30b91ce4ae83545534e600fc29a04cd1cb81f566acf144af30e96fa4de4c008525c77d5edcb6bb6f41a65fa69423a9ea8ead07b252539b15369a286a8e53edcd
+  checksum: 10c0/6e60f75b4ee8b8d7c347796602f335233b8604793a16dfc4a1b9403ae348603104fa794f3ded84e3b074b07d3bd0ee2c5ac29d197038ad9b5f81a05bf1b49406
   languageName: node
   linkType: hard
 

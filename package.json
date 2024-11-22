@@ -1,6 +1,6 @@
 {
   "name": "@djeka07/ui",
-  "version": "1.0.0-rc-0.56",
+  "version": "1.0.0-rc-0.57",
   "main": "dist/index.mjs",
   "types": "dist/index.d.mts",
   "license": "MIT",
@@ -39,7 +39,7 @@
     "@djeka07/utils": "1.0.12",
     "@vanilla-extract/css": "1.16.0",
     "@vanilla-extract/recipes": "0.5.5",
-    "framer-motion": "12.0.0-alpha.1",
+    "framer-motion": "12.0.0-alpha.2",
     "fuse.js": "^7.0.0",
     "react": "19.0.0-rc.1",
     "react-dom": "19.0.0-rc.1"
