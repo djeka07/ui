@@ -20,7 +20,7 @@ const Image = ({
 
   if (lazy) {
     return (
-      <LazyLoad triggerOnce height={width / height}>
+      <LazyLoad triggerOnce height={height}>
         <InternalImage
           {...rest}
           loaded={loaded}
