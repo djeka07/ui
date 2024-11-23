@@ -15,6 +15,7 @@ const Image = ({
   modify = true,
   ...rest
 }: ImageProps): JSX.Element => {
+  console.log(process?.env?.NODE_ENV !== undefined);
   const [loaded, setLoaded] = useState(process?.env?.NODE_ENV !== undefined);
   const onLoad = () => setLoaded(true);
 
