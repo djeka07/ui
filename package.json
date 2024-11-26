@@ -1,6 +1,6 @@
 {
   "name": "@djeka07/ui",
-  "version": "1.0.0-rc-0.58",
+  "version": "1.0.0-rc-0.59",
   "main": "dist/index.mjs",
   "types": "dist/index.d.mts",
   "license": "MIT",
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@djeka07/dates": "^0.0.4",
-    "@djeka07/hooks": "^1.0.0-rc-0.20",
+    "@djeka07/hooks": "^1.0.0-rc-0.21",
     "@djeka07/utils": "1.0.12",
     "@vanilla-extract/css": "1.16.0",
     "@vanilla-extract/recipes": "0.5.5",

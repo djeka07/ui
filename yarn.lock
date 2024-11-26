@@ -392,16 +392,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@djeka07/hooks@npm:^1.0.0-rc-0.20":
-  version: 1.0.0-rc-0.20
-  resolution: "@djeka07/hooks@npm:1.0.0-rc-0.20"
+"@djeka07/hooks@npm:^1.0.0-rc-0.21":
+  version: 1.0.0-rc-0.21
+  resolution: "@djeka07/hooks@npm:1.0.0-rc-0.21"
   dependencies:
     "@djeka07/utils": "npm:^1.0.11"
     react: "npm:19.0.0-rc.1"
   peerDependencies:
     "@djeka07/utils": ^1.0.11
     react: 19.0.0-rc.1
-  checksum: 10c0/ff06f3a0a2661312249ae852b8660f91afe794fcfc2d0e1662a4b3041bf35c7053805af1e72033977f928a35dee1b0f5b8ae540ccf26bd32dd4572b04c5d3e59
+  checksum: 10c0/80094e792e02501408e9e67de6448808ddde9062c6273e3ef420dd63bb776136c5c63605198da9ebf916915aebe429aed99caefcc19a57d54bdf43bc65c9a670
   languageName: node
   linkType: hard
 
@@ -411,7 +411,7 @@ __metadata:
   dependencies:
     "@arethetypeswrong/cli": "npm:^0.17.0"
     "@djeka07/dates": "npm:^0.0.4"
-    "@djeka07/hooks": "npm:^1.0.0-rc-0.20"
+    "@djeka07/hooks": "npm:^1.0.0-rc-0.21"
     "@djeka07/utils": "npm:1.0.12"
     "@eslint/compat": "npm:^1.2.3"
     "@eslint/eslintrc": "npm:^3.2.0"
