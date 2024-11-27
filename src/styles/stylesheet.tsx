@@ -202,7 +202,7 @@ export default (theme: Theme, extraVars?: Variables) => {
         (fontFace) => `
           @font-face {
             font-family: ${fontFace.family};
-            src: ${fontFace.src.map((src) => `url(${src.url}) format(${src.format})`).join(', ')};
+            src: ${fontFace.src.map((src) => `url(${src.url}) ${src.format ? `format(${src.format})` : ''}`).join(', ')};
             font-weight: ${fontFace.weight};
             font-style: ${fontFace.style};
             font-display: ${fontFace.display};

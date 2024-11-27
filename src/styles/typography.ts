@@ -26,7 +26,7 @@ export type SizeKeys = keyof Size;
 
 export type FontFaceSource = {
   url: string;
-  format: string;
+  format?: string;
 };
 
 export type FontFace = {
