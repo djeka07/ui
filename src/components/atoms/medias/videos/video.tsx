@@ -11,7 +11,7 @@ import { css } from '@djeka07/utils';
 const LazyYoutubeVideo = lazy(() => import('./components/youtube/youtube-video'));
 const LazyInternalVideo = lazy(() => import('./components/internal/internal-video'));
 
-const Video = ({ type, src, id, className, autoPlay, image, ...rest }: VideoProps) => {
+const Video = ({ type, src, id, className, autoPlay = false, muted = false, image, ...rest }: VideoProps) => {
   const [isPlaying, setIsPlaying] = useState(autoPlay);
 
   const onPlay = (isPlaying: boolean) => {
@@ -26,6 +26,7 @@ const Video = ({ type, src, id, className, autoPlay, image, ...rest }: VideoProp
             {type === 'internal' && !!src && (
               <LazyInternalVideo
                 src={src}
+                muted={muted}
                 hasImage={!!image}
                 isPlaying={isPlaying}
                 onPlay={onPlay}
@@ -34,7 +35,14 @@ const Video = ({ type, src, id, className, autoPlay, image, ...rest }: VideoProp
               />
             )}
             {type === 'youtube' && !!id && (
-              <LazyYoutubeVideo isPlaying={isPlaying} id={id} onPlay={onPlay} autoPlay={autoPlay} {...rest} />
+              <LazyYoutubeVideo
+                isPlaying={isPlaying}
+                id={id}
+                onPlay={onPlay}
+                muted={muted}
+                autoPlay={autoPlay}
+                {...rest}
+              />
             )}
           </>
         )}
@@ -56,3 +64,9 @@ const Video = ({ type, src, id, className, autoPlay, image, ...rest }: VideoProp
 };
 
 export default Video;
+
+export const H = () => (
+  <div>
+    <Video src="kjdnfdnm" type="youtube" />
+  </div>
+);
