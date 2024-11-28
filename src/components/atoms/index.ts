@@ -11,3 +11,4 @@ export * from './popups';
 export * from './ui-wrapper';
 export * from './lazies';
 export * from './medias';
+export * from './accordions';
