@@ -1,5 +1,5 @@
 import { AnimatePresence, m, Variant } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 import { css } from '@djeka07/utils';
 import { root, wrapper } from './popup.css';
 import { useClickOutside } from '@djeka07/hooks';
@@ -15,8 +15,8 @@ type TogglerProps = {
 
 type PopupVariants = { initial?: Variant; animate?: Variant; exit?: Variant };
 type PopupProps = {
-  toggler: (props: TogglerProps) => JSX.Element;
-  children: (props: RenderProps) => JSX.Element;
+  toggler: (props: TogglerProps) => ReactNode;
+  children: (props: RenderProps) => ReactNode;
   initial?: boolean;
   variants?: PopupVariants;
   className?: string;

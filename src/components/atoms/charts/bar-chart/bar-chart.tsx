@@ -14,7 +14,7 @@ const BarChart = ({
   expectedLabelHeight = defaultLabelSize,
   expectedValueHeight = defaultLabelSize,
   minBarWidth,
-}: BarChartProps): JSX.Element => {
+}: BarChartProps) => {
   const maxValue = Math.max(...(items?.map((item) => item.value) || [0]));
   const hasLabels = items?.some((item) => item.label);
   const hasRenderValue = items?.some((item) => !!item.renderValue);

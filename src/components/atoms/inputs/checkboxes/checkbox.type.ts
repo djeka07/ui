@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, JSX, ComponentPropsWithoutRef } from 'react';
+import { ChangeEvent, FormEvent, ComponentPropsWithoutRef, ReactNode } from 'react';
 import { InputVariants } from './checkbox.css';
 
 export type CheckboxProps = ComponentPropsWithoutRef<'input'> &
@@ -11,7 +11,7 @@ export type CheckboxProps = ComponentPropsWithoutRef<'input'> &
     disabled?: boolean;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
     onBlur?: (e: FormEvent) => void;
-    children?: JSX.Element;
+    children?: ReactNode;
     className?: string;
     error?: string;
     noErrorLabel?: boolean;

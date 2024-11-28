@@ -56,7 +56,7 @@ export const input = recipe({
     appearance: 'none',
     outline: 'none',
     [media.base]: {
-      [media.small.up]: {
+      [media.sm.up.query]: {
         fontSize: 14,
       },
     },
@@ -66,8 +66,8 @@ export const input = recipe({
       none: { borderRadius: 0 },
       small: { borderRadius: 'var(--small-border-radius)' },
       medium: { borderRadius: 'var(--medium-border-radius)' },
-      large: { borderRadius: 'var(--large-border-radius)'},
-      xlarge: { borderRadius: 'var(--xlarge-border-radius)'},
+      large: { borderRadius: 'var(--large-border-radius)' },
+      xlarge: { borderRadius: 'var(--xlarge-border-radius)' },
       xxlarge: { borderRadius: 'var(--xxlarge-border-radius)' },
     },
     boxShadow: {

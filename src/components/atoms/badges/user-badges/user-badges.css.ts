@@ -9,7 +9,7 @@ export const badgeWrapper = style({
   width: '100%',
   height: '100%',
   [media.base]: {
-    [media.small.up]: {
+    [media.sm.up.query]: {
       minWidth: '52.5px',
       width: '52.5px',
     },
@@ -21,7 +21,7 @@ export const badge = recipe({
     selectors: {
       '&&': {
         position: 'relative',
-        border: '2px solid var(--dark-background-color)',
+        border: '2px solid color-mix(in srgb, var(--background-color), black 50%)',
       },
     },
   },

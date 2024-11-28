@@ -2,6 +2,8 @@ import React from 'react';
 import type { Preview } from '@storybook/react';
 import createVariables from '../src/styles/stylesheet';
 import { createDefaultTheme } from '../src/styles/theme';
+import { UiWrapper } from '../src/components/atoms/ui-wrapper/ui-wrapper';
+import { domAnimation } from 'framer-motion';
 
 const preview: Preview = {
   tags: ['autodocs'],
@@ -10,8 +12,10 @@ const preview: Preview = {
       const theme = context.parameters.theme || context.globals.theme;
       return (
         <>
-          {createVariables(createDefaultTheme(theme))}
-          <Story />
+          {createVariables(createDefaultTheme(theme), { '--hejsan': 'ksmkdms', '--dsa': 'smskmsk' })}
+          <UiWrapper features={domAnimation}>
+            <Story />
+          </UiWrapper>
         </>
       );
     },

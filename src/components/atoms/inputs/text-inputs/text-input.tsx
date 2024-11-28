@@ -49,6 +49,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       onFocus,
       onKeyDown,
       placeholder,
+      fieldsetClassName,
       radius = 'small',
       backgroundColor = 'main',
       value,
@@ -143,13 +144,20 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 size="normal"
               />
             ))}
-          <fieldset className={fieldset({ errored: !!error, errorFocus: focus && !!error, focus: focus, radius })}>
-            <legend className={legend({ focus: focus || autoFocus || !!inputValue })}>
-              {!!label && <span className={legentSpan}>{label}</span>}
-            </legend>
-          </fieldset>
+          {type !== 'hidden' && (
+            <fieldset
+              className={css(
+                fieldset({ errored: !!error, errorFocus: focus && !!error, focus: focus, radius }),
+                fieldsetClassName,
+              )}
+            >
+              <legend className={legend({ focus: focus || autoFocus || !!inputValue })}>
+                {!!label && <span className={legentSpan}>{label}</span>}
+              </legend>
+            </fieldset>
+          )}
         </div>
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {!!error && (
             <m.div
               initial={{ opacity: 0, height: '0px', overflow: 'hidden' }}

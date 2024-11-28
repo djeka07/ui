@@ -12,7 +12,7 @@ const PieChart = ({
   cutoutRadiusShare = 0.4,
   totalDegrees = 360,
   spaceBetweenInDegrees = 0.8,
-}: PieChartProps): JSX.Element => {
+}: PieChartProps) => {
   const memoedItemsWithAngles = useMemo(() => {
     const filtered = createItemsWithAngles(items?.filter((i) => i.value > 0) || [], totalDegrees);
     if (!isEmpty(filtered)) {

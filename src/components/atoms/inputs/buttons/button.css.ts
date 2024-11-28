@@ -19,7 +19,7 @@ export const button = recipe({
     backgroundColor: 'var(--primary-main-color)',
     width: '100%',
     [media.base]: {
-      [media.small.up]: {
+      [media.sm.up.query]: {
         width: 'auto',
       },
     },
@@ -135,10 +135,10 @@ export const button = recipe({
         color: 'var(--button-transparent-fg-color)',
         selectors: {
           '&:focus': {
-            boxShadow: `0 0 0 1px #ffffff, 0 0 0px 3px var(--main-info-color)`,
+            boxShadow: `0 0 0 1px transparent, 0 0 0px 2px var(--button-transparent-fg-color)`,
           },
           '&:hover': {
-            backgroundColor: 'color-mix(in srgb, transparent, black 25%)',
+            backgroundColor: 'color-mix(in srgb, transparent, black 10%)',
             opacity: 0.9,
           },
         },
@@ -162,7 +162,7 @@ export const button = recipe({
         height: '40px',
         overflow: 'hidden',
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up.query]: {
             width: '40px',
             height: '40px',
           },
@@ -173,7 +173,7 @@ export const button = recipe({
       true: {
         width: '100%',
         [media.base]: {
-          [media.small.up]: {
+          [media.sm.up.query]: {
             width: '100%',
           },
         },

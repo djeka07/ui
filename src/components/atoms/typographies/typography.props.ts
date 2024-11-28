@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import { TypographyVariants } from './typography.css';
 
 export type Variant = 'hero' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'caption' | 'label' | 'p' | 'span';
@@ -21,6 +21,7 @@ export const elementMap: { [key: string]: Element } = {
 };
 
 export type TypographyProps = Omit<TypographyVariants, 'cursor'> & {
+  style?: CSSProperties;
   as?: Element;
   variant?: Variant;
   className?: string;

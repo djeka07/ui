@@ -1,3 +1,6 @@
+import { Variant } from '../components/atoms/typographies/typography.props';
+import { BreakPointEnumKeys } from './media.css';
+
 export type Size = {
   xxxsmall: string;
   xxsmall: string;
@@ -11,9 +14,6 @@ export type Size = {
   xxxlarge: string;
 };
 
-export type Family = { heading: string; body: string };
-export type FamilyKeys = keyof Family;
-
 export type Weight = {
   light: string;
   regular: string;
@@ -26,7 +26,7 @@ export type SizeKeys = keyof Size;
 
 export type FontFaceSource = {
   url: string;
-  format: string;
+  format?: string;
 };
 
 export type FontFace = {
@@ -37,17 +37,27 @@ export type FontFace = {
   display: string;
 };
 
+export type FontSize = { [key in BreakPointEnumKeys]?: string };
+
+export type Tag = {
+  input: Variant | Variant[];
+  fontSize?: FontSize;
+};
+
+export type Family = { heading: { family: string; weight: string }; body: { family: string; weight: string } };
+
 export type TypographyProps = {
-  family: Family;
   weight: Weight;
   size: Size;
+  tagSizes?: Tag[];
+  family: Family;
   fontFace: FontFace[];
 };
 
 export default {
   family: {
-    body: 'Campton, Helvetica, sans-serif;',
-    heading: 'Campton, Helvetica, sans-serif;',
+    body: { family: 'Campton, Helvetica, sans-serif;', weight: '400' },
+    heading: { family: 'Campton, Helvetica, sans-serif;', weight: '400' },
   },
   weight: {
     light: '100',

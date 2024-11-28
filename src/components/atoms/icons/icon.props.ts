@@ -1,8 +1,10 @@
+import { CSSProperties } from 'react';
 import { SvgStyleVariants } from './icon.css';
-import * as Svgs from './svgs';
+import { IconNames } from './svgs';
 
 export type IconProps = SvgStyleVariants & {
-  name: Svgs.IconNames;
+  style?: CSSProperties;
+  name: IconNames;
   wrapperClass?: string;
   className?: string;
   onClick?: () => void;

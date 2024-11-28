@@ -12,11 +12,13 @@ import Filter from './filter.svg';
 import Home from './home.svg';
 import Layers from './layers.svg';
 import Left from './chevron-left.svg';
+import Lock from './lock.svg';
 import Logout from './logout.svg';
 import Menu from './menu.svg';
 import Message from './message.svg';
 import Moon from './moon.svg';
 import Move from './move.svg';
+import Play from './play.svg';
 import Plus from './plus.svg';
 import Repeat from './repeat.svg';
 import Right from './chevron-right.svg';
@@ -28,6 +30,7 @@ import Slash from './slash.svg';
 import Sun from './sun.svg';
 import SunMoon from './sun-moon.svg';
 import Trash from './trash.svg';
+import Unlock from './unlock.svg';
 import Up from './chevron-up.svg';
 import Upload from './upload.svg';
 import User from './user.svg';
@@ -51,11 +54,13 @@ export {
   Home,
   Layers,
   Left,
+  Lock,
   Logout,
   Menu,
   Message,
   Moon,
   Move,
+  Play,
   Plus,
   Repeat,
   Right,
@@ -67,6 +72,7 @@ export {
   Sun,
   SunMoon,
   Trash,
+  Unlock,
   Up,
   Upload,
   User,
@@ -91,11 +97,13 @@ export type IconNames =
   | 'Home'
   | 'Layers'
   | 'Left'
+  | 'Lock'
   | 'Logout'
   | 'Menu'
   | 'Message'
   | 'Moon'
   | 'Move'
+  | 'Play'
   | 'Plus'
   | 'Repeat'
   | 'Right'
@@ -107,6 +115,7 @@ export type IconNames =
   | 'Sun'
   | 'SunMoon'
   | 'Trash'
+  | 'Unlock'
   | 'Up'
   | 'Upload'
   | 'User'

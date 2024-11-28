@@ -127,7 +127,7 @@ export const closeButton = style({
   cursor: 'pointer',
   right: 20,
   backgroundColor: 'var(--white-common-color)',
-  boxShadow: 'var(--main-box-shadow)',
+  boxShadow: 'var(--box-shadow)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

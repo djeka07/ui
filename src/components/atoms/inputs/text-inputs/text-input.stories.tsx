@@ -17,6 +17,15 @@ export const Main: Story = {
   },
 };
 
+export const Error: Story = {
+  args: {
+    material: false,
+    name: 'Email',
+    placeholder: 'Enter email',
+    error: 'Errors',
+  },
+};
+
 export const WithNoLabel: Story = {
   args: {
     material: false,
@@ -30,5 +39,11 @@ export const Disabled: Story = {
     label: 'Email',
     name: 'Email',
     disabled: true,
+  },
+};
+
+export const WithTypeHidden: Story = {
+  args: {
+    type: 'hidden',
   },
 };

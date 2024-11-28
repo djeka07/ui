@@ -43,6 +43,7 @@ type TextInputBase = Omit<ComponentPropsWithoutRef<'input'>, 'size' | 'name'> & 
   onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
   placeholder?: string;
   className?: string;
+  fieldsetClassName?: string;
   error?: string | undefined;
   material?: boolean;
 };

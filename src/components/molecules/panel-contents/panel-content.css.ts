@@ -18,7 +18,7 @@ export const root = recipe({
     },
     background: {
       light: {
-        backgroundColor: 'var(--light-background-color)',
+        backgroundColor: 'color-mix(in srgb, var(--background-color), white 50%)',
       },
       main: {
         backgroundColor: 'var(--main-background-color)',
@@ -29,7 +29,7 @@ export const root = recipe({
     },
     boxShadow: {
       true: {
-        boxShadow: 'var(--main-box-shadow)',
+        boxShadow: 'var(--box-shadow)',
       },
     },
   },
@@ -62,7 +62,7 @@ export const titleWrapper = recipe({
         borderBottom: '1px solid #e3e3e3',
       },
       dark: {
-        borderBottom: `1px solid 'var(--dark-background-color)',`,
+        borderBottom: `1px solid color-mix(in srgb, var(--background-color), black 50%),`,
       },
     },
   },

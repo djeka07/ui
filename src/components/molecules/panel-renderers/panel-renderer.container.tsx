@@ -1,10 +1,10 @@
 'use client';
-import { JSX, useEffect } from 'react';
+import { useEffect } from 'react';
 import { PanelProps } from '../panels/panel.type';
 import { usePanels } from '../panels/use-panels';
 import PanelRenderer from './panel-renderer';
 
-const PanelsRendererContainer = (): JSX.Element => {
+const PanelsRendererContainer = () => {
   const [{ hasPanels, panels }, { clearAllPanels, removePanelByPosition }] = usePanels();
 
   useEffect(() => {

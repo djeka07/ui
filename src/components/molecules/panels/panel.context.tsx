@@ -1,5 +1,5 @@
 'use client';
-import { createContext, JSX, ReactNode, useCallback, useState } from 'react';
+import { createContext, ReactNode, useCallback, useState } from 'react';
 import { PanelProps } from './panel.type';
 
 enum PanelsActionTypes {
@@ -54,7 +54,7 @@ type PanelProviderProps = { children: ReactNode | ReactNode[] };
 
 export const PanelsContext = createContext<PanelContext>(initialPanelsContext);
 
-export const PanelsProvider = (props: PanelProviderProps): JSX.Element => {
+export const PanelsProvider = (props: PanelProviderProps) => {
   const [state, setState] = useState<PanelState>(initialPanelsContext[0]);
 
   const pushPanelToContext = useCallback((panel: PanelProps) => {

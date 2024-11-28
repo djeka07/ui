@@ -1,25 +1,22 @@
 /// <reference types="vite/client" />
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
-import preserveDirectives from 'rollup-preserve-directives';
-import { defineConfig, Plugin } from 'vite';
-import dts from 'vite-plugin-dts';
 import { sync } from 'glob';
-// import { libInjectCss } from 'vite-plugin-lib-inject-css';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import preserveDirectives from 'rollup-preserve-directives';
+import { copyFileSync } from 'node:fs';
 
 const input = Object.fromEntries([
   ['index', 'src/index.ts'],
+  ['styles', 'src/styles/index.ts'],
   ...sync('src/components/*/*/index.ts').map((componentPath) => {
-    const [, componentName, component] = componentPath.match(/.*components\/(.*)\/.*?/) || [];
-    console.log(componentName, component, componentPath);
+    const [, componentName] = componentPath.match(/.*components\/(.*)\/.*?/) || [];
     return [componentName, componentPath];
   }),
 ]);
-
-console.log(input);
 
 const renameFile = (info) => {
   let name = info.name;
@@ -31,13 +28,20 @@ const renameFile = (info) => {
 
 export default defineConfig({
   plugins: [
-    // preserveDirectives() as Plugin,
+    preserveDirectives(),
     react(),
-    // libInjectCss(),
     svgr({ include: '**/*.svg' }),
-    dts({ include: 'src', exclude: ['**/*.stories.tsx'], insertTypesEntry: true, rollupTypes: true }),
+    dts({
+      include: 'src',
+      exclude: ['**/*.stories.tsx'],
+      insertTypesEntry: true,
+      rollupTypes: true,
+      afterBuild: () => {
+        copyFileSync('dist/index.d.ts', 'dist/index.d.mts');
+      },
+    }),
     tsconfigPaths(),
-    vanillaExtractPlugin({ unstable_mode: 'emitCss' }),
+    vanillaExtractPlugin(),
   ],
   build: {
     copyPublicDir: false,
@@ -53,7 +57,6 @@ export default defineConfig({
         'react-dom',
         'react/jsx-runtime',
         'framer-motion',
-        'polished',
         '@djeka07/utils',
         '@djeka07/hooks',
         '@djeka07/dates',
@@ -68,7 +71,6 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
           'react/jsx-runtime': 'react/jsx-runtime',
           'framer-motion': 'framer-motion',
-          polished: 'polished',
           '@djeka07/utils': '@djeka07/utils',
           '@djeka07/hooks': '@djeka07/hooks',
           '@djeka07/dates': '@djeka07/dates',

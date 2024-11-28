@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export enum ColumnType {
   Text = 'text',
   Number = 'number',
@@ -67,11 +69,11 @@ export type TableRenderParams<T = unknown> = {
 };
 
 export type GridCellRenderers<T> = {
-  [name: string]: (props: CellRenderParams<T>) => JSX.Element;
+  [name: string]: (props: CellRenderParams<T>) => ReactNode;
 };
 
 export type GridTableRenderers = {
-  [name: string]: () => JSX.Element;
+  [name: string]: () => ReactNode;
 };
 
 export type GridRenderers<T> = GridCellRenderers<T> | GridTableRenderers;

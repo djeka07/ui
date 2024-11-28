@@ -1,5 +1,5 @@
 import { css } from '@djeka07/utils';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { PopupVariants } from '../grid-column-filter/grid-column-filter.css';
 import { GridColumnHeader } from '../grid-column-header';
 import { gridColumnHeaderWrapper, root } from './grid-header.css';
@@ -140,7 +140,9 @@ const GridHeader = ({
           className={gridColumnHeaderWrapper}
           key={`column-${columnIndex}-${colDef.field}`}
           draggable
-          ref={(element: HTMLDivElement) => gridColumnHeaderRefs.current.push({ element, def: colDef })}
+          ref={(element: HTMLDivElement) => {
+            gridColumnHeaderRefs.current.push({ element, def: colDef });
+          }}
         >
           <GridColumnHeader
             draggingDefinition={draggingColumn}

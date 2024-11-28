@@ -1,5 +1,11 @@
 'use client';
 
+import { useDidUpdate } from '@djeka07/hooks';
+import { css, isObjectEmpty } from '@djeka07/utils';
+import { AnimatePresence, m } from 'framer-motion';
+import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'react';
+import { RadiusKeys } from '../../../../styles/border';
+import { Icon } from '../../icons';
 import {
   error as errorClass,
   errorSvg,
@@ -10,14 +16,7 @@ import {
   root,
   wrapper,
 } from '../text-inputs/text-input.css';
-import { css, isObjectEmpty } from '@djeka07/utils';
-import { AnimatePresence, m } from 'framer-motion';
-import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, JSX, useState } from 'react';
 import { dropDown, iconWrapper } from './drop-down.css';
-import { RadiusKeys } from '../../../../styles/border';
-
-import { Icon } from '../../icons';
-import { useDidUpdate } from '@djeka07/hooks';
 
 type SelectEventProps = {
   value: string;
@@ -73,7 +72,7 @@ const DropDown = forwardRef<HTMLSelectElement, SelectProps>(
       ...rest
     }: SelectProps,
     ref,
-  ): JSX.Element => {
+  ) => {
     const selectedItem = items?.find((val) => val.isSelected);
     const [focus, setFocus] = useState(false);
 

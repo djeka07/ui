@@ -3,7 +3,7 @@ import { formatDate } from '@djeka07/dates';
 import { useDidMount } from '@djeka07/hooks';
 import { sleep } from '@djeka07/utils';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useCallback, useState } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
 import Grid from './grid';
 import { CellRenderParams, ColumnDefinitionType, ColumnType, GetRowsParams } from './grid.type';
 
@@ -25,7 +25,7 @@ type GridData = {
   date: string;
 };
 
-const DateRenderer = (props: CellRenderParams<GridData>): JSX.Element => <div>{formatDate(props.value as string)}</div>;
+const DateRenderer = (props: CellRenderParams<GridData>): ReactNode => <div>{formatDate(props.value as string)}</div>;
 
 const columnDefinition: ColumnDefinitionType[] = [
   {
