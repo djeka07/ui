@@ -179,6 +179,9 @@ export default (theme: Theme, extraVars?: Variables) => {
         font-family: var(--heading-font-family);
         font-weight: var(--heading-font-weight);
         color: var(--heading-text-color);
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+        margin: 0px;
       }
 
       h1 {
