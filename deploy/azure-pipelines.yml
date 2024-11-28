@@ -113,7 +113,7 @@ stages:
     dependsOn: SetVariables
     condition: and(eq(variables['Build.SourceBranch'], 'refs/heads/main'), succeeded())
     pool:
-      vmImage: ubuntu-latest
+      name: Ubuntu WSL
     jobs:
       - job: PublishToStorybook
         displayName: Publish to storybook 
