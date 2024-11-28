@@ -221,6 +221,11 @@ export default (theme: Theme, extraVars?: Variables) => {
         padding: 0px;
         margin: 0px;
       }
+      
+      a {
+        color: var(--link-text-color);
+      }
+
       p {
           margin-block-start: 0px;
           margin-block-end: 0px;
