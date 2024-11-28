@@ -181,6 +181,30 @@ export default (theme: Theme, extraVars?: Variables) => {
         color: var(--heading-text-color);
       }
 
+      h1 {
+        font-size: var(--h1-font-size, 2rem);
+      }
+
+      h2 {
+        font-size: var(--h2-font-size, 1.5rem);
+      }
+
+      h3 {
+        font-size: var(--h3-font-size, 1.17rem);
+      }
+
+      h4 {
+        font-size: var(--h4-font-size, 1rem);
+      }
+
+      h5 {
+        font-size: var(--h5-font-size, 0.83rem);
+      }
+        
+      h6 {
+        font-size: var(--h6-font-size, 0.67rem);
+      }
+
       body {
         font-family: var(--base-font-family);
         font-weight: var(--base-font-weight);
