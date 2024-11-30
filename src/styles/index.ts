@@ -1,4 +1,4 @@
-import createBorder, { Border } from './border';
+import createBorder, { Border, RadiusKeys } from './border';
 import createTypography, { TypographyProps, SizeKeys } from './typography';
 import createPalette, { Palette } from './palette';
 import createStyleSheet from './stylesheet';
@@ -18,4 +18,4 @@ const createDefaultTheme = (theme: 'dark' | 'light') =>
   }) satisfies Theme;
 
 export { createStyleSheet, createDefaultTheme, media };
-export type { TypographyProps, Border, Palette, Theme, SizeKeys };
+export type { TypographyProps, Border, Palette, Theme, SizeKeys, RadiusKeys };
