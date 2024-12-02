@@ -20,8 +20,8 @@ type InteralImageProps = Pick<
   | 'className'
   | 'placeholder'
   | 'alt'
+  | 'rect'
 > & {
-  rect: string;
   fit: string;
   quality: number;
   loaded: boolean;

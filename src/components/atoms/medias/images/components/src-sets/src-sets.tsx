@@ -4,11 +4,10 @@ import createSource from '../../create-source';
 import sortSources from '../../sort-sources';
 import { ImageProps } from '../../image.props';
 
-type SrcSetsProps = Pick<ImageProps, 'src' | 'srcSet' | 'height' | 'focalPointY' | 'focalPointX' | 'pdis'> & {
+type SrcSetsProps = Pick<ImageProps, 'src' | 'srcSet' | 'height' | 'focalPointY' | 'focalPointX' | 'pdis' | 'rect'> & {
   fit: string;
   quality: number;
   modify: boolean;
-  rect: string;
 };
 
 const SrcSets = ({

@@ -6,7 +6,7 @@ import { InternalImage } from './components/internal-image';
 import { ImageProps } from './image.props';
 
 const Image = ({
-  rect = 'center,center,10000,10000',
+  rect,
   fit = 'crop',
   lazy = true,
   width,
