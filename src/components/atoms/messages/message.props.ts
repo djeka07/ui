@@ -57,4 +57,5 @@ export type MessageProps = MessageOmittedVariants & {
   wrapperClass?: string;
   margin?: { bottom?: number; top?: number; left?: number; right?: number };
   className?: string;
+  innerClass?: string;
 } & (MessageNoType | MessagePrimary | MessageSecondary | MessageSuccess | MessageError | MessageInfo | MessageWarning);

@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import LazyLoad from './lazy-load';
 import { Typography } from '../typographies';
 import { UserBadge } from '../badges';
+import { Image } from '../medias';
 
 const meta: Meta<typeof LazyLoad> = {
   title: 'Atoms/Lazies/LazyLoad',
@@ -113,6 +114,11 @@ export const All: Story = {
         ut odio faucibus, id tristique ante vehicula. Proin viverra leo orci, sit amet vehicula lectus luctus vel. Nam
         ultricies sapien ac purus lobortis, vitae rutrum risus posuere.
       </Typography>
+      <Image
+        src="https://images.prismic.io/testrepoi/Zz8Vba8jQArT1HJD_markus-winkler-LZ8Q70HR6nw-unsplash.jpg"
+        width={1920}
+        height={1080}
+      />
       <Typography variant="p">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non malesuada nisl. Ut consectetur tincidunt
         sapien, vitae feugiat nunc iaculis non. Vivamus aliquet lacus vel dui malesuada, non fermentum lorem aliquet.
@@ -136,6 +142,11 @@ export const All: Story = {
       <LazyLoad height={30}>
         <UserBadge user={{ firstName: 'Test', lastName: 'Test' }} />
       </LazyLoad>
+      <Image
+        src="https://images.prismic.io/testrepoi/Z1LCQZbqstJ98HT8_logan-weaver-lgnwvr-cgtNg6FHQV0-unsplash.jpg"
+        width={1920}
+        height={1080}
+      />
       <Typography variant="p">
         Morbi ut lectus eget sem malesuada venenatis sit amet at tortor. Fusce ultricies nisi nec tempor sodales. Etiam
         fringilla odio et erat mollis, a porttitor odio vehicula. In ac turpis scelerisque, laoreet sapien ac, efficitur
