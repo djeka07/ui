@@ -1,8 +1,8 @@
 /// <reference types="vite/client" />
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 import react from '@vitejs/plugin-react';
-import { sync } from 'glob';
-import { defineConfig } from 'vite';
+import { globSync } from 'glob';
+import { defineConfig, Plugin } from 'vite';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -12,7 +12,7 @@ import { copyFileSync } from 'node:fs';
 const input = Object.fromEntries([
   ['index', 'src/index.ts'],
   ['styles', 'src/styles/index.ts'],
-  ...sync('src/components/*/*/index.ts').map((componentPath) => {
+  ...globSync('src/components/*/*/index.ts').map((componentPath) => {
     const [, componentName] = componentPath.match(/.*components\/(.*)\/.*?/) || [];
     return [componentName, componentPath];
   }),
@@ -28,7 +28,7 @@ const renameFile = (info) => {
 
 export default defineConfig({
   plugins: [
-    preserveDirectives(),
+    preserveDirectives() as Plugin,
     react(),
     svgr({ include: '**/*.svg' }),
     dts({

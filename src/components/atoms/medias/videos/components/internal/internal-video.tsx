@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, JSX } from 'react';
 import { video as videoClass } from '../../video.css';
 
 type InternalVideoProps = {
