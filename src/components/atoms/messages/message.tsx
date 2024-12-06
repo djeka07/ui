@@ -8,7 +8,7 @@ import { MessageProps } from './message.props';
 
 const InnerMessage = memo(
   ({
-    wrapperClass,
+    innerClass,
     border,
     primary,
     secondary,
@@ -25,8 +25,8 @@ const InnerMessage = memo(
     const ref = createRef<HTMLDivElement>();
 
     return (
-      <div className={css(wrapperClass, message({ error, info, success, secondary, warning, primary, border }))}>
-        <div className={css(className, innerMessage({ icon: !!icon, direction }))} ref={ref}>
+      <div className={css(className, message({ error, info, success, secondary, warning, primary, border }))}>
+        <div className={css(innerClass, innerMessage({ icon: !!icon, direction }))} ref={ref}>
           {icon && (
             <Icon
               name={icon}
@@ -48,7 +48,6 @@ const Message = ({
   margin = { bottom: 0, top: 0, left: 0, right: 0 },
   wrapperClass,
   icon,
-  className,
   border = true,
   direction = 'row',
   iconSize = 'medium',
@@ -59,6 +58,7 @@ const Message = ({
     <AnimatePresence initial={false}>
       {show && (
         <m.div
+          className={wrapperClass}
           style={{ width: '100%' }}
           initial={{
             opacity: 0,
@@ -88,15 +88,7 @@ const Message = ({
             overflow: 'hidden',
           }}
         >
-          <InnerMessage
-            border={border}
-            iconSize={iconSize}
-            direction={direction}
-            icon={icon}
-            wrapperClass={wrapperClass}
-            className={className}
-            {...rest}
-          >
+          <InnerMessage border={border} iconSize={iconSize} direction={direction} icon={icon} {...rest}>
             {children}
           </InnerMessage>
         </m.div>

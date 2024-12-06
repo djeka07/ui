@@ -1,6 +1,6 @@
 {
   "name": "@djeka07/ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/index.mjs",
   "types": "dist/index.d.mts",
   "license": "MIT",
