@@ -30,7 +30,7 @@ stages:
     - job: Test
       steps:
       - checkout: self
-        clean: false
+        clean: true
         submodules: true
       - task: Yarn@3
         displayName: Install Packages
