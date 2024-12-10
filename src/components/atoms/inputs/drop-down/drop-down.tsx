@@ -18,7 +18,7 @@ import {
 } from '../text-inputs/text-input.css';
 import { dropDown, iconWrapper } from './drop-down.css';
 
-type SelectEventProps = {
+export type SelectEventProps = {
   value: string;
   isDefault: boolean;
 };

@@ -1,6 +1,6 @@
 {
   "name": "@djeka07/ui",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/index.mjs",
   "types": "dist/index.d.mts",
   "type": "module",
