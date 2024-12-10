@@ -23,7 +23,7 @@ export type SelectEventProps = {
   isDefault: boolean;
 };
 
-export type SelectProps = Omit<ComponentPropsWithoutRef<'select'>, 'size'> & {
+export type SelectProps = Omit<ComponentPropsWithoutRef<'select'>, 'size' | 'onChange' | 'onBlur'> & {
   id?: string;
   initialValue?: string | number;
   name: string;
